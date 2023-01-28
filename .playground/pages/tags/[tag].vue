@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const route = useRoute()
 const tag = computed(() => route.params.tag as string)
+
+definePageMeta({
+  documentDriven: false,
+})
 </script>
 
 <template>

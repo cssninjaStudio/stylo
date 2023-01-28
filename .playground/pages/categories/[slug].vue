@@ -2,6 +2,10 @@
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
 const { getCategory } = useCategoryDetails()
+
+definePageMeta({
+  documentDriven: false,
+})
 </script>
 
 <template>

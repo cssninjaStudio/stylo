@@ -5,7 +5,7 @@ const props = defineProps<{
 }>()
 
 const app = useAppConfig()
-const authors = computed(() => Object.keys(app.folio.authors).sort((a, b) => a.localeCompare(b)))
+const authors = computed(() => app.folio.authors.map(a => a.slug).sort((a, b) => a.localeCompare(b)))
 </script>
 
 <template>

@@ -2,6 +2,10 @@
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
 const { getAuthor } = useAuthorDetails()
+
+definePageMeta({
+  documentDriven: false,
+})
 </script>
 
 <template>

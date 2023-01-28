@@ -1,57 +1,57 @@
 export default defineAppConfig({
   folio: {
-    categories: {
-      business: {
+    categories: [
+      {
         slug: 'business',
         name: 'Business',
         image: '/img/categories/5.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      engineering: {
+      {
         slug: 'engineering',
         name: 'Engineering',
         image: '/img/categories/6.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      tutorials: {
+      {
         slug: 'tutorials',
         name: 'Tutorials',
         image: '/img/categories/1.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      hobbies: {
+      {
         slug: 'hobbies',
         name: 'Hobbies',
         image: '/img/categories/2.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      'human-resources': {
+      {
         slug: 'human-resources',
         name: 'Human Resources',
         image: '/img/categories/9.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      lifestyle: {
+      {
         slug: 'lifestyle',
         name: 'Lifestyle',
         image: '/img/categories/8.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      'ux-design': {
+      {
         slug: 'ux-design',
         name: 'UX Design',
         image: '/img/categories/7.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-      coaching: {
+      {
         slug: 'coaching',
         name: 'Coaching',
         image: '/img/categories/10.png',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.'
       },
-    },
-    authors: {
-      'maya-piretti': {
+    ],
+    authors: [
+      {
         slug: 'maya-piretti',
         name: 'Maya Piretti',
         description: 'UX Designer',
@@ -78,7 +78,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'harold-miller': {
+      {
         slug: 'harold-miller',
         name: 'Harold Miller',
         description: 'Business Analyst',
@@ -105,7 +105,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'clark-smith': {
+      {
         slug: 'clark-smith',
         name: 'Clark Smith',
         description: 'Software Engineer',
@@ -132,7 +132,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'clarissa-stokes': {
+      {
         slug: 'clarissa-stokes',
         name: 'Clarissa Stokes',
         description: 'HR Manager',
@@ -159,7 +159,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'irina-kropova': {
+      {
         slug: 'irina-kropova',
         name: 'Irina Kropova',
         description: 'Lifestyle Coach',
@@ -186,7 +186,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'alan-mitchells': {
+      {
         slug: 'alan-mitchells',
         name: 'Alan Mitchells',
         description: 'Account Manager',
@@ -213,7 +213,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'frieda-weinberg': {
+      {
         slug: 'frieda-weinberg',
         name: 'Frieda Weinberg',
         description: 'Health Coach',
@@ -240,7 +240,7 @@ export default defineAppConfig({
           },
         ],
       },
-      'wallace-knolder': {
+      {
         slug: 'wallace-knolder',
         name: 'Wallace Knolder',
         description: 'Art Director',
@@ -266,7 +266,7 @@ export default defineAppConfig({
             icon: 'brandico:twitter',
           },
         ],
-      }
-    }
+      },
+    ]
   }
 })

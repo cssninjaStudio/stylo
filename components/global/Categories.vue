@@ -6,7 +6,7 @@ const props = defineProps<{
 
 const app = useAppConfig()
 const { getCategory } = useCategoryDetails()
-const categories = computed(() => Object.keys(app.folio.categories).sort((a, b) => a.localeCompare(b)))
+const categories = computed(() => app.folio.categories.map(c => c.slug).sort((a, b) => a.localeCompare(b)))
 </script>
 
 <template>

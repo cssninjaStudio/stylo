@@ -16,7 +16,7 @@ const year = new Date().getFullYear()
         <span class="flex-none flex flex-row items-center">
           <NuxtLink
             class="flex title-font font-medium items-center lg:justify-start justify-center text-muted-800 dark:text-muted-100"
-            to="/home"
+            to="/"
           >
             <img src="/img/logo/logo.svg" alt="" class="h-8 w-8" />
             <span class="sr-only">Logo</span>
@@ -38,7 +38,7 @@ const year = new Date().getFullYear()
         <span class="flex items-center gap-x-6">
           <p class="text-sm text-muted-600 dark:text-muted-300">
             <NuxtLink
-              href="/home"
+              href="/"
               class="font-sans text-sm text-muted-500 dark:text-muted-400"
               rel="noopener noreferrer"
               target="_blank"

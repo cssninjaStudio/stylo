@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   extends: ['nuxt-seo-kit'],
   modules: [
     '@vueuse/nuxt',
-    // '@nuxthq/studio',
+    '@nuxthq/studio',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',

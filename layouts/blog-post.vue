@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { ParsedContentMeta } from '@nuxt/content/dist/runtime/types';
 import type { BlogParsedContent } from '../types'
 
-const { page }: { page: BlogParsedContent } = useContent()
+const { page, next, prev }: { 
+  page: BlogParsedContent,
+  next?: ParsedContentMeta,
+  prev?: ParsedContentMeta
+} = useContent()
 </script>
 
 <template>
@@ -23,14 +28,24 @@ const { page }: { page: BlogParsedContent } = useContent()
             </div>
 
             <!-- Back -->
-            <div class="pb-16">
-              <a
-                class="flex items-center gap-2 font-sans text-sm no-underline text-primary-500"
-                href="/blog"
+            <div class="pb-16 flex justify-between">
+              <NuxtLink
+                class="w-1/3 flex items-center gap-2 font-sans text-sm no-underline text-primary-500"
+                :to="next._path"
+                v-if="next"
               >
-                <Icon name="lucide:arrow-left" class="inline-block w-4 h-4" />
-                <span>Back to blog</span>
-              </a>
+                <Icon name="lucide:arrow-left" class="inline-block w-6 h-6" />
+                <span class="truncate">{{ next.title }}</span>
+              </NuxtLink>
+
+              <NuxtLink
+                class="w-1/3 flex items-center gap-2 font-sans text-sm no-underline text-primary-500"
+                :to="prev._path"
+                v-if="prev"
+              >
+                <span class="truncate">{{ prev.title }}</span>
+                <Icon name="lucide:arrow-right" class="inline-block w-6 h-6" />
+              </NuxtLink>
             </div>
           </div>
         </AppContainer>

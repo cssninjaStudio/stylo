@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const props = defineProps<{
   author: string
 }>()
@@ -9,8 +8,12 @@ const { getAuthor } = useAuthorDetails()
 
 <template>
   <div class="relative">
-    <div class="p-6 rounded-lg border border-muted-200 dark:border-muted-700 bg-white dark:bg-muted-800">
-      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+    <div
+      class="p-6 rounded-lg border border-muted-200 dark:border-muted-700 bg-white dark:bg-muted-800"
+    >
+      <div
+        class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left"
+      >
         <div class="h-14 w-14">
           <img
             v-if="getAuthor(author)?.image"
@@ -20,16 +23,19 @@ const { getAuthor } = useAuthorDetails()
           />
         </div>
         <div class="relative">
-          <h3 class="font-sans font-medium text-lg leading-none text-muted-800 dark:text-muted-100">
-            <NuxtLink
-              :to="`/authors/${author}`"
-            >
+          <h3
+            class="font-sans font-medium text-lg leading-none text-muted-800 dark:text-muted-100"
+          >
+            <NuxtLink :to="`/authors/${author}`">
               <span class="absolute inset-0" />
               {{ getAuthor(author)?.name ?? author }}
             </NuxtLink>
           </h3>
-          <p v-if="getAuthor(author)?.description" class="font-sans text-sm text-muted-400">
-            {{getAuthor(author)?.description }}
+          <p
+            v-if="getAuthor(author)?.description"
+            class="font-sans text-sm text-muted-400"
+          >
+            {{ getAuthor(author)?.description }}
           </p>
         </div>
         <div class="sm:ml-auto">

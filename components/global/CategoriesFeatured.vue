@@ -6,7 +6,6 @@ const props = defineProps<{
   subtitle?: string
 }>()
 
-
 const { data: articles } = await useAsyncData(() =>
   queryContent<BlogParsedContent>()
     .only(['categories'])
@@ -16,7 +15,9 @@ const { data: articles } = await useAsyncData(() =>
 const categories = computed(() => {
   const categories = new Set<string>()
   articles.value?.forEach((article) => {
-    (article.categories as string[])?.forEach((category) => categories.add(category))
+    ;(article.categories as string[])?.forEach((category) =>
+      categories.add(category)
+    )
   })
   return Array.from(categories).slice(0, 4)
 })
@@ -28,10 +29,20 @@ const { getCategory } = useCategoryDetails()
   <AppSection class="bg-white dark:bg-muted-900 pb-0">
     <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
       <div class="relative">
-        <AppContainerHeader class="mb-6" :title="props.title" :subtitle="props.subtitle">
-          <template #title><slot name="title"></slot></template>
-          <template #subtitle><slot name="subtitle"></slot></template>
-          <template #links><slot name="links"></slot></template>
+        <AppContainerHeader
+          :title="props.title"
+          :subtitle="props.subtitle"
+          class="mb-6"
+        >
+          <template #title>
+            <ContentSlot :use="$slots.title" unwrap="p" />
+          </template>
+          <template #subtitle>
+            <ContentSlot :use="$slots.subtitle" unwrap="p" />
+          </template>
+          <template #links>
+            <ContentSlot :use="$slots.links" unwrap="p" />
+          </template>
         </AppContainerHeader>
 
         <div class="grid ptablet:grid-cols-2 md:grid-cols-4 gap-4">
@@ -56,7 +67,10 @@ const { getCategory } = useCategoryDetails()
                 >
                   {{ getCategory(category)?.name ?? category }}
                 </h3>
-                <p v-if="getCategory(category)" class="font-sans text-xs text-muted-500 dark:text-muted-400">
+                <p
+                  v-if="getCategory(category)"
+                  class="font-sans text-xs text-muted-500 dark:text-muted-400"
+                >
                   {{ getCategory(category)?.description }}
                 </p>
               </div>

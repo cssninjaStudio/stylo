@@ -6,17 +6,29 @@ const props = defineProps<{
 
 const app = useAppConfig()
 const { getCategory } = useCategoryDetails()
-const categories = computed(() => app.folio.categories.map(c => c.slug).sort((a, b) => a.localeCompare(b)))
+const categories = computed(() =>
+  app.folio.categories.map((c) => c.slug).sort((a, b) => a.localeCompare(b))
+)
 </script>
 
 <template>
   <AppSection class="bg-white dark:bg-muted-900 pb-0">
     <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
       <div class="relative">
-        <AppContainerHeader class="pt-20 mb-10" :title="props.title" :subtitle="props.subtitle">
-          <template #title><slot name="title"></slot></template>
-          <template #subtitle><slot name="subtitle"></slot></template>
-          <template #links><slot name="links"></slot></template>
+        <AppContainerHeader
+          class="pt-20 mb-10"
+          :title="props.title"
+          :subtitle="props.subtitle"
+        >
+          <template #title>
+            <ContentSlot :use="$slots.title" unwrap="p" />
+          </template>
+          <template #subtitle>
+            <ContentSlot :use="$slots.subtitle" unwrap="p" />
+          </template>
+          <template #links>
+            <ContentSlot :use="$slots.links" unwrap="p" />
+          </template>
         </AppContainerHeader>
 
         <div class="grid ptablet:grid-cols-2 md:grid-cols-4 gap-4">
@@ -41,7 +53,10 @@ const categories = computed(() => app.folio.categories.map(c => c.slug).sort((a,
                 >
                   {{ getCategory(category)?.name ?? category }}
                 </h3>
-                <p v-if="getCategory(category)" class="font-sans text-xs text-muted-500 dark:text-muted-400">
+                <p
+                  v-if="getCategory(category)"
+                  class="font-sans text-xs text-muted-500 dark:text-muted-400"
+                >
                   {{ getCategory(category)?.description }}
                 </p>
               </div>

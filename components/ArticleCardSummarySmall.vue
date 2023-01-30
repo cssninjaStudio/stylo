@@ -22,22 +22,27 @@ const image = computed(() => props.article.image || props.article.cover)
           class="block lg:block rounded-md w-full h-64 md:h-40 object-cover"
         />
       </NuxtLink>
-      <div v-if="props.article.categories" class="absolute top-4 right-4 scale-90 z-30">
-        <ArticleCategoryBadges
-          :categories="props.article.categories"
-        />
+      <div
+        v-if="props.article.categories"
+        class="absolute top-4 right-4 scale-90 z-30"
+      >
+        <ArticleCategoryBadges :categories="props.article.categories" />
       </div>
     </div>
 
-    <div class="flex items-center gap-2 mb-1 mt-4 text-muted-500 dark:text-muted-400">
+    <div
+      class="flex items-center gap-2 mb-1 mt-4 text-muted-500 dark:text-muted-400"
+    >
       <Icon name="ph:calendar-blank-duotone" class="w-4 h-4" />
-      <p class="font-sans text-xs">
+      <div class="font-sans text-xs">
         {{ formatDate(props.article.publishDate) }}
-      </p>
+      </div>
     </div>
     <NuxtLink :to="props.article._path">
-      <h3 class="line-clamp-1 font-sans font-medium text-base text-muted-700 dark:text-white mb-3">
-        {{ props.article.title}}
+      <h3
+        class="line-clamp-1 font-sans font-medium text-base text-muted-700 dark:text-white mb-3"
+      >
+        {{ props.article.title }}
       </h3>
     </NuxtLink>
     <div class="flex items-center justify-between">
@@ -52,7 +57,9 @@ const image = computed(() => props.article.image || props.article.cover)
           <div>
             <h4 class="font-sans text-xs text-muted-800 dark:text-muted-100">
               <NuxtLink :to="`/authors/${props.article.author}`">
-                {{ getAuthor(props.article.author)?.name || props.article.author }}
+                {{
+                  getAuthor(props.article.author)?.name || props.article.author
+                }}
               </NuxtLink>
             </h4>
           </div>
@@ -60,7 +67,7 @@ const image = computed(() => props.article.image || props.article.cover)
       </div>
       <div class="flex ltablet:hidden">
         <NuxtLink
-        :to="props.article._path"
+          :to="props.article._path"
           class="group relative flex items-center gap-2 font-sans text-xs text-primary-500 transition-colors duration-300"
         >
           <span class="sr-only">{{ props.article.title }}</span>

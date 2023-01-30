@@ -15,7 +15,6 @@ tags:
   - startup
   - small business
   - innovation
-extra: ['gallery']
 ---  
 
 

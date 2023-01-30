@@ -15,11 +15,14 @@ export default defineNuxtSchema({
             properties: {
               slug: { type: 'string', description: 'Category unique slug' },
               name: { type: 'string', description: 'Category name' },
-              description: { type: 'string', description: 'Category description' },
+              description: {
+                type: 'string',
+                description: 'Category description',
+              },
               image: { type: 'string', description: 'Category avatar url' },
-            }
-          }
-        }
+            },
+          },
+        },
       },
       authors: {
         $schema: {
@@ -45,18 +48,24 @@ export default defineNuxtSchema({
                     properties: {
                       link: {
                         type: 'string',
-                        description: 'Social network URL'
+                        description: 'Social network URL',
                       },
-                      name: { type: 'string', description: 'Name of the social network' },
-                      icon: { type: 'string', description: 'Icon name of the social network' }
-                    }
-                  }
-                }
+                      name: {
+                        type: 'string',
+                        description: 'Name of the social network',
+                      },
+                      icon: {
+                        type: 'string',
+                        description: 'Icon name of the social network',
+                      },
+                    },
+                  },
+                },
               },
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     },
   },
 })

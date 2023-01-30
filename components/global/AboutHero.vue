@@ -20,16 +20,20 @@ const props = defineProps<{
               v-if="'title' in $slots || props.title"
               class="font-sans text-4xl sm:text-5xl font-medium leading-tight text-muted-800 dark:text-white"
             >
-              <slot name="title">{{  props.title }}</slot>
+              <ContentSlot :use="$slots.title" unwrap="p">
+                {{ props.title }}
+              </ContentSlot>
             </h1>
             <h3
               v-if="'subtitle' in $slots || props.subtitle"
               class="py-2 font-sans font-medium uppercase text-base tracking-widest text-primary-500"
             >
-              <slot name="subtitle">{{  props.subtitle }}</slot>
+              <ContentSlot :use="$slots.subtitle" unwrap="p">
+                {{ props.subtitle }}
+              </ContentSlot>
             </h3>
             <p class="font-sans text-muted-500 dark:text-muted-400">
-              <slot />
+              <ContentSlot :use="$slots.default" unwrap="p" />
             </p>
           </div>
         </div>
@@ -37,13 +41,13 @@ const props = defineProps<{
           <div
             class="relative w-full min-h-[390px] sm:min-h-[480px] flex flex-col justify-end"
           >
-            <slot name="image">
+            <ContentSlot :use="$slots.image" unwrap="p">
               <img
                 :src="props.image"
                 class="relative z-10 max-w-[240px] sm:max-w-[290px] mx-auto"
                 alt=""
               />
-            </slot>
+            </ContentSlot>
             <div
               class="absolute top-1/2 left-1/2 translate-x-[-55%] sm:translate-x-[-60%] -translate-y-1/3 h-[380px] w-[380px] mx-auto rounded-full bg-primary-500/20"
             ></div>

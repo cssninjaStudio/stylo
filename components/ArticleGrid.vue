@@ -22,13 +22,15 @@ const image = computed(() => props.article.image || props.article.cover)
           class="block w-full h-[420px] object-cover rounded-lg"
         />
         <div class="absolute top-4 right-4 z-30">
-          <ArticleCategoryBadges
-            :categories="props.article.categories"
-          />
+          <ArticleCategoryBadges :categories="props.article.categories" />
         </div>
       </div>
-      <div class="absolute bottom-0 left-0 w-full h-2/3 z-10 bg-gradient-to-t from-muted-1000" />
-      <div class="absolute top-0 left-0 w-full h-full z-20 flex flex-col justify-end">
+      <div
+        class="absolute bottom-0 left-0 w-full h-2/3 z-10 bg-gradient-to-t from-muted-1000"
+      />
+      <div
+        class="absolute top-0 left-0 w-full h-full z-20 flex flex-col justify-end"
+      >
         <div class="p-6">
           <div class="flex items-center gap-2 mb-1 mt-4 text-muted-100">
             <Icon name="ph:calendar-blank-duotone" class="w-4 h-4" />
@@ -41,7 +43,7 @@ const image = computed(() => props.article.image || props.article.cover)
               :to="props.article._path"
               class="text-white hover:text-primary-300 transition-colors duration-300"
             >
-              {{props.article.title}}
+              {{ props.article.title }}
             </NuxtLink>
           </h3>
           <div class="flex items-center justify-between">
@@ -64,7 +66,10 @@ const image = computed(() => props.article.image || props.article.cover)
                       :to="`/authors/${props.article.author}`"
                       class="text-white hover:text-primary-300 transition-colors duration-300"
                     >
-                      {{ getAuthor(props.article.author)?.name ?? props.article.author }}
+                      {{
+                        getAuthor(props.article.author)?.name ??
+                        props.article.author
+                      }}
                     </NuxtLink>
                   </h4>
                 </div>

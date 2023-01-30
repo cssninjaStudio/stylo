@@ -10,7 +10,6 @@ definePageMeta({
 
 <template>
   <NuxtLayout name="empty">
-
     <AuthorHero :author="slug" />
     <Articles 
       :filters="{ author: slug }"

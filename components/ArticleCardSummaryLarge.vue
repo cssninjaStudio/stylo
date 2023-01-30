@@ -15,7 +15,7 @@ const image = computed(() => props.article.image || props.article.cover)
   <Card class="p-6 rounded-xl">
     <div class="relative">
       <NuxtLink :to="props.article._path" class="block">
-        <span class="sr-only">{{props.article.title}}</span>
+        <span class="sr-only">{{ props.article.title }}</span>
         <img
           :src="image"
           alt=""
@@ -23,9 +23,7 @@ const image = computed(() => props.article.image || props.article.cover)
         />
       </NuxtLink>
       <div v-if="props.article.categories" class="absolute top-4 right-4 z-30">
-        <ArticleCategoryBadges
-          :categories="props.article.categories"
-        />
+        <ArticleCategoryBadges :categories="props.article.categories" />
       </div>
     </div>
     <div
@@ -33,7 +31,7 @@ const image = computed(() => props.article.image || props.article.cover)
     >
       <Icon name="ph:calendar-blank-duotone" class="w-4 h-4" />
       <p class="font-sans text-sm">
-        {{ formatDate(props.article.publishDate)}}
+        {{ formatDate(props.article.publishDate) }}
       </p>
     </div>
     <NuxtLink :to="props.article._path">
@@ -43,30 +41,33 @@ const image = computed(() => props.article.image || props.article.cover)
         {{ props.article.title }}
       </h2>
     </NuxtLink>
-    <p
+    <div
       class="line-clamp-3 font-sans text-sm text-muted-500 dark:text-muted-400 mb-4"
     >
-      {{props.article.description}}
-    </p>
+      {{ props.article.description }}
+    </div>
     <div class="flex items-center justify-between">
       <div>
-        <span v-if="props.article.author" class="flex items-center leading-tight">
+        <span
+          v-if="props.article.author"
+          class="flex items-center leading-tight"
+        >
           <img
             v-if="getAuthor(props.article.author)?.image"
             :src="getAuthor(props.article.author)?.image"
             alt=""
             class="h-11 w-11 rounded-full mr-2 object-cover"
           />
-        
+
           <div>
             <h4 class="font-sans text-sm text-muted-800 dark:text-muted-100">
               <NuxtLink :to="`/authors/${props.article.author}`">
-                {{ getAuthor(props.article.author)?.name || props.article.author }}
+                {{
+                  getAuthor(props.article.author)?.name || props.article.author
+                }}
               </NuxtLink>
             </h4>
-            <p class="font-sans text-xs text-muted-400">
-              Article author
-            </p>
+            <p class="font-sans text-xs text-muted-400">Article author</p>
           </div>
         </span>
       </div>
@@ -75,7 +76,7 @@ const image = computed(() => props.article.image || props.article.cover)
           :to="props.article._path"
           class="group relative flex items-center gap-2 font-sans text-sm text-primary-500 transition-colors duration-300"
         >
-          <span class="sr-only">{{props.article.title}}</span>
+          <span class="sr-only">{{ props.article.title }}</span>
           <span>Read More</span>
           <Icon
             name="lucide:arrow-right"

@@ -73,7 +73,9 @@ const { data: articles } = await useAsyncData(() =>
                           :to="`/authors/${article.author}`"
                           class="text-white hover:text-primary-300 transition-colors duration-300"
                         >
-                          {{ getAuthor(article.author)?.name ?? article.author }}
+                          {{
+                            getAuthor(article.author)?.name ?? article.author
+                          }}
                         </NuxtLink>
                       </h4>
                     </div>

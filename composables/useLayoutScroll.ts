@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 
-const NAVBAR_HEIGHT = 60 as const
+const NAVBAR_HEIGHT = 60
 
 export function useLayoutScrolled(input?: Ref<boolean>) {
   const isScrolled = input ?? ref(false)

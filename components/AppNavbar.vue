@@ -6,7 +6,9 @@ const isSearchOpen = ref(false)
 // @todo config
 const NavigationLinks: any[] = []
 // const Logo = '/img/logo/logo.svg'
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const { data: navigation } = await useAsyncData('navigation', () =>
+  fetchContentNavigation()
+)
 
 const isScrolled = useLayoutScrolled()
 </script>
@@ -62,16 +64,19 @@ const isScrolled = useLayoutScrolled()
           <div
             class="flex-1 ltablet:flex-none lg:flex-none flex items-center justify-center lg:items-stretch lg:justify-start ltablet:ml-6"
           >
-            <NuxtLink to="/" class="shrink-0 flex items-center">
+            <NuxtLink
+              to="/"
+              class="shrink-0 flex gap-2 items-center justify-center pb-1"
+            >
               <img
                 class="block h-9 w-9 lg:h-10 sm:w-10"
                 src="/img/logo/logo.svg"
                 alt=""
               />
+              <div class="text-lg">Folio</div>
             </NuxtLink>
             <div class="hidden lg:flex items-center lg:ml-6">
-              <div class="h-9 flex gap-x-4">
-                <!-- {{ navigation }} -->
+              <div class="h-9 items-center flex gap-x-4">
                 <NuxtLink
                   v-for="item in navigation"
                   :key="item._id"

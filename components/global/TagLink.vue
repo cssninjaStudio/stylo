@@ -39,6 +39,6 @@ const props = withDefaults(defineProps<NuxtLinkProps>(), {
     v-bind="props"
     class="h-10 flex gap-2 items-center justify-center font-sans text-sm px-6 text-muted-600 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 rounded-full border border-muted-200 dark:border-muted-700/80 hover:border-primary-500 dark:hover:border-primary-500 bg-white dark:bg-muted-800 transition-colors duration-300"
   >
-    <slot />
+    <ContentSlot :use="$slots.default" unwrap="p" />
   </NuxtLink>
 </template>

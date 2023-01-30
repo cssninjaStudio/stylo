@@ -4,7 +4,6 @@ const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -38,15 +37,36 @@ module.exports = {
         stone: {
           1000: '#0f0d0c',
         },
-        muted: {
-          ...colors.slate,
-          1000: '#0a101f',
-        },
-        primary: colors.violet,
         info: colors.sky,
         success: colors.teal,
         warning: colors.amber,
         danger: colors.rose,
+        muted: {
+          50: 'rgb(var(--folio-color-muted-50) / <alpha-value>)',
+          100: 'rgb(var(--folio-color-muted-100) / <alpha-value>)',
+          200: 'rgb(var(--folio-color-muted-200) / <alpha-value>)',
+          300: 'rgb(var(--folio-color-muted-300) / <alpha-value>)',
+          400: 'rgb(var(--folio-color-muted-400) / <alpha-value>)',
+          500: 'rgb(var(--folio-color-muted-500) / <alpha-value>)',
+          600: 'rgb(var(--folio-color-muted-600) / <alpha-value>)',
+          700: 'rgb(var(--folio-color-muted-700) / <alpha-value>)',
+          800: 'rgb(var(--folio-color-muted-800) / <alpha-value>)',
+          900: 'rgb(var(--folio-color-muted-900) / <alpha-value>)',
+          // 1000: 'rgb(var(--folio-color-muted-1000) / <alpha-value>)',
+        },
+        primary: {
+          50: 'rgb(var(--folio-color-primary-50) / <alpha-value>)',
+          100: 'rgb(var(--folio-color-primary-100) / <alpha-value>)',
+          200: 'rgb(var(--folio-color-primary-200) / <alpha-value>)',
+          300: 'rgb(var(--folio-color-primary-300) / <alpha-value>)',
+          400: 'rgb(var(--folio-color-primary-400) / <alpha-value>)',
+          500: 'rgb(var(--folio-color-primary-500) / <alpha-value>)',
+          600: 'rgb(var(--folio-color-primary-600) / <alpha-value>)',
+          700: 'rgb(var(--folio-color-primary-700) / <alpha-value>)',
+          800: 'rgb(var(--folio-color-primary-800) / <alpha-value>)',
+          900: 'rgb(var(--folio-color-primary-900) / <alpha-value>)',
+          // 1000: 'rgb(var(--folio-color-muted-1000) / <alpha-value>)',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

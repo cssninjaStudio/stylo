@@ -22,7 +22,7 @@ const image = computed(() => props.article.image || props.article.cover)
             alt=""
             class="rounded-lg w-full object-cover"
           />
-          <p class="sr-only">{{props.article.title}}</p>
+          <p class="sr-only">{{ props.article.title }}</p>
         </NuxtLink>
         <div v-if="props.article.categories" class="absolute top-4 right-4">
           <ArticleCategoryBadges :categories="props.article.categories" />
@@ -41,17 +41,20 @@ const image = computed(() => props.article.image || props.article.cover)
         <h3
           class="line-clamp-2 font-sans font-medium lg:text-xl text-muted-700 dark:text-white mb-2"
         >
-          {{props.article.title}}
+          {{ props.article.title }}
         </h3>
       </NuxtLink>
       <p
         class="line-clamp-3 font-sans ltablet:text-xs text-sm text-muted-500 dark:text-muted-400 mb-4"
       >
-        {{props.article.description}}
+        {{ props.article.description }}
       </p>
       <div class="flex items-center justify-between">
         <div>
-          <span v-if="props.article.author" class="flex items-center leading-tight">
+          <span
+            v-if="props.article.author"
+            class="flex items-center leading-tight"
+          >
             <img
               v-if="getAuthor(props.article.author)?.image"
               :src="getAuthor(props.article.author)?.image"
@@ -60,7 +63,9 @@ const image = computed(() => props.article.image || props.article.cover)
             />
             <div>
               <h4 class="font-sans text-sm text-muted-800 dark:text-muted-100">
-                {{ getAuthor(props.article.author)?.name ?? props.article.author }}
+                {{
+                  getAuthor(props.article.author)?.name ?? props.article.author
+                }}
               </h4>
               <p class="font-sans text-xs text-muted-400">Article author</p>
             </div>
@@ -71,7 +76,7 @@ const image = computed(() => props.article.image || props.article.cover)
             :to="props.article._path"
             class="group relative flex items-center gap-2 font-sans text-sm text-primary-500 transition-colors duration-300"
           >
-            <span class="sr-only">{{props.article.title}}</span>
+            <span class="sr-only">{{ props.article.title }}</span>
             <span>Read More</span>
             <Icon
               name="lucide:arrow-right"

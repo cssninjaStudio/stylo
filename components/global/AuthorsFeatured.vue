@@ -28,14 +28,26 @@ const app = useAppConfig()
 <template>
   <AppSection class="bg-muted-100 dark:bg-muted-900">
     <AppContainer>
-      <AppContainerHeader class="pt-10 pb-10" :title="props.title" :subtitle="props.subtitle">
-        <template #title><slot name="title"></slot></template>
-        <template #subtitle><slot name="subtitle"></slot></template>
-        <template #links><slot name="links"></slot></template>
+      <AppContainerHeader
+        class="py-10"
+        :title="props.title"
+        :subtitle="props.subtitle"
+      >
+        <template #title>
+          <ContentSlot :use="$slots.title" unwrap="p" />
+        </template>
+        <template #subtitle>
+          <ContentSlot :use="$slots.subtitle" unwrap="p" />
+        </template>
+        <template #links>
+          <ContentSlot :use="$slots.links" unwrap="p" />
+        </template>
       </AppContainerHeader>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8">
-        <AuthorGrid v-for="author in authors" :author="author" />
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8"
+      >
+        <AuthorGrid v-for="author in authors" :key="author" :author="author" />
       </div>
     </AppContainer>
   </AppSection>

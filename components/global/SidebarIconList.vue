@@ -9,10 +9,12 @@ const props = defineProps<{
     <h3
       class="font-sans font-semibold text-xs uppercase text-muted-500 dark:text-muted-400 mb-5"
     >
-      <slot name="title">{{ props.title }}</slot>
+      <ContentSlot :use="$slots.title" unwrap="p">
+        {{ props.title }}
+      </ContentSlot>
     </h3>
     <ul class="space-y-4">
-      <slot />
+      <ContentSlot :use="$slots.default" unwrap="p" />
     </ul>
   </div>
 </template>

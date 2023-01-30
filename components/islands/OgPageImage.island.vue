@@ -1,0 +1,29 @@
+<script setup lang="ts">
+const props = defineProps<{
+  title?: string
+  description?: string
+  cover?: string
+  publishDate?: string
+}>()
+
+// @todo: https://github.com/harlan-zw/nuxt-og-image/blob/main/src/runtime/nitro/routes/__og_image__/html.ts#L64
+</script>
+
+<template>
+  <div
+    class="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-800"
+  >
+    <div class="h-2 bg-primary-500 flex absolute bottom-0 left-0 w-full"></div>
+
+    <img src="/favicon.svg" width="99" class="absolute bottom-10 right-10" />
+    <div class="pb-10 justify-center items-center flex flex-col">
+      <img v-if="cover" :src="cover" width="432" height="243" />
+      <h1 class="truncate max-w-5xl mt-10">
+        {{ title }}
+      </h1>
+      <p class="truncate max-w-5xl mx-10 mt-5 text-gray-700">
+        {{ description }}
+      </p>
+    </div>
+  </div>
+</template>

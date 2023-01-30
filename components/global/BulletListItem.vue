@@ -6,7 +6,7 @@
       <Icon name="lucide:check" class="w-3 h-3" />
     </div>
     <div class="font-sans text-muted-500">
-      <slot />
+      <ContentSlot :use="$slots.default" unwrap="p" />
     </div>
   </li>
 </template>

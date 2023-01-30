@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
+    'pinceau/nuxt',
     '@nuxtjs/color-mode',
     'nuxt-config-schema',
     'nuxt-icon',
@@ -21,5 +22,10 @@ export default defineNuxtConfig({
 
   content: {
     documentDriven: true,
+  },
+
+  pinceau: {
+    configFileName: 'tokens.config',
+    studio: true,
   },
 })

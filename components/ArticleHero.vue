@@ -31,9 +31,7 @@ const { formatDate } = useDateFormatter()
             <div class="w-full max-w-md ptablet:mx-auto">
               <!-- Categories -->
               <div class="mb-4">
-                <ArticleCategoryBadges
-                  :categories="props.article.categories"
-                />
+                <ArticleCategoryBadges :categories="props.article.categories" />
               </div>
               <!-- Title -->
               <h1
@@ -66,7 +64,10 @@ const { formatDate } = useDateFormatter()
                       :to="`/authors/${props.article.author}`"
                       class="text-muted-800 dark:text-muted-100 font-medium leading-none hover:text-indigo-600 transition duration-500 ease-in-out"
                     >
-                      {{ getAuthor(props.article.author)?.name ?? props.article.author }}
+                      {{
+                        getAuthor(props.article.author)?.name ??
+                        props.article.author
+                      }}
                     </NuxtLink>
                     <p class="text-muted-600 dark:text-muted-400 text-xs">
                       published on

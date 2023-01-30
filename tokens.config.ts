@@ -5,8 +5,8 @@ import { tailwindToRgb } from './utils/node/colors'
 export default defineTheme({
   folio: {
     color: {
-      primary: tailwindToRgb(colors.orange),
-      muted: tailwindToRgb(colors.stone),
+      primary: tailwindToRgb(colors.indigo, colors.orange),
+      muted: tailwindToRgb(colors.slate, colors.stone),
     },
   },
 })

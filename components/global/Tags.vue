@@ -45,7 +45,6 @@ const tags = computed(() => {
 })
 </script>
 
-
 <template>
   <AppSection class="bg-white dark:bg-muted-900 pb-0">
     <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
@@ -64,28 +63,43 @@ const tags = computed(() => {
           <ContentSlot :use="$slots.links" unwrap="p" />
         </template>
       </AppContainerHeader>
-
-      <div v-if="props.mode === 'button'" class="flex flex-wrap gap-3">
-        <TagButtonLink
-          v-for="(tag, i) of tags"
-          :key="tag.tag"
-          :tag="tag.tag"
-          :count="tag.count"
-          :icon="icons[i % icons.length]"
-        />
+      <!-- Placeholder -->
+      <div v-if="tags?.length === 0">
+        <SectionPlaceholder
+          title="No tags to show"
+          subtitle="We couldn't find any tags to show. Start by writing your first blog posts and tag them."
+        >
+          <img
+            class="w-full max-w-md mx-auto mb-6"
+            src="/img/illustrations/placeholder/placeholder-5.svg"
+            alt="No tags to show"
+          />
+        </SectionPlaceholder>
       </div>
-      <div
-        v-else
-        class="grid sm:grid-cols-3 ltablet:grid-cols-4 lg:grid-cols-5 gap-4"
-      >
-        <TagCardIconLink
-          v-for="(tag, i) of tags"
-          :key="tag.tag"
-          :tag="tag.tag"
-          :count="tag.count"
-          :icon="icons[i % icons.length]"
-        />
-      </div>
+      <!-- Tag list -->
+      <template v-else>
+        <div v-if="props.mode === 'button'" class="flex flex-wrap gap-3">
+          <TagButtonLink
+            v-for="(tag, i) of tags"
+            :key="tag.tag"
+            :tag="tag.tag"
+            :count="tag.count"
+            :icon="icons[i % icons.length]"
+          />
+        </div>
+        <div
+          v-else
+          class="grid sm:grid-cols-3 ltablet:grid-cols-4 lg:grid-cols-5 gap-4"
+        >
+          <TagCardIconLink
+            v-for="(tag, i) of tags"
+            :key="tag.tag"
+            :tag="tag.tag"
+            :count="tag.count"
+            :icon="icons[i % icons.length]"
+          />
+        </div>
+      </template>
     </AppContainer>
   </AppSection>
 </template>

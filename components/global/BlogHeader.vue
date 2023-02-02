@@ -16,8 +16,22 @@ const { data: articles } = await useAsyncData(() =>
 <template>
   <AppSection class="bg-white dark:bg-muted-900 pb-0">
     <AppContainer>
+      <!-- Placeholder -->
+      <div v-if="articles?.length === 0" class="pt-10">
+        <SectionPlaceholder
+          title="No articles found"
+          subtitle="We couldn't find any posts to display. Start by writing your first blog post using your Nuxt studio account."
+        >
+          <img
+            class="w-full max-w-xs mx-auto mb-6"
+            src="/img/illustrations/placeholder/placeholder-1.svg"
+            alt="Write some articles"
+          />
+        </SectionPlaceholder>
+      </div>
+      <!-- Articles list -->
       <div
-        v-if="articles"
+        v-else
         class="relative grid ptablet:grid-cols-2 md:grid-cols-3 gap-2 pt-4"
       >
         <div

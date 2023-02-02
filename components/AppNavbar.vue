@@ -73,7 +73,7 @@ const isScrolled = useLayoutScrolled()
                 src="/img/logo/logo.svg"
                 alt=""
               />
-              <div class="text-lg">Folio</div>
+              <div class="text-lg">Stylô</div>
             </NuxtLink>
             <div class="hidden lg:flex items-center lg:ml-6">
               <div class="h-9 items-center flex gap-x-4">

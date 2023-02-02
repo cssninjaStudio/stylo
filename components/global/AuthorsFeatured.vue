@@ -43,8 +43,22 @@ const app = useAppConfig()
           <ContentSlot :use="$slots.links" unwrap="p" />
         </template>
       </AppContainerHeader>
-
+      <!-- Placeholder -->
+      <div v-if="authors?.length === 0">
+        <SectionPlaceholder
+          title="No authors found"
+          subtitle="We couldn't find any authors to display. Start by writing your first blog post and you'll end up here."
+        >
+          <img
+            class="w-full max-w-md mx-auto mb-6"
+            src="/img/illustrations/placeholder/placeholder-3.svg"
+            alt="Write some articles"
+          />
+        </SectionPlaceholder>
+      </div>
+      <!-- Authors list -->
       <div
+        v-else
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8"
       >
         <AuthorGrid v-for="author in authors" :key="author" :author="author" />

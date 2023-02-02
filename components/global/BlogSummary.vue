@@ -50,7 +50,24 @@ const recents = computed(() => articles.value?.slice(1))
           </template>
         </AppContainerHeader>
 
-        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-6 ltablet:gap-4">
+        <!-- Placeholder -->
+        <div v-if="articles?.length === 0">
+          <SectionPlaceholder
+            title="No articles found"
+            subtitle="We couldn't find any posts to display. Start by writing your first blog post using your Nuxt studio account."
+          >
+            <img
+              class="w-full max-w-xs mx-auto mb-6"
+              src="/img/illustrations/placeholder/placeholder-1.svg"
+              alt="Write some articles"
+            />
+          </SectionPlaceholder>
+        </div>
+        <!-- Articles list -->
+        <div
+          v-else
+          class="max-w-6xl mx-auto grid md:grid-cols-12 gap-6 ltablet:gap-4"
+        >
           <div class="col-span-12 ltablet:col-span-6 lg:col-span-6">
             <ArticleCardSummaryLarge v-if="latest" :article="latest" />
           </div>

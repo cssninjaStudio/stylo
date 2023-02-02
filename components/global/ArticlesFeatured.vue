@@ -44,7 +44,24 @@ const { data: articles } = await useAsyncData(() =>
         </template>
       </AppContainerHeader>
 
-      <div class="relative grid ptablet:grid-cols-2 md:grid-cols-4 gap-4 -mt-2">
+      <!-- Placeholder -->
+      <div v-if="articles?.length === 0">
+        <SectionPlaceholder
+          title="No articles found"
+          subtitle="We couldn't find any posts to display. Start by writing your first blog post using your Nuxt studio account."
+        >
+          <img
+            class="w-full max-w-md mx-auto mb-6"
+            src="/img/illustrations/placeholder/placeholder-4.svg"
+            alt="Write some articles"
+          />
+        </SectionPlaceholder>
+      </div>
+      <!-- Articles list -->
+      <div
+        v-else
+        class="relative grid ptablet:grid-cols-2 md:grid-cols-4 gap-4 -mt-2"
+      >
         <ArticleGrid
           v-for="article in articles"
           :key="article._path"

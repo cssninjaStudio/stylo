@@ -23,7 +23,7 @@
             <input
               id="email"
               type="text"
-              class="rounded-lg border-transparent flex-1 appareance-none border border-muted-300 dark:border-muted-700/70 w-full py-2 px-4 bg-white dark:bg-muted-800 font-sans text-muted-600 dark:text-muted-100 placeholder:text-muted-300 dark:placeholder:text-muted-700 shadow-sm text-base outline-none outline-offset-2 focus:outline-dashed focus:outline-primary-500 transition-all duration-300"
+              class="rounded-lg flex-1 appareance-none border border-muted-300 dark:border-muted-700/70 w-full py-2 px-4 bg-white dark:bg-muted-800 font-sans text-muted-600 dark:text-muted-100 placeholder:text-muted-300 dark:placeholder:text-muted-700 shadow-sm text-base outline-none outline-offset-2 focus:outline-dashed focus:outline-primary-500 transition-all duration-300"
               placeholder="Email"
             />
           </div>

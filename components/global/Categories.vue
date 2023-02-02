@@ -31,7 +31,21 @@ const categories = computed(() =>
           </template>
         </AppContainerHeader>
 
-        <div class="grid ptablet:grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Placeholder -->
+        <div v-if="categories?.length === 0">
+          <SectionPlaceholder
+            title="No categories found"
+            subtitle="We couldn't find any categories to display. Add your first category using your Nuxt studio account."
+          >
+            <img
+              class="w-full max-w-sm mx-auto mb-6"
+              src="/img/illustrations/placeholder/placeholder-2.svg"
+              alt="Add some categories"
+            />
+          </SectionPlaceholder>
+        </div>
+        <!-- Categories list -->
+        <div v-else class="grid ptablet:grid-cols-2 md:grid-cols-4 gap-4">
           <NuxtLink
             v-for="category of categories"
             :key="category"

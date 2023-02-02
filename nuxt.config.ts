@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 
   pinceau: {
     configFileName: 'tokens.config',
+    preflight: false,
     studio: true,
   },
 })

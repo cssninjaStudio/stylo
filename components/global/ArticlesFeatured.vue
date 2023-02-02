@@ -26,7 +26,7 @@ const { data: articles } = await useAsyncData(() =>
 </script>
 
 <template>
-  <AppSection class="bg-muted-100 dark:bg-muted-900">
+  <AppSection class="bg-white dark:bg-muted-900">
     <AppContainer>
       <AppContainerHeader
         class="py-10"

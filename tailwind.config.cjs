@@ -52,7 +52,7 @@ module.exports = {
           700: 'rgb(var(--folio-color-muted-700) / <alpha-value>)',
           800: 'rgb(var(--folio-color-muted-800) / <alpha-value>)',
           900: 'rgb(var(--folio-color-muted-900) / <alpha-value>)',
-          // 1000: 'rgb(var(--folio-color-muted-1000) / <alpha-value>)',
+          1000: 'rgb(var(--folio-color-muted-1000) / <alpha-value>)',
         },
         primary: {
           50: 'rgb(var(--folio-color-primary-50) / <alpha-value>)',

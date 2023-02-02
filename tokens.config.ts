@@ -6,7 +6,16 @@ export default defineTheme({
   folio: {
     color: {
       primary: tailwindToRgb(colors.indigo, colors.orange),
-      muted: tailwindToRgb(colors.slate, colors.stone),
+      muted: tailwindToRgb(
+        {
+          ...colors.slate,
+          1000: '#0a101f',
+        },
+        {
+          ...colors.stone,
+          1000: '#0f0d0c',
+        }
+      ),
     },
   },
 })

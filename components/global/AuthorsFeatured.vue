@@ -8,14 +8,9 @@ const props = defineProps<{
 
 const { data: authors } = await useAsyncData(() =>
   queryContent<AuthorParsedContent>()
-    .only([
-      '_path',
-      'image',
-      'title',
-      'description',
-    ])
+    .only(['_path', 'image', 'title', 'description'])
     .where({ layout: 'blog-author', featured: true })
-    .limit(4)
+    .limit(5)
     .find()
 )
 </script>
@@ -56,7 +51,11 @@ const { data: authors } = await useAsyncData(() =>
         v-else
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8"
       >
-        <AuthorGrid v-for="author in authors" :key="author._path" :author="author" />
+        <AuthorGrid
+          v-for="author in authors"
+          :key="author._path"
+          :author="author"
+        />
       </div>
     </AppContainer>
   </AppSection>

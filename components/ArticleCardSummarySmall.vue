@@ -9,13 +9,15 @@ const { formatDate } = useDateFormatter()
 
 const image = computed(() => props.article.image || props.article.cover)
 
-const { data: author } = await useAsyncData(() =>
-  !props.article.author
-    ? Promise.resolve(null) 
-    : queryContent<AuthorParsedContent>()
-      .only(['_path', 'image', 'title'])
-      .where({ layout: 'blog-author', _path: props.article.author })
-      .findOne()
+const { data: author } = await useAsyncData(
+  `author-meta-${props.article.author}`,
+  () =>
+    !props.article.author
+      ? Promise.resolve(null)
+      : queryContent<AuthorParsedContent>()
+          .only(['_path', 'image', 'title'])
+          .where({ layout: 'blog-author', _path: props.article.author })
+          .findOne()
 )
 </script>
 
@@ -65,8 +67,8 @@ const { data: author } = await useAsyncData(() =>
           <div>
             <h4 class="font-sans text-xs text-muted-800 dark:text-muted-100">
               <NuxtLink :to="author._path">
-                  {{ author.title }}
-                </NuxtLink>
+                {{ author.title }}
+              </NuxtLink>
             </h4>
           </div>
         </span>

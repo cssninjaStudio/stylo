@@ -21,7 +21,7 @@ const props = defineProps<{
           v-if="typeof props.count === 'number'"
           class="font-sans text-muted-400 group-hover:text-primary-500 text-sm font-medium"
         >
-          <span>{{ props.count }} </span>
+          <span>{{ props.count }}</span>
         </p>
       </div>
     </div>

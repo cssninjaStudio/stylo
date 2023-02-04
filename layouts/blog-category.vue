@@ -2,7 +2,7 @@
 const { page } = useContent()
 
 const filters = computed(() => ({
-  category: page.value?._path
+  category: page.value?._path,
 }))
 </script>
 

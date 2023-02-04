@@ -13,13 +13,13 @@ const {
   next?: Ref<ParsedContentMeta>
   prev?: Ref<ParsedContentMeta>
 
-  globals: any;
-  navigation: any;
-  surround: any;
-  excerpt: any;
-  toc: any;
-  type: any;
-  layout: any;
+  globals: any
+  navigation: any
+  surround: any
+  excerpt: any
+  toc: any
+  type: any
+  layout: any
 } = useContent()
 </script>
 
@@ -29,10 +29,24 @@ const {
     <AppSection class="bg-white dark:bg-muted-900">
       <AppContainer>
         <div
-          class="max-w-2xl xxl:max-w-3xl prose-img:rounded-xl mx-auto prose prose-a:text-primary-500 dark:prose-a:text-primary-400 prose-purple xxl:prose-lg dark:prose-invert"
+          :class="
+            page.toc
+              ? 'max-w-3xl xxl:max-w-4xl justify-center mx-auto flex w-full'
+              : 'max-w-2xl xxl:max-w-3xl mx-auto'
+          "
         >
-          <slot />
+          <div
+            class="w-full grow prose-img:rounded-xl prose prose-a:text-primary-500 dark:prose-a:text-primary-400 prose-purple xxl:prose-lg dark:prose-invert"
+          >
+            <slot />
+          </div>
 
+          <div v-if="page.toc" class="relative pl-6 pt-12 shrink w-1/4">
+            <PageToc class="sticky top-36" />
+          </div>
+        </div>
+
+        <div class="max-w-2xl xxl:max-w-3xl mx-auto">
           <!-- Tags -->
           <div
             class="py-10 mt-10 border-t border-muted-200 dark:border-muted-700/60"
@@ -49,12 +63,19 @@ const {
                 :to="next._path"
               >
                 <span class="flex flex-col gap-1">
-                  <span class="flex items-center gap-2 text-muted-400 group-hover:text-primary-500">
-                    <Icon name="lucide:arrow-left" class="inline-block w-4 h-4" /> Newer article
+                  <span
+                    class="flex items-center gap-2 text-muted-400 group-hover:text-primary-500 group-focus:text-primary-500"
+                  >
+                    <Icon
+                      name="lucide:arrow-left"
+                      class="w-4 h-4 translate-x-0 group-hover:-translate-x-1 group-focus:-translate-x-1 transition-transform duration-300"
+                    />
+                    <span>Newer article</span>
                   </span>
-                  <span class="truncate  text-muted-500" :title="next.title">{{ next.title }}</span>
+                  <span class="truncate text-muted-500" :title="next.title">
+                    {{ next.title }}
+                  </span>
                 </span>
-
               </NuxtLink>
             </div>
 
@@ -65,13 +86,19 @@ const {
                 :to="prev._path"
               >
                 <span class="flex flex-col gap-1">
-                  <span class="flex justify-end items-center gap-2 text-muted-400 group-hover:text-primary-500">
-                    Older article
-                    <Icon name="lucide:arrow-right" class="inline-block w-4 h-4" />
+                  <span
+                    class="flex justify-end items-center gap-2 text-muted-400 group-hover:text-primary-500 group-focus:text-primary-500"
+                  >
+                    <span>Older article</span>
+                    <Icon
+                      name="lucide:arrow-right"
+                      class="w-4 h-4 translate-x-0 group-hover:translate-x-1 group-focus:translate-x-1 transition-transform duration-300"
+                    />
                   </span>
-                  <span class="truncate  text-muted-500" :title="prev.title">{{ prev.title }}</span>
+                  <span class="truncate text-muted-500" :title="prev.title">
+                    {{ prev.title }}
+                  </span>
                 </span>
-
               </NuxtLink>
             </div>
           </div>

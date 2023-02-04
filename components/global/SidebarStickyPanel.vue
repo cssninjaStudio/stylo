@@ -3,8 +3,10 @@ const props = defineProps<{
   title?: string
   subtitle?: string
   image?: string
-  actionLink?: string
-  actionLabel?: string
+  action?: {
+    text?: string
+    to?: string
+  }
 }>()
 </script>
 
@@ -48,16 +50,13 @@ const props = defineProps<{
         </div>
       </div>
     </div>
-    <div
-      v-if="'action' in $slots || (props.actionLink && props.actionLabel)"
-      class="mt-2"
-    >
+    <div v-if="'action' in $slots || props.action" class="mt-2">
       <ContentSlot :use="$slots.action" unwrap="p">
         <NuxtLink
-          :to="props.actionLink"
+          :to="props.action?.to"
           class="relative font-sans font-normal inline-flex items-center justify-center leading-5 no-underline space-x-1 text-white bg-primary-500 w-full h-12 px-5 py-3 text-base rounded-lg hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/20 tw-accessibility transition-all duration-300"
         >
-          {{ props.actionLabel }}
+          {{ props.action?.text }}
         </NuxtLink>
       </ContentSlot>
     </div>

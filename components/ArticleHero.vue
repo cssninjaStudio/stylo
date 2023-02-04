@@ -7,13 +7,15 @@ const props = defineProps<{
 
 const { formatDate } = useDateFormatter()
 
-const { data: author } = await useAsyncData(() =>
-  !props.article._path 
-    ? Promise.resolve(null) 
-    : queryContent<AuthorParsedContent>()
-      .only(['_path', 'image', 'title'])
-      .where({ layout: 'blog-author', _path: props.article._path })
-      .findOne()
+const { data: author } = await useAsyncData(
+  `author-meta-${props.article.author}`,
+  () =>
+    !props.article.author
+      ? Promise.resolve(null)
+      : queryContent<AuthorParsedContent>()
+          .only(['_path', 'image', 'title'])
+          .where({ layout: 'blog-author', _path: props.article.author })
+          .findOne()
 )
 </script>
 
@@ -38,7 +40,7 @@ const { data: author } = await useAsyncData(() =>
           <div class="h-full flex items-center">
             <div class="w-full max-w-md ptablet:mx-auto">
               <!-- Categories -->
-              <div class="mb-4" v-if="props.article.category">
+              <div v-if="props.article.category" class="mb-4">
                 <ArticleCategoryBadge :path="props.article.category" />
               </div>
               <h1
@@ -52,14 +54,8 @@ const { data: author } = await useAsyncData(() =>
                 {{ props.article.description }}
               </p>
               <div class="flex items-center justify-between">
-                <div
-                  v-if="author"
-                  class="flex items-center gap-2"
-                >
-                  <NuxtLink
-                    v-if="author.image"
-                    :to="author._path"
-                  >
+                <div v-if="author" class="flex items-center gap-2">
+                  <NuxtLink v-if="author.image" :to="author._path">
                     <img
                       :src="author.image"
                       :alt="author.title"

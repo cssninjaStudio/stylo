@@ -31,9 +31,9 @@ const props = defineProps<{
           >
             <span>
               {{ props.count }}
-              <span>{{
-                props.count > 1 ? 'matching posts' : 'matching post'
-              }}</span>
+              <span>
+                {{ props.count > 1 ? 'matching posts' : 'matching post' }}
+              </span>
             </span>
           </p>
         </div>

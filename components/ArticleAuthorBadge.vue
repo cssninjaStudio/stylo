@@ -5,9 +5,9 @@ const props = defineProps<{
   path: string
 }>()
 
-const { data: author } = await useAsyncData(() =>
+const { data: author } = await useAsyncData(`author-meta-${props.path}`, () =>
   queryContent<AuthorParsedContent>()
-    .only(['_path', 'title'])
+    .only(['_path', 'image', 'title'])
     .where({ layout: 'blog-author', _path: props.path })
     .findOne()
 )

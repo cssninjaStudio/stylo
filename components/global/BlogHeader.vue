@@ -68,7 +68,10 @@ const { data: articles } = await useAsyncData(() =>
               </h3>
               <div class="flex items-center justify-between">
                 <div>
-                  <ArticleAuthorBadge v-if="article?.author" :path="article?.author" />
+                  <ArticleAuthorBadge
+                    v-if="article?.author"
+                    :path="article?.author"
+                  />
                 </div>
                 <div class="font-sans text-sm text-muted-100">
                   <span class="pr-2">—</span>

@@ -4,7 +4,6 @@ title: Personal Development and Confidence in Business Environments
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/irina-kropova
 publishDate: 2022-08-28T00:00:00.000Z
-featured: true
 image: /img/posts/4.png
 cover: /img/posts/4.png
 category: /categories/coaching

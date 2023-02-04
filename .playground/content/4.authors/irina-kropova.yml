@@ -1,6 +1,7 @@
 layout: blog-author
 title: Irina Kropova
 description: Lifestyle Coach
+featured: true
 image: /img/avatars/small/9.svg
 contact:
   - name: Email

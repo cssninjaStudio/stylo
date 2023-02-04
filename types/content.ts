@@ -13,6 +13,11 @@ export interface PageParsedContent extends ParsedContent {
   layout: 'blog-category' | 'blog-post' | 'blog-author' | 'empty' | 'default'
 }
 
+export interface DefaultPageParsedContent extends ParsedContent {
+  toc?: boolean
+  layout: 'default'
+}
+
 export interface CategoryParsedContent extends PageParsedContent {
   featured?: boolean
 
@@ -20,13 +25,13 @@ export interface CategoryParsedContent extends PageParsedContent {
 }
 
 export interface AuthorParsedContent extends PageParsedContent {
-  contact: { name: string; link?: string}[]
+  featured?: boolean
+  contact: { name: string; link?: string }[]
   location?: string
   company?: string
 
   layout: 'blog-author'
 }
-
 
 export interface BlogParsedContent extends PageParsedContent {
   featured?: boolean
@@ -34,5 +39,6 @@ export interface BlogParsedContent extends PageParsedContent {
   category?: string
   tags?: string[]
 
+  toc?: boolean
   layout: 'blog-post'
 }

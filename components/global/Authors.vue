@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { AuthorParsedContent } from '../../types'
 
-const props = withDefaults(defineProps<{
+const props = withDefaults(
+  defineProps<{
     title?: string
     subtitle?: string
     filters?: Record<string, any>
@@ -21,12 +22,7 @@ const props = withDefaults(defineProps<{
 
 const { data: authors } = await useAsyncData(() =>
   queryContent<AuthorParsedContent>()
-    .only([
-      '_path',
-      'image',
-      'title',
-      'description',
-    ])
+    .only(['_path', 'image', 'title', 'description'])
     .where({ layout: 'blog-author', ...props.filters })
     .sort(props.sort)
     .limit(props.limit)
@@ -72,7 +68,11 @@ const { data: authors } = await useAsyncData(() =>
         v-else
         class="mt-6 grid sm:grid-cols-2 ltablet:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        <AuthorCard v-for="author in authors" :key="author._path" :author="author" />
+        <AuthorCard
+          v-for="author in authors"
+          :key="author._path"
+          :author="author"
+        />
       </div>
     </AppContainer>
   </AppSection>

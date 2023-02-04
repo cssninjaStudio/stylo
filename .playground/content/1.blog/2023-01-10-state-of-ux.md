@@ -8,6 +8,7 @@ featured: false
 image: /img/posts/2.png
 cover: /img/posts/2.png
 category: /categories/ux-design
+toc: true
 tags:
   - ui & ux
   - design

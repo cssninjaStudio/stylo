@@ -9,13 +9,15 @@ const { formatDate } = useDateFormatter()
 
 const image = computed(() => props.article.image || props.article.cover)
 
-const { data: author } = await useAsyncData(() =>
-  !props.article._path 
-    ? Promise.resolve(null) 
-    : queryContent<AuthorParsedContent>()
-      .only(['_path', 'image', 'title'])
-      .where({ layout: 'blog-author', _path: props.article._path })
-      .findOne()
+const { data: author } = await useAsyncData(
+  `author-meta-${props.article.author}`,
+  () =>
+    !props.article.author
+      ? Promise.resolve(null)
+      : queryContent<AuthorParsedContent>()
+          .only(['_path', 'image', 'title'])
+          .where({ layout: 'blog-author', _path: props.article.author })
+          .findOne()
 )
 </script>
 

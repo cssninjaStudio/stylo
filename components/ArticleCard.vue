@@ -9,13 +9,15 @@ const { formatDate } = useDateFormatter()
 
 const image = computed(() => props.article.image || props.article.cover)
 
-const { data: author } = await useAsyncData(() =>
-  !props.article.author 
-    ? Promise.resolve(null) 
-    : queryContent<AuthorParsedContent>()
-      .only(['_path', 'image', 'title'])
-      .where({ layout: 'blog-author', _path: props.article.author })
-      .findOne()
+const { data: author } = await useAsyncData(
+  `author-meta-${props.article.author}`,
+  () =>
+    !props.article.author
+      ? Promise.resolve(null)
+      : queryContent<AuthorParsedContent>()
+          .only(['_path', 'image', 'title'])
+          .where({ layout: 'blog-author', _path: props.article.author })
+          .findOne()
 )
 </script>
 
@@ -59,10 +61,7 @@ const { data: author } = await useAsyncData(() =>
       </p>
       <div class="flex items-center justify-between">
         <div>
-          <span
-            v-if="author"
-            class="flex items-center leading-tight"
-          >
+          <span v-if="author" class="flex items-center leading-tight">
             <img
               v-if="author.image"
               :src="author.image"

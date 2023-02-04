@@ -1,0 +1,22 @@
+layout: blog-author
+title: Irina Kropova
+description: Lifestyle Coach
+image: /img/avatars/small/9.svg
+contact:
+  - name: Email
+    link: mailto:irina@cssninja.io
+location: London, UK
+company: Freelance
+bio: >
+  Irina Kropova is a passionate and experienced lifestyle coach with over 5 years of experience in the field. 
+  She helps her clients achieve health, wellness, and overall quality of life goals.
+social:
+  - name: LinkedIn
+    link: https://www.linkedin.com/company/cssninja/
+    icon: brandico:linkedin
+  - name: Facebook
+    link: https://www.facebook.com/cssninjaStudio
+    icon: brandico:facebook
+  - name: Twitter
+    link: https://twitter.com/cssninjaStudio
+    icon: brandico:twitter

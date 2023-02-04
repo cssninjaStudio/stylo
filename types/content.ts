@@ -10,13 +10,28 @@ export interface PageParsedContent extends ParsedContent {
   publishDate?: string
   readingTime: ReadTimeResults
 
-  layout: string
+  layout: 'blog-category' | 'blog-post' | 'blog-author' | 'empty' | 'default'
 }
+
+export interface CategoryParsedContent extends PageParsedContent {
+  featured?: boolean
+
+  layout: 'blog-category'
+}
+
+export interface AuthorParsedContent extends PageParsedContent {
+  contact: { name: string; link?: string}[]
+  location?: string
+  company?: string
+
+  layout: 'blog-author'
+}
+
 
 export interface BlogParsedContent extends PageParsedContent {
   featured?: boolean
   author?: string
-  categories?: string[]
+  category?: string
   tags?: string[]
 
   layout: 'blog-post'

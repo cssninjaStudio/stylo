@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../types'
+import type { AuthorParsedContent, BlogParsedContent } from '../types'
 
 const props = defineProps<{
   article: Partial<BlogParsedContent>
 }>()
 
-const { getAuthor } = useAuthorDetails()
 const { formatDate } = useDateFormatter()
 
 const image = computed(() => props.article.image || props.article.cover)
+
+const { data: author } = await useAsyncData(() =>
+  !props.article.author
+    ? Promise.resolve(null) 
+    : queryContent<AuthorParsedContent>()
+      .only(['_path', 'image', 'title'])
+      .where({ layout: 'blog-author', _path: props.article.author })
+      .findOne()
+)
 </script>
 
 <template>
@@ -23,10 +31,10 @@ const image = computed(() => props.article.image || props.article.cover)
         />
       </NuxtLink>
       <div
-        v-if="props.article.categories"
+        v-if="props.article.category"
         class="absolute top-4 right-4 scale-90 z-30"
       >
-        <ArticleCategoryBadges :categories="props.article.categories" />
+        <ArticleCategoryBadge :path="props.article.category" />
       </div>
     </div>
 
@@ -47,20 +55,18 @@ const image = computed(() => props.article.image || props.article.cover)
     </NuxtLink>
     <div class="flex items-center justify-between">
       <div>
-        <span v-if="props.article.author" class="flex items-center mr-6">
+        <span v-if="author" class="flex items-center mr-6">
           <img
-            v-if="getAuthor(props.article.author)?.image"
-            :src="getAuthor(props.article.author)?.image"
+            v-if="author.image"
+            :src="author.image"
             alt=""
             class="h-8 w-8 rounded-full mr-2 object-cover"
           />
           <div>
             <h4 class="font-sans text-xs text-muted-800 dark:text-muted-100">
-              <NuxtLink :to="`/authors/${props.article.author}`">
-                {{
-                  getAuthor(props.article.author)?.name || props.article.author
-                }}
-              </NuxtLink>
+              <NuxtLink :to="author._path">
+                  {{ author.title }}
+                </NuxtLink>
             </h4>
           </div>
         </span>

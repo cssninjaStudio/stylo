@@ -1,0 +1,22 @@
+layout: blog-author
+title: Maya Piretti
+description: UX Designer
+image: /img/avatars/small/2.svg
+contact:
+  - name: Email
+    link: mailto:maya@cssninja.io
+location: Roma, IT
+company: Freelance
+bio: >
+  Maya Piretti is a highly skilled User Experience (UX) designer with over 8 years of industry experience, 
+  Maya has a proven track record of success in designing successful mobile apps and websites.
+social:
+  - name: LinkedIn
+    link: https://www.linkedin.com/company/cssninja/
+    icon: brandico:linkedin
+  - name: Facebook
+    link: https://www.facebook.com/cssninjaStudio
+    icon: brandico:facebook
+  - name: Twitter
+    link: https://twitter.com/cssninjaStudio
+    icon: brandico:twitter

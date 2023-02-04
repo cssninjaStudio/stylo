@@ -2,13 +2,12 @@
 layout: blog-post
 title: How to write a business proposal that will reach your customer and win the project
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
-author: alan-mitchells
+author: /authors/alan-mitchells
 publishDate: 2022-08-15T00:00:00.000Z
 featured: false
 image: /img/posts/13.png
 cover: /img/posts/13.png
-categories:
-  - tutorials
+category: /categories/tutorials
 tags:
   - startups
   - efficiency

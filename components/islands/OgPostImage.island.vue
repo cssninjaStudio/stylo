@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { AuthorParsedContent } from '../../types'
+
 const props = defineProps<{
   title?: string
   description?: string
@@ -8,9 +10,14 @@ const props = defineProps<{
   categories?: string[]
 }>()
 
-const { getAuthor } = useAuthorDetails()
-const author = computed(() => getAuthor(props.author))
-
+const { data: author } = await useAsyncData(() =>
+  !props.author
+    ? Promise.resolve(null) 
+    : queryContent<AuthorParsedContent>()
+      .only(['_path', 'image', 'title'])
+      .where({ layout: 'blog-author', _path: props.author })
+      .findOne()
+)
 // @todo: https://github.com/harlan-zw/nuxt-og-image/blob/main/src/runtime/nitro/routes/__og_image__/html.ts#L64
 </script>
 

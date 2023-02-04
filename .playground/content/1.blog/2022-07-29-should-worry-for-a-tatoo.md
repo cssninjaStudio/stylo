@@ -2,13 +2,12 @@
 layout: blog-post
 title: Should you worry if you are heavily tatooed and wondering about your next job interview
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
-author: irina-kropova
+author: /authors/irina-kropova
 publishDate: 2022-07-29T00:00:00.000Z
 featured: true
 image: /img/posts/14.png
 cover: /img/posts/14.png
-categories:
-  - tutorials
+category: /categories/tutorials
 tags:
   - lifestyle
   - hobbies

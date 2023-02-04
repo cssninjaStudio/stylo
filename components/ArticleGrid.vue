@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../types'
+import type { AuthorParsedContent, BlogParsedContent } from '../types'
 
 const props = defineProps<{
   article: Partial<BlogParsedContent>
 }>()
 
-const { getAuthor } = useAuthorDetails()
 const { formatDate } = useDateFormatter()
 
 const image = computed(() => props.article.image || props.article.cover)
+
+const { data: author } = await useAsyncData(() =>
+  !props.article._path 
+    ? Promise.resolve(null) 
+    : queryContent<AuthorParsedContent>()
+      .only(['_path', 'image', 'title'])
+      .where({ layout: 'blog-author', _path: props.article._path })
+      .findOne()
+)
 </script>
 
 <template>
@@ -21,8 +29,8 @@ const image = computed(() => props.article.image || props.article.cover)
           alt=""
           class="block w-full h-[420px] object-cover rounded-lg"
         />
-        <div class="absolute top-4 right-4 z-30">
-          <ArticleCategoryBadges :categories="props.article.categories" />
+        <div v-if="props.article.category" class="absolute top-4 right-4 z-30">
+          <ArticleCategoryBadge :path="props.article.category" />
         </div>
       </div>
       <div
@@ -48,14 +56,14 @@ const image = computed(() => props.article.image || props.article.cover)
           </h3>
           <div class="flex items-center justify-between">
             <div>
-              <span v-if="props.article.author" class="flex items-center gap-2">
+              <span v-if="author" class="flex items-center gap-2">
                 <NuxtLink
-                  :to="`/authors/${props.article.author}`"
+                  :to="author._path"
                   class="h-8 w-8 flex items-center justify-center shrink-0 rounded-full bg-white dark:bg-muted-800"
                 >
                   <img
-                    v-if="getAuthor(props.article.author)?.image"
-                    :src="getAuthor(props.article.author)?.image"
+                    v-if="author?.image"
+                    :src="author?.image"
                     alt=""
                     class="h-8 w-8 rounded-full object-cover scale-90"
                   />
@@ -63,13 +71,10 @@ const image = computed(() => props.article.image || props.article.cover)
                 <div>
                   <h4 class="font-sans text-sm">
                     <NuxtLink
-                      :to="`/authors/${props.article.author}`"
+                      :to="author._path"
                       class="text-white hover:text-primary-300 transition-colors duration-300"
                     >
-                      {{
-                        getAuthor(props.article.author)?.name ??
-                        props.article.author
-                      }}
+                      {{ author.title }}
                     </NuxtLink>
                   </h4>
                 </div>

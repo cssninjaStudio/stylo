@@ -1,28 +1,23 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../../types'
+import type { AuthorParsedContent } from '../../types'
 
 const props = defineProps<{
   title?: string
   subtitle?: string
 }>()
 
-const { data: articles } = await useAsyncData(() =>
-  queryContent<BlogParsedContent>()
-    .only(['author'])
-    .where({ layout: 'blog-post', featured: true })
+const { data: authors } = await useAsyncData(() =>
+  queryContent<AuthorParsedContent>()
+    .only([
+      '_path',
+      'image',
+      'title',
+      'description',
+    ])
+    .where({ layout: 'blog-author', featured: true })
+    .limit(4)
     .find()
 )
-const authors = computed(() => {
-  const authors = new Set<string>()
-  articles.value?.forEach((article) => {
-    if (article.author) {
-      authors.add(article.author)
-    }
-  })
-  return Array.from(authors).slice(0, 5)
-})
-
-const app = useAppConfig()
 </script>
 
 <template>
@@ -61,7 +56,7 @@ const app = useAppConfig()
         v-else
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8"
       >
-        <AuthorGrid v-for="author in authors" :key="author" :author="author" />
+        <AuthorGrid v-for="author in authors" :key="author._path" :author="author" />
       </div>
     </AppContainer>
   </AppSection>

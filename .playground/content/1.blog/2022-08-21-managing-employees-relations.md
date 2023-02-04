@@ -2,13 +2,12 @@
 layout: blog-post
 title: Managing relations between employees in small startups and business
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
-author: clarissa-stokes
+author: /authors/clarissa-stokes
 publishDate: 2022-08-28T00:00:00.000Z
 featured: false
 image: /img/posts/1.png
 cover: /img/posts/1.png
-categories:
-  - human-resources
+category: /categories/human-resources
 tags:
   - startups
   - management

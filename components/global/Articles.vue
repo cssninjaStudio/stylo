@@ -29,7 +29,7 @@ const { data: articles } = await useAsyncData(() =>
       'author',
       'title',
       'description',
-      'categories',
+      'category',
       'publishDate',
     ])
     .where({ layout: 'blog-post', ...props.filters })

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { BlogParsedContent } from '../../types'
 
-const { getAuthor } = useAuthorDetails()
 const { formatDate } = useDateFormatter()
 
 const { data: articles } = await useAsyncData(() =>
@@ -69,31 +68,7 @@ const { data: articles } = await useAsyncData(() =>
               </h3>
               <div class="flex items-center justify-between">
                 <div>
-                  <span v-if="article?.author" class="flex items-center gap-2">
-                    <NuxtLink
-                      :to="`/authors/${article.author}`"
-                      class="h-9 w-9 flex items-center justify-center shrink-0 rounded-full bg-white dark:bg-muted-800"
-                    >
-                      <img
-                        v-if="getAuthor(article.author)?.image"
-                        :src="getAuthor(article.author)?.image"
-                        :alt="article.author"
-                        class="h-9 w-9 rounded-full object-cover scale-90"
-                      />
-                    </NuxtLink>
-                    <div>
-                      <h4 class="font-sans text-sm">
-                        <NuxtLink
-                          :to="`/authors/${article.author}`"
-                          class="text-white hover:text-primary-300 transition-colors duration-300"
-                        >
-                          {{
-                            getAuthor(article.author)?.name ?? article.author
-                          }}
-                        </NuxtLink>
-                      </h4>
-                    </div>
-                  </span>
+                  <ArticleAuthorBadge v-if="article?.author" :path="article?.author" />
                 </div>
                 <div class="font-sans text-sm text-muted-100">
                   <span class="pr-2">—</span>

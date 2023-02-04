@@ -1,12 +1,37 @@
 <script setup lang="ts">
-const props = defineProps<{
-  title?: string
-  subtitle?: string
-}>()
+import type { AuthorParsedContent } from '../../types'
 
-const app = useAppConfig()
-const authors = computed(() =>
-  app.folio.authors.map((a) => a.slug).sort((a, b) => a.localeCompare(b))
+const props = withDefaults(defineProps<{
+    title?: string
+    subtitle?: string
+    filters?: Record<string, any>
+    sort?: Record<string, any>
+    skip?: number
+    limit?: number
+  }>(),
+  {
+    title: undefined,
+    subtitle: undefined,
+    skip: 0,
+    limit: 30,
+    filters: () => ({}),
+    sort: () => ({ publishDate: -1 }),
+  }
+)
+
+const { data: authors } = await useAsyncData(() =>
+  queryContent<AuthorParsedContent>()
+    .only([
+      '_path',
+      'image',
+      'title',
+      'description',
+    ])
+    .where({ layout: 'blog-author', ...props.filters })
+    .sort(props.sort)
+    .limit(props.limit)
+    .skip(props.skip)
+    .find()
 )
 </script>
 
@@ -47,7 +72,7 @@ const authors = computed(() =>
         v-else
         class="mt-6 grid sm:grid-cols-2 ltablet:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        <AuthorCard v-for="author in authors" :key="author" :author="author" />
+        <AuthorCard v-for="author in authors" :key="author._path" :author="author" />
       </div>
     </AppContainer>
   </AppSection>

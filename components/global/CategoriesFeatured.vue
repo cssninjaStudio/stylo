@@ -1,28 +1,26 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../../types'
+import type { CategoryParsedContent } from '../../types'
 
 const props = defineProps<{
   title?: string
   subtitle?: string
 }>()
 
-const { data: articles } = await useAsyncData(() =>
-  queryContent<BlogParsedContent>()
-    .only(['categories'])
-    .where({ layout: 'blog-post', featured: true })
+const { data: categories } = await useAsyncData(() =>
+  queryContent<CategoryParsedContent>()
+    .only([
+      '_path',
+      'image',
+      'cover',
+      'author',
+      'title',
+      'description',
+      'category',
+      'publishDate',
+    ])
+    .where({ layout: 'blog-category', featured: true })
     .find()
 )
-const categories = computed(() => {
-  const categories = new Set<string>()
-  articles.value?.forEach((article) => {
-    ;(article.categories as string[])?.forEach((category) =>
-      categories.add(category)
-    )
-  })
-  return Array.from(categories).slice(0, 4)
-})
-
-const { getCategory } = useCategoryDetails()
 </script>
 
 <template>
@@ -62,15 +60,15 @@ const { getCategory } = useCategoryDetails()
         <div v-else class="grid ptablet:grid-cols-2 md:grid-cols-4 gap-4">
           <NuxtLink
             v-for="category of categories"
-            :key="category"
-            :to="`/categories/${category}`"
+            :key="category._path"
+            :to="category._path"
             class="relative block group"
           >
             <Card class="p-3 rounded-xl">
               <div class="relative">
                 <img
-                  v-if="getCategory(category)?.image"
-                  :src="getCategory(category)?.image"
+                  v-if="category.image"
+                  :src="category.image"
                   alt=""
                   class="relative w-full h-64 bg-muted-100 dark:bg-muted-700/20 rounded-lg overflow-hidden group-hover:opacity-75 object-center object-cover transition-opacity duration-300"
                 />
@@ -79,13 +77,10 @@ const { getCategory } = useCategoryDetails()
                 <h3
                   class="font-sans font-medium text-lg capitalize text-muted-700 group-hover:text-primary-500 dark:text-muted-100 dark:group-hover:text-primary-500 transition-colors duration-300"
                 >
-                  {{ getCategory(category)?.name ?? category }}
+                  {{ category.title }}
                 </h3>
-                <p
-                  v-if="getCategory(category)"
-                  class="font-sans text-xs text-muted-500 dark:text-muted-400"
-                >
-                  {{ getCategory(category)?.description }}
+                <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+                  {{ category.description }}
                 </p>
               </div>
             </Card>

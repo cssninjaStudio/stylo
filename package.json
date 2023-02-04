@@ -13,11 +13,11 @@
     "lint": "eslint --fix --ext .ts,.vue ."
   },
   "dependencies": {
-    "@nuxt/content": "^2.4.2",
-    "@nuxthq/studio": "^0.6.5",
+    "@nuxt/content": "^2.4.3",
+    "@nuxthq/studio": "^0.7.0",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@nuxtjs/tailwindcss": "^6.3.0",
+    "@nuxtjs/tailwindcss": "^6.3.1",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.3",
     "@tailwindcss/line-clamp": "0.4.2",
@@ -26,7 +26,7 @@
     "date-fns": "^2.29.3",
     "mdast-util-to-string": "^3.1.1",
     "nuxt-icon": "^0.2.10",
-    "nuxt-seo-kit": "^1.1.4",
+    "nuxt-seo-kit": "^1.2.2",
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
@@ -35,11 +35,11 @@
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier-vue": "^4.2.0",
-    "eslint-plugin-tailwindcss": "^3.8.2",
+    "eslint-plugin-tailwindcss": "^3.8.3",
     "eslint-plugin-vuejs-accessibility": "^2.1.0",
-    "nuxt": "^3.1.1",
-    "pinceau": "^0.13.0",
+    "nuxt": "^3.1.2",
+    "pinceau": "^0.13.6",
     "prettier": "^2.8.3",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   }
 }

@@ -1,13 +1,47 @@
 <script setup lang="ts">
-const props = defineProps<{
-  title?: string
-  subtitle?: string
-}>()
+import type { CategoryParsedContent } from '../../types'
 
-const app = useAppConfig()
-const { getCategory } = useCategoryDetails()
-const categories = computed(() =>
-  app.folio.categories.map((c) => c.slug).sort((a, b) => a.localeCompare(b))
+const props = withDefaults(
+  defineProps<{
+    title?: string
+    subtitle?: string
+    filters?: Record<string, any>
+    sort?: Record<string, any>
+    skip?: number
+    limit?: number
+  }>(),
+  {
+    title: undefined,
+    subtitle: undefined,
+    skip: 0,
+    limit: 4,
+    filters: () => ({}),
+    sort: () => ({ publishDate: -1 }),
+  }
+)
+
+// const app = useAppConfig()
+// const { getCategory } = useCategoryDetails()
+// const categories = computed(() =>
+//   app.folio.categories.map((c) => c.slug).sort((a, b) => a.localeCompare(b))
+// )
+const { data: categories } = await useAsyncData(() =>
+  queryContent<CategoryParsedContent>()
+    .only([
+      '_path',
+      'image',
+      'cover',
+      'author',
+      'title',
+      'description',
+      'category',
+      'publishDate',
+    ])
+    .where({ layout: 'blog-category', ...props.filters })
+    .sort(props.sort)
+    .limit(props.limit)
+    .skip(props.skip)
+    .find()
 )
 </script>
 
@@ -48,15 +82,15 @@ const categories = computed(() =>
         <div v-else class="grid ptablet:grid-cols-2 md:grid-cols-4 gap-4">
           <NuxtLink
             v-for="category of categories"
-            :key="category"
-            :to="`/categories/${category}`"
+            :key="category._path"
+            :to="category._path"
             class="relative block group"
           >
             <Card class="p-3 rounded-xl">
               <div class="relative">
                 <img
-                  v-if="getCategory(category)?.image"
-                  :src="getCategory(category)?.image"
+                  v-if="category.image"
+                  :src="category.image"
                   alt=""
                   class="relative w-full h-64 bg-muted-100 dark:bg-muted-700/20 rounded-lg overflow-hidden group-hover:opacity-75 object-center object-cover transition-opacity duration-300"
                 />
@@ -65,13 +99,10 @@ const categories = computed(() =>
                 <h3
                   class="font-sans font-medium text-lg capitalize text-muted-700 group-hover:text-primary-500 dark:text-muted-100 dark:group-hover:text-primary-500 transition-colors duration-300"
                 >
-                  {{ getCategory(category)?.name ?? category }}
+                  {{ category.title }}
                 </h3>
-                <p
-                  v-if="getCategory(category)"
-                  class="font-sans text-xs text-muted-500 dark:text-muted-400"
-                >
-                  {{ getCategory(category)?.description }}
+                <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+                  {{ category.description }}
                 </p>
               </div>
             </Card>

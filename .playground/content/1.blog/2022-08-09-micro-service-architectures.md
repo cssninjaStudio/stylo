@@ -2,13 +2,12 @@
 layout: blog-post
 title: Modern web development and micro service based architectures
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
-author: clark-smith
+author: /authors/clark-smith
 publishDate: 2022-08-09T00:00:00.000Z
 featured: false
 image: /img/posts/9.png
 cover: /img/posts/9.png
-categories:
-  - engineering
+category: /categories/engineering
 tags:
   - development
   - backend

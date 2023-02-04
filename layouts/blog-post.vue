@@ -7,10 +7,19 @@ const {
   page,
   next,
   prev,
+  surround,
 }: {
   page?: Ref<BlogParsedContent>
   next?: Ref<ParsedContentMeta>
   prev?: Ref<ParsedContentMeta>
+
+  globals: any;
+  navigation: any;
+  surround: any;
+  excerpt: any;
+  toc: any;
+  type: any;
+  layout: any;
 } = useContent()
 </script>
 
@@ -20,7 +29,7 @@ const {
     <AppSection class="bg-white dark:bg-muted-900">
       <AppContainer>
         <div
-          class="max-w-2xl xxl:max-w-3xl mx-auto prose prose-purple xxl:prose-lg dark:prose-invert"
+          class="max-w-2xl xxl:max-w-3xl prose-img:rounded-xl mx-auto prose prose-a:text-primary-500 dark:prose-a:text-primary-400 prose-purple xxl:prose-lg dark:prose-invert"
         >
           <slot />
 
@@ -33,23 +42,38 @@ const {
 
           <!-- Back -->
           <div class="pb-16 flex justify-between">
-            <NuxtLink
-              v-if="next"
-              class="w-1/3 flex items-center gap-2 font-sans text-sm no-underline text-primary-500"
-              :to="next._path"
-            >
-              <Icon name="lucide:arrow-left" class="inline-block w-6 h-6" />
-              <span class="truncate">{{ next.title }}</span>
-            </NuxtLink>
+            <div class="w-1/3">
+              <NuxtLink
+                v-if="next && next.layout === 'blog-post'"
+                class="group font-sans text-sm no-underline"
+                :to="next._path"
+              >
+                <span class="flex flex-col gap-1">
+                  <span class="flex items-center gap-2 text-muted-400 group-hover:text-primary-500">
+                    <Icon name="lucide:arrow-left" class="inline-block w-4 h-4" /> Newer article
+                  </span>
+                  <span class="truncate  text-muted-500" :title="next.title">{{ next.title }}</span>
+                </span>
 
-            <NuxtLink
-              v-if="prev"
-              class="w-1/3 flex items-center gap-2 font-sans text-sm no-underline text-primary-500"
-              :to="prev._path"
-            >
-              <span class="truncate">{{ prev.title }}</span>
-              <Icon name="lucide:arrow-right" class="inline-block w-6 h-6" />
-            </NuxtLink>
+              </NuxtLink>
+            </div>
+
+            <div class="w-1/3">
+              <NuxtLink
+                v-if="prev && prev.layout === 'blog-post'"
+                class="group font-sans text-sm no-underline"
+                :to="prev._path"
+              >
+                <span class="flex flex-col gap-1">
+                  <span class="flex justify-end items-center gap-2 text-muted-400 group-hover:text-primary-500">
+                    Older article
+                    <Icon name="lucide:arrow-right" class="inline-block w-4 h-4" />
+                  </span>
+                  <span class="truncate  text-muted-500" :title="prev.title">{{ prev.title }}</span>
+                </span>
+
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </AppContainer>

@@ -19,7 +19,7 @@ const { data: articles } = await useAsyncData(() =>
       'author',
       'title',
       'description',
-      'categories',
+      'category',
       'publishDate',
     ])
     .where({ layout: 'blog-post', _file: { $contains: path.value } })

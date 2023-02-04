@@ -23,7 +23,7 @@ const props = withDefaults(
           class="col-span-12 ptablet:col-span-8 ltablet:col-span-8 lg:col-span-8"
         >
           <div
-            class="prose prose-slate dark:prose-invert prose-purple"
+            class="prose prose-a:text-primary-500 dark:prose-a:text-primary-400 prose-slate dark:prose-invert prose-purple"
             :class="props.proseClass"
           >
             <slot />

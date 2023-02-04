@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../types'
+import type { AuthorParsedContent, BlogParsedContent } from '../types'
 
 const props = defineProps<{
   article: Partial<BlogParsedContent>
 }>()
 
-const { getAuthor } = useAuthorDetails()
 const { formatDate } = useDateFormatter()
+
+const { data: author } = await useAsyncData(() =>
+  !props.article._path 
+    ? Promise.resolve(null) 
+    : queryContent<AuthorParsedContent>()
+      .only(['_path', 'image', 'title'])
+      .where({ layout: 'blog-author', _path: props.article._path })
+      .findOne()
+)
 </script>
 
 <template>
@@ -30,10 +38,9 @@ const { formatDate } = useDateFormatter()
           <div class="h-full flex items-center">
             <div class="w-full max-w-md ptablet:mx-auto">
               <!-- Categories -->
-              <div class="mb-4">
-                <ArticleCategoryBadges :categories="props.article.categories" />
+              <div class="mb-4" v-if="props.article.category">
+                <ArticleCategoryBadge :path="props.article.category" />
               </div>
-              <!-- Title -->
               <h1
                 class="font-sans text-muted-800 dark:text-white font-bold text-3xl"
               >
@@ -46,28 +53,25 @@ const { formatDate } = useDateFormatter()
               </p>
               <div class="flex items-center justify-between">
                 <div
-                  v-if="props.article.author"
+                  v-if="author"
                   class="flex items-center gap-2"
                 >
                   <NuxtLink
-                    v-if="getAuthor(props.article.author)?.image"
-                    :to="`/authors/${props.article.author}`"
+                    v-if="author.image"
+                    :to="author._path"
                   >
                     <img
-                      :src="getAuthor(props.article.author)?.image"
-                      :alt="props.article.author"
+                      :src="author.image"
+                      :alt="author.title"
                       class="sm:w-12 sm:h-12 w-10 h-10 rounded-full"
                     />
                   </NuxtLink>
                   <div class="font-sans text-sm">
                     <NuxtLink
-                      :to="`/authors/${props.article.author}`"
+                      :to="author._path"
                       class="text-muted-800 dark:text-muted-100 font-medium leading-none hover:text-indigo-600 transition duration-500 ease-in-out"
                     >
-                      {{
-                        getAuthor(props.article.author)?.name ??
-                        props.article.author
-                      }}
+                      {{ author.title }}
                     </NuxtLink>
                     <p class="text-muted-600 dark:text-muted-400 text-xs">
                       published on

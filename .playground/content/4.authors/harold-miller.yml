@@ -1,0 +1,24 @@
+layout: blog-author
+title: Harold Miller
+description: Business Analyst
+featured: true
+image: /img/avatars/small/8.svg
+contact:
+  - name: Email
+    link: mailto:harold@cssninja.io
+location: Los Angeles, CA
+company: Freelance
+bio: >
+  Harold Miller is a highly experienced business analyst with over 10 years of experience in the field. 
+  He is qualified in data analysis and is skilled in identifying and solving business problems.
+social:
+  - name: LinkedIn
+    link: https://www.linkedin.com/company/cssninja/
+    icon: brandico:linkedin
+  - name: Facebook
+    link: https://www.facebook.com/cssninjaStudio
+    icon: brandico:facebook
+  - name: Twitter
+    link: https://twitter.com/cssninjaStudio
+    icon: brandico:twitter
+

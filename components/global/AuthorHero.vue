@@ -1,20 +1,19 @@
 <script setup lang="ts">
-const props = defineProps<{
-  author: string
-}>()
+import type { AuthorParsedContent } from '../../types'
 
-const { getAuthor } = useAuthorDetails()
-const author = computed(() => getAuthor(props.author))
+const props = defineProps<{
+  author: Partial<AuthorParsedContent>
+}>()
 </script>
 
 <template>
-  <AppSection v-if="author" class="bg-white dark:bg-muted-900">
+  <AppSection v-if="props.author" class="bg-white dark:bg-muted-900">
     <AppContainer>
       <div class="max-w-xl mx-auto pt-10 mb-8">
         <div>
           <img
-            v-if="author.image"
-            :src="author.image"
+            v-if="props.author.image"
+            :src="props.author.image"
             alt=""
             class="mb-4 h-28 w-28 mx-auto rounded-full object-center object-cover"
           />
@@ -22,7 +21,7 @@ const author = computed(() => getAuthor(props.author))
             <h1
               class="font-sans font-medium text-2xl text-muted-800 dark:text-white"
             >
-              {{ author.name ?? author }}
+              {{ author.name }}
             </h1>
             <p class="mb-2 font-sans text-muted-400">
               {{ author.description }}
@@ -38,7 +37,7 @@ const author = computed(() => getAuthor(props.author))
               <Icon name="lucide:map-pin" class="w-4 h-4" />
               <span class="font-sans text-sm">{{ author.location }}</span>
             </div>
-            <div v-if="author.social" class="flex items-center px-4">
+            <div v-if="props.author.social" class="flex items-center px-4">
               <a
                 v-for="link in author.social"
                 :key="link.link"

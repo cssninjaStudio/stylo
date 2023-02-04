@@ -1,0 +1,23 @@
+layout: blog-author
+title: Clarissa Stokes
+featured: true
+description: Software Engineer
+image: /img/avatars/small/5.svg
+contact:
+  - name: Email
+    link: mailto:clarissa@cssninja.io
+location: London, UK
+company: Freelance
+bio: >
+  Clarissa Stokes is a talented human resources manager with over a decade of experience in the field. 
+  She specializes in talent management and employee relations, as well as business development.
+social:
+  - name: LinkedIn
+    link: https://www.linkedin.com/company/cssninja/
+    icon: brandico:linkedin
+  - name: Facebook
+    link: https://www.facebook.com/cssninjaStudio
+    icon: brandico:facebook
+  - name: Twitter
+    link: https://twitter.com/cssninjaStudio
+    icon: brandico:twitter

@@ -1,0 +1,22 @@
+layout: blog-author
+title: Clark Smith
+description: Software Engineer
+image: /img/avatars/small/3.svg
+contact:
+  - name: Email
+    link: mailto:clark@cssninja.io
+location: New York, NY
+company: Freelance
+bio: >
+  Clark Smith is a software engineer with over 8+ years of experience. 
+  Clark has experience with many languages and is comfortable working on both front-end and back-end development.
+social:
+  - name: LinkedIn
+    link: https://www.linkedin.com/company/cssninja/
+    icon: brandico:linkedin
+  - name: Facebook
+    link: https://www.facebook.com/cssninjaStudio
+    icon: brandico:facebook
+  - name: Twitter
+    link: https://twitter.com/cssninjaStudio
+    icon: brandico:twitter

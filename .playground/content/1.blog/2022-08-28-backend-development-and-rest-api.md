@@ -2,13 +2,12 @@
 layout: blog-post
 title: Backend Development and REST APIs when working with Headless CMS
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
-author: clark-smith
+author: /authors/clark-smith
 publishDate: 2022-08-28T00:00:00.000Z
 featured: true
 image: /img/posts/5.png
 cover: /img/posts/5.png
-categories:
-  - coaching
+category: /categories/coaching
 tags:
   - Headless
   - REST API

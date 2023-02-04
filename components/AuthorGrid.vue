@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{
-  author: string
-}>()
+import type { AuthorParsedContent } from '../types'
 
-const { getAuthor } = useAuthorDetails()
+const props = defineProps<{
+  author: Partial<AuthorParsedContent>
+}>()
 </script>
 
 <template>
@@ -12,23 +12,23 @@ const { getAuthor } = useAuthorDetails()
       class="relative h-20 w-20 ptablet:h-24 ptablet:w-24 ltablet:h-24 ltablet:w-24 md:h-28 md:w-28 mx-auto mb-4"
     >
       <img
-        v-if="getAuthor(author)?.image"
-        :src="getAuthor(author)?.image"
+        v-if="props.author?.image"
+        :src="props.author?.image"
         alt="{author}"
         class="w-full h-full object-center object-cover rounded-full"
       />
     </div>
     <h3 class="font-sans text-lg text-muted-800 dark:text-muted-100">
-      <NuxtLink :to="`/authors/${author}`">
+      <NuxtLink :to="author._path">
         <span class="absolute inset-0" />
-        {{ getAuthor(author)?.name ?? author }}
+        {{ props.author?.title }}
       </NuxtLink>
     </h3>
     <p
-      v-if="getAuthor(author)?.description"
+      v-if="props.author?.description"
       class="font-sans text-sm text-muted-400"
     >
-      {{ getAuthor(author)?.description }}
+      {{ props.author?.description }}
     </p>
   </div>
 </template>

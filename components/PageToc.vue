@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
     </div>
     <template v-if="toc?.links?.length">
       <div
-        class="w-72 ltablet:w-auto lg:w-auto p-5 ltablet:p-0 lg:p-0 border border-muted-200 ltablet:border-none lg:border-none rounded-lg ltablet:rounded-none lg:rounded-none bg-white ltablet:bg-transparent lg:bg-transparent shadow-xl shadow-muted-300/30 ltablet:shadow-none lg:shadow-none"
+        class="w-72 ltablet:w-auto lg:w-auto p-5 ltablet:p-0 lg:p-0 border border-muted-200 dark:border-muted-700 ltablet:border-none lg:border-none dark:ltablet:border-none dark:lg:border-none rounded-lg ltablet:rounded-none lg:rounded-none bg-white dark:bg-muted-800 ltablet:bg-transparent lg:bg-transparent dark:ltablet:bg-transparent dark:lg:bg-transparent shadow-xl shadow-muted-300/30 dark:shadow-muted-900/40 ltablet:shadow-none lg:shadow-none dark:ltablet:shadow-none dark:lg:shadow-none"
         :class="mobileTocOpen ? 'block' : 'hidden lg:block ltablet:block'"
       >
         <div

@@ -26,12 +26,12 @@ const {
 <template>
   <div v-if="page" class="relative">
     <ArticleHero :article="page" />
-    <AppSection class="bg-white dark:bg-muted-900">
+    <AppSection class="relative bg-white dark:bg-muted-900">
       <AppContainer>
         <div
           :class="
             page.toc
-              ? 'max-w-3xl xxl:max-w-4xl justify-center mx-auto flex w-full'
+              ? 'max-w-4xl xxl:max-w-5xl justify-center mx-auto flex w-full'
               : 'max-w-2xl xxl:max-w-3xl mx-auto'
           "
         >
@@ -41,7 +41,10 @@ const {
             <slot />
           </div>
 
-          <div v-if="page.toc" class="relative pl-6 pt-12 shrink w-1/4">
+          <div
+            v-if="page.toc"
+            class="absolute top-12 left-4 sm:left-24 ltablet:relative ltablet:left-0 ltablet:top-0 ltablet:pl-12 ltablet:pt-12 ltablet:shrink-0 ltablet:w-72 lg:relative lg:left-0 lg:top-0 lg:pl-12 lg:pt-12 lg:shrink-0 lg:w-72"
+          >
             <PageToc class="sticky top-36" />
           </div>
         </div>

@@ -15,13 +15,8 @@ const props = defineProps<{
         {{ props.title }}
       </ContentSlot>
     </h3>
-    <p
-      v-if="'subtitle' in $slots || props.subtitle"
-      class="font-sans text-muted-700 dark:text-muted-100"
-    >
-      <ContentSlot :use="$slots.subtitle" unwrap="p">
-        {{ props.subtitle }}
-      </ContentSlot>
+    <p class="font-sans text-muted-700 dark:text-muted-100">
+      <ContentSlot :use="$slots.default" unwrap="p" />
     </p>
   </div>
 </template>

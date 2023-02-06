@@ -13,8 +13,8 @@ const props = defineProps<{
         {{ props.title }}
       </ContentSlot>
     </h3>
-    <ul class="space-y-4">
+    <div class="space-y-4">
       <ContentSlot :use="$slots.default" unwrap="p" />
-    </ul>
+    </div>
   </div>
 </template>

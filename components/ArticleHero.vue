@@ -65,7 +65,7 @@ const { data: author } = await useAsyncData(
                   <div class="font-sans text-sm">
                     <NuxtLink
                       :to="author._path"
-                      class="text-muted-800 dark:text-muted-100 font-medium leading-none hover:text-indigo-600 transition duration-500 ease-in-out"
+                      class="text-muted-800 dark:text-muted-100 font-medium leading-none hover:text-primary-600 transition duration-500 ease-in-out"
                     >
                       {{ author.title }}
                     </NuxtLink>
@@ -75,6 +75,10 @@ const { data: author } = await useAsyncData(
                     </p>
                   </div>
                 </div>
+                <p v-else class="text-muted-600 dark:text-muted-400 text-xs">
+                  published on
+                  {{ formatDate(props.article.publishDate) }}
+                </p>
                 <div class="font-sans text-xs sm:text-sm text-muted-400">
                   <span class="pr-2">—</span>
                   <span>{{ props.article.readingTime?.text }}</span>

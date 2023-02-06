@@ -44,14 +44,14 @@ const { data: author } = await useAsyncData(
         <div class="p-6">
           <div class="flex items-center gap-2 mb-1 mt-4 text-muted-100">
             <Icon name="ph:calendar-blank-duotone" class="w-4 h-4" />
-            <p class="font-sans text-xs">
+            <p class="text-shadow font-sans text-xs">
               {{ formatDate(props.article.publishDate) }}
             </p>
           </div>
           <h3 class="font-sans font-light text-xl mb-2">
             <NuxtLink
               :to="props.article._path"
-              class="text-white hover:text-primary-300 transition-colors duration-300"
+              class="text-shadow text-white hover:text-primary-300 transition-colors duration-300"
             >
               {{ props.article.title }}
             </NuxtLink>
@@ -88,3 +88,9 @@ const { data: author } = await useAsyncData(
     </div>
   </Card>
 </template>
+
+<style scoped>
+.text-shadow {
+  text-shadow: 0 0 2px rgb(0 0 0 / 30%);
+}
+</style>

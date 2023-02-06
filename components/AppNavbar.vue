@@ -10,6 +10,7 @@ const { data: navigation } = await useAsyncData('navigation', () =>
   fetchContentNavigation()
 )
 
+const route = useRoute()
 const isScrolled = useLayoutScrolled()
 </script>
 
@@ -81,7 +82,12 @@ const isScrolled = useLayoutScrolled()
                   v-for="item in navigation"
                   :key="item._id"
                   :to="item._path"
-                  active-class="bg-primary-500/10 text-primary-500 dark:text-primary-500"
+                  :class="[
+                    item._path.length > 1 && route.path.startsWith(item._path)
+                      ? 'bg-primary-500/10 text-primary-500 dark:text-primary-500'
+                      : '',
+                  ]"
+                  exact-active-class="bg-primary-500/10 text-primary-500 dark:text-primary-500"
                   class="h-9 flex gap-1 items-center justify-center px-4 font-sans text-sm rounded-lg transition-colors duration-300 hover:bg-muted-200/70 dark:hover:bg-muted-700 text-muted-500 hover:text-muted-800 dark:text-muted-400 dark:hover:text-muted-100"
                 >
                   <Icon v-if="item.icon" :name="item.icon" />

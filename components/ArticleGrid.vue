@@ -7,19 +7,7 @@ const props = defineProps<{
 
 const { formatDate } = useDateFormatter()
 
-const { data: author } = await useAsyncData(
-  `author-meta-${props.article.author}`,
-  () =>
-    !props.article.author
-      ? Promise.resolve(null)
-      : queryContent<AuthorParsedContent>()
-          .only(['_path', 'avatar', 'title', 'subtitle'])
-          .where({ layout: 'author', _path: props.article.author })
-          .findOne(),
-  {
-    watch: [() => props.article.author],
-  }
-)
+const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
 </script>
 
 <template>

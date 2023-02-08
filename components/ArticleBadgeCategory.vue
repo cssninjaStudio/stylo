@@ -1,23 +1,9 @@
 <script setup lang="ts">
-import type { CategoryParsedContent } from '../types'
-
 const props = defineProps<{
   path?: string
 }>()
 
-const { data: category } = useAsyncData(
-  `category-meta-${props.path}`,
-  () =>
-    !props.path
-      ? Promise.resolve(null)
-      : queryContent<CategoryParsedContent>()
-          .only(['_path', 'color', 'title'])
-          .where({ layout: 'category', _path: props.path })
-          .findOne(),
-  {
-    watch: [() => props.path],
-  }
-)
+const { data: category } = useAsyncCategoryMeta(() => props.path)
 
 const color = computed(
   () => category.value?.color || 'rgb(var(--color-primary-500))'

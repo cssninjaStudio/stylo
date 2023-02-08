@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const { page } = useContent()
 
-const filters = computed(() => ({
-  _file: { $contains: page.value?._path?.substring(1) },
-}))
+// const filters = computed(() => ({
+//   _file: { $contains: page.value?._path?.substring(1) },
+// }))
 </script>
 
 <template>
   <div>
-    <Articles :mode="page.mode" :filters="filters" :limit="15">
+    <Tags :mode="page.mode">
       <template #title>{{ page.title }}</template>
       <template #subtitle>{{ page.description }}</template>
       <template #links>
@@ -25,6 +25,6 @@ const filters = computed(() => ({
           </ButtonLink>
         </ButtonLinks>
       </template>
-    </Articles>
+    </Tags>
   </div>
 </template>

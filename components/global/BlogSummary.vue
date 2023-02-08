@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import type { BlogParsedContent } from '../../types'
 
-const props = defineProps<{
-  title?: string
-  subtitle?: string
-}>()
-
 const { data: articles } = await useAsyncData(() =>
   queryContent<BlogParsedContent>()
     .only([
@@ -18,7 +13,7 @@ const { data: articles } = await useAsyncData(() =>
       'category',
       'publishDate',
     ])
-    .where({ layout: 'blog-post' })
+    .where({ layout: 'article' })
     .sort({ publishDate: -1 })
     .limit(5)
     .find()
@@ -29,16 +24,12 @@ const recents = computed(() => articles.value?.slice(1))
 </script>
 
 <template>
-  <AppSection class="bg-white dark:bg-muted-900">
-    <AppContainer>
+  <AppSection class="bg-white dark:bg-muted-1000 pb-0">
+    <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
       <div
         class="w-full p-0 ltablet:p-6 lg:p-10 rounded-3xl ltablet:bg-muted-100 ltablet:dark:bg-muted-700/10 lg:bg-muted-100 lg:dark:bg-muted-700/10"
       >
-        <AppContainerHeader
-          :title="props.title"
-          :subtitle="props.subtitle"
-          class="max-w-6xl mx-auto mb-6"
-        >
+        <AppContainerHeader class="max-w-6xl mx-auto mb-6">
           <template #title>
             <ContentSlot :use="$slots.title" unwrap="p" />
           </template>
@@ -50,30 +41,24 @@ const recents = computed(() => articles.value?.slice(1))
           </template>
         </AppContainerHeader>
 
-        <!-- Placeholder -->
-        <div v-if="articles?.length === 0">
-          <SectionPlaceholder
+        <div v-if="!articles?.length">
+          <AppSectionPlaceholder
             title="No articles found"
             subtitle="We couldn't find any posts to display. Start by writing your first blog post using your Nuxt studio account."
           >
-            <img
-              class="w-full max-w-xs mx-auto mb-6"
-              src="/img/illustrations/placeholder/placeholder-1.svg"
-              alt="Write some articles"
-            />
-          </SectionPlaceholder>
+            <ImagePlaceholderBlog class="w-full max-w-xs mx-auto mb-6" />
+          </AppSectionPlaceholder>
         </div>
-        <!-- Articles list -->
         <div
           v-else
           class="max-w-6xl mx-auto grid md:grid-cols-12 gap-6 ltablet:gap-4"
         >
           <div class="col-span-12 ltablet:col-span-6 lg:col-span-6">
-            <ArticleCardSummaryLarge v-if="latest" :article="latest" />
+            <ArticleSummaryLarge v-if="latest" :article="latest" />
           </div>
           <div class="col-span-12 ltablet:col-span-6 lg:col-span-6">
             <div class="w-full grid md:grid-cols-2 gap-4">
-              <ArticleCardSummarySmall
+              <ArticleSummarySmall
                 v-for="article in recents"
                 :key="article._path"
                 :article="article"

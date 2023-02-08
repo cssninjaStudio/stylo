@@ -1,17 +1,14 @@
 <script setup lang="ts">
+const appConfig = useAppConfig()
+const route = useRoute()
+const isScrolled = useLayoutScrolled()
+
 const isMobileOpen = ref(false)
 const isSearchOpen = ref(false)
-// const height = 60
 
-// @todo config
-const NavigationLinks: any[] = []
-// const Logo = '/img/logo/logo.svg'
 const { data: navigation } = await useAsyncData('navigation', () =>
   fetchContentNavigation()
 )
-
-const route = useRoute()
-const isScrolled = useLayoutScrolled()
 </script>
 
 <template>
@@ -43,13 +40,11 @@ const isScrolled = useLayoutScrolled()
               <Icon
                 :class="{ hidden: isMobileOpen, block: !isMobileOpen }"
                 class="block h-6 w-6"
-                aria-hidden="true"
                 name="heroicons-outline:menu"
               />
               <Icon
                 :class="{ block: isMobileOpen, hidden: !isMobileOpen }"
                 class="hidden h-6 w-6"
-                aria-hidden="true"
                 name="heroicons-outline:x"
               />
             </button>
@@ -66,15 +61,34 @@ const isScrolled = useLayoutScrolled()
             class="flex-1 ltablet:flex-none lg:flex-none flex items-center justify-center lg:items-stretch lg:justify-start ltablet:ml-6"
           >
             <NuxtLink
+              v-if="
+                appConfig.stylo.header?.displayTitle ||
+                appConfig.stylo.header?.logo?.src
+              "
               to="/"
               class="shrink-0 flex gap-2 items-center justify-center pb-1"
             >
               <img
-                class="block h-9 w-9 lg:h-10 sm:w-10"
-                src="/img/logo/logo.svg"
-                alt=""
+                v-if="appConfig.stylo.header.logo.src"
+                class="block dark:hidden h-9 w-9 lg:h-10 sm:w-10"
+                :src="appConfig.stylo.header.logo.src"
+                :alt="appConfig.stylo.header.logo.alt"
               />
-              <div class="text-lg">Stylô</div>
+              <img
+                v-if="
+                  appConfig.stylo.header.logo.srcDark ||
+                  appConfig.stylo.header.logo.src
+                "
+                class="hidden dark:block h-9 w-9 lg:h-10 sm:w-10"
+                :src="
+                  appConfig.stylo.header.logo.srcDark ||
+                  appConfig.stylo.header.logo.src
+                "
+                :alt="appConfig.stylo.header.logo.alt"
+              />
+              <div v-if="appConfig.stylo.header.displayTitle" class="text-lg">
+                {{ appConfig.stylo.title }}
+              </div>
             </NuxtLink>
             <div class="hidden lg:flex items-center lg:ml-6">
               <div class="h-9 items-center flex gap-x-4">
@@ -91,7 +105,7 @@ const isScrolled = useLayoutScrolled()
                   class="h-9 flex gap-1 items-center justify-center px-4 font-sans text-sm rounded-lg transition-colors duration-300 hover:bg-muted-200/70 dark:hover:bg-muted-700 text-muted-500 hover:text-muted-800 dark:text-muted-400 dark:hover:text-muted-100"
                 >
                   <Icon v-if="item.icon" :name="item.icon" />
-                  <span>{{ item.title }}</span>
+                  <span>{{ item.title || item._path }}</span>
                 </NuxtLink>
               </div>
             </div>
@@ -101,8 +115,6 @@ const isScrolled = useLayoutScrolled()
           >
             <AppNavbarSearch />
             <AppNavbarTheme />
-
-            <!-- Right nav -->
           </div>
         </div>
       </AppContainer>
@@ -156,13 +168,18 @@ const isScrolled = useLayoutScrolled()
           <div class="h-[calc(100%_-_64px)] overflow-y-auto slimscroll">
             <div class="flex flex-col gap-4 p-6">
               <NuxtLink
-                v-for="item in NavigationLinks"
-                :key="item.id"
-                :to="item.href"
-                active-class="bg-primary-500/20 text-primary-500"
+                v-for="item in navigation"
+                :key="item._id"
+                :to="item._path"
+                :class="[
+                  item._path.length > 1 && route.path.startsWith(item._path)
+                    ? 'bg-primary-500/20 text-primary-500'
+                    : '',
+                ]"
+                exact-active-class="bg-primary-500/20 text-primary-500"
                 class="text-muted-500 dark:text-muted-400 font-sans py-3 px-4 rounded-lg"
               >
-                {{ item.name }}
+                <span>{{ item.title }}</span>
               </NuxtLink>
             </div>
           </div>

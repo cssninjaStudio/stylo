@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const appConfig = useAppConfig()
+
 // @todo config
 const SiteMetadata = {
   social: [] as any[],
@@ -15,69 +17,68 @@ const year = new Date().getFullYear()
       >
         <span class="flex-none flex flex-row items-center">
           <NuxtLink
-            class="flex title-font font-medium items-center lg:justify-start justify-center text-muted-800 dark:text-muted-100"
+            v-if="appConfig.stylo.footer.logo.src"
+            class="flex title-font font-medium items-center lg:justify-start justify-center text-muted-800 dark:text-muted-100 mr-4 pr-4 border-r border-muted-300 dark:border-muted-600/60"
             to="/"
           >
-            <img src="/img/logo/logo.svg" alt="" class="h-8 w-8" />
-            <span class="sr-only">Logo</span>
+            <img
+              :src="appConfig.stylo.footer.logo.src"
+              :alt="appConfig.stylo.footer.logo.alt"
+              class="block dark:hidden h-8 w-8"
+            />
+            <img
+              :src="
+                appConfig.stylo.footer.logo.srcDark ||
+                appConfig.stylo.footer.logo.src
+              "
+              :alt="appConfig.stylo.footer.logo.alt"
+              class="hidden dark:block h-8 w-8"
+            />
           </NuxtLink>
           <p
-            class="font-sans text-sm ml-4 pl-4 border-l border-muted-300 dark:border-muted-600/60 text-muted-500 dark:text-muted-400"
+            v-if="appConfig.stylo.footer.copyright.enabled"
+            class="font-sans text-sm text-muted-500 dark:text-muted-400"
           >
             © {{ year }}
             <a
-              href="https://cssninja.io"
+              :href="appConfig.stylo.footer.copyright.href"
               class="font-sans text-sm text-primary-500"
-              rel="noopener noreferrer"
-              target="_blank"
+              :rel="appConfig.stylo.footer.copyright.rel"
+              :target="appConfig.stylo.footer.copyright.target"
             >
-              cssninja.io
+              {{ appConfig.stylo.footer.copyright.text }}
             </a>
           </p>
         </span>
         <span class="flex items-center gap-x-6">
-          <p class="text-sm text-muted-600 dark:text-muted-300">
+          <p
+            v-for="link in appConfig.stylo.footer.links"
+            :key="link.href"
+            class="text-sm text-muted-600 dark:text-muted-300"
+          >
             <NuxtLink
-              href="/"
-              class="font-sans text-sm text-muted-500 dark:text-muted-400"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Home
-            </NuxtLink>
-          </p>
-          <p class="text-sm text-muted-600 dark:text-muted-300">
-            <NuxtLink
-              to="/privacy"
+              :href="link.href"
+              :rel="link.rel"
+              :target="link.target"
               class="font-sans text-sm text-muted-500 dark:text-muted-400"
             >
-              Privacy
-            </NuxtLink>
-          </p>
-          <p class="text-sm text-muted-600">
-            <NuxtLink
-              to="/rss.xml"
-              class="font-sans text-sm text-muted-500 dark:text-muted-400"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              RSS
+              {{ link.text }}
             </NuxtLink>
           </p>
         </span>
         <span
-          class="grow inline-flex lg:ml-auto justify-center sm:justify-end mt-2 sm:mt-0"
+          class="grow inline-flex gap-1 lg:ml-auto justify-center sm:justify-end mt-2 sm:mt-0"
         >
           <NuxtLink
-            v-for="s in SiteMetadata.social"
-            :key="s.name"
-            :to="s.link"
+            v-for="social in appConfig.stylo.footer.social"
+            :key="social.href"
+            :to="social.href"
+            :title="social.title"
+            :target="social.target"
+            :rel="social.rel"
             class="h-10 w-10 flex items-center justify-center rounded-full hover:bg-muted-200 text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-            rel="noopener noreferrer"
-            target="_blank"
           >
-            <Icon pack="brandico" :name="s.icon" class="h-4 w-4" />
-            <span class="sr-only">{{ s.name }}</span>
+            <Icon :name="social.icon" class="h-4 w-4" />
           </NuxtLink>
         </span>
       </div>

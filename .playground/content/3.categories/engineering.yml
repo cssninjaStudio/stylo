@@ -1,5 +1,6 @@
-layout: blog-category
+layout: category
 title: Engineering
-image: /img/categories/6.png
+cover: 
+  src: /img/categories/6.png
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.
 featured: true

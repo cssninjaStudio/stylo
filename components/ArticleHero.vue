@@ -13,8 +13,8 @@ const { data: author } = await useAsyncData(
     !props.article.author
       ? Promise.resolve(null)
       : queryContent<AuthorParsedContent>()
-          .only(['_path', 'image', 'title'])
-          .where({ layout: 'blog-author', _path: props.article.author })
+          .only(['_path', 'avatar', 'title', 'subtitle'])
+          .where({ layout: 'author', _path: props.article.author })
           .findOne()
 )
 </script>
@@ -22,26 +22,32 @@ const { data: author } = await useAsyncData(
 <template>
   <AppSection class="bg-muted-100 dark:bg-muted-1000 overflow-hidden">
     <AppContainer>
-      <div class="grid grid-cols-12 md:gap-x-10 gap-y-10 pt-6 sm:pt-10">
-        <!-- Featured image -->
+      <header class="grid grid-cols-12 md:gap-x-10 gap-y-10 pt-6 sm:pt-10">
+        <!-- Cover image -->
         <div
+          v-if="props.article.cover"
           class="col-span-12 ltablet:col-span-5 ltablet:col-start-2 lg:col-span-5"
         >
           <img
-            :src="props.article.cover"
-            alt=""
-            class="block max-w-full w-full md:w-[540px] md:h-[447px] ltablet:w-[459px] ltablet:h-[380px] object-cover rounded-2xl mx-auto"
+            :src="props.article.cover.src"
+            :alt="props.article.cover.alt"
+            class="block dark:hidden max-w-full w-full md:w-[540px] md:h-[447px] ltablet:w-[459px] ltablet:h-[380px] object-cover rounded-2xl mx-auto"
+          />
+          <img
+            :src="props.article.cover.srcDark || props.article.cover.src"
+            :alt="props.article.cover.alt"
+            class="hidden dark:block max-w-full w-full md:w-[540px] md:h-[447px] ltablet:w-[459px] ltablet:h-[380px] object-cover rounded-2xl mx-auto"
           />
         </div>
 
+        <!-- Article meta -->
         <div
           class="col-span-12 ltablet:col-span-5 lg:col-span-5 ltablet:col-start-7 lg:col-start-7"
         >
           <div class="h-full flex items-center">
             <div class="w-full max-w-md ptablet:mx-auto">
-              <!-- Categories -->
               <div v-if="props.article.category" class="mb-4">
-                <ArticleCategoryBadge :path="props.article.category" />
+                <ArticleBadgeCategory :path="props.article.category" />
               </div>
               <h1
                 class="font-sans text-muted-800 dark:text-white font-bold text-3xl"
@@ -69,25 +75,34 @@ const { data: author } = await useAsyncData(
                     >
                       {{ author.title }}
                     </NuxtLink>
-                    <p class="text-muted-600 dark:text-muted-400 text-xs">
+                    <p
+                      v-if="props.article.publishDate"
+                      class="text-muted-600 dark:text-muted-400 text-xs"
+                    >
                       published on
                       {{ formatDate(props.article.publishDate) }}
                     </p>
                   </div>
                 </div>
-                <p v-else class="text-muted-600 dark:text-muted-400 text-xs">
+                <p
+                  v-else-if="props.article.publishDate"
+                  class="text-muted-600 dark:text-muted-400 text-xs"
+                >
                   published on
                   {{ formatDate(props.article.publishDate) }}
                 </p>
-                <div class="font-sans text-xs sm:text-sm text-muted-400">
+                <div
+                  v-if="props.article.readingTime"
+                  class="font-sans text-xs sm:text-sm text-muted-400"
+                >
                   <span class="pr-2">—</span>
-                  <span>{{ props.article.readingTime?.text }}</span>
+                  <span>{{ props.article.readingTime.text }}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </AppContainer>
   </AppSection>
 </template>

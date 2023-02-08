@@ -1,11 +1,12 @@
 ---
-layout: blog-post
+layout: article
 title: Determining the right direction when working on a graphical or web project
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/wallace-knolder
 publishDate: 2022-09-11T00:00:00.000Z
 image: /img/posts/10.png
-cover: /img/posts/10.png
+cover:
+  src: /img/posts/10.png
 category: /categories/coaching
 tags:
   - design

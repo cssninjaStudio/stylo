@@ -14,12 +14,16 @@ const props = defineProps<{
       <div
         class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left"
       >
-        <div class="h-14 w-14">
+        <div v-if="props.author?.avatar" class="h-14 w-14">
           <img
-            v-if="props.author?.image"
-            :src="props.author?.image"
-            alt=""
-            class="w-full h-full object-center object-cover rounded-full"
+            :src="props.author.avatar.src"
+            :alt="props.author.avatar.alt"
+            class="block dark:hidden w-full h-full object-center object-cover rounded-full"
+          />
+          <img
+            :src="props.author.avatar.srcDark || props.author.avatar.src"
+            :alt="props.author.avatar.alt"
+            class="hidden dark:block w-full h-full object-center object-cover rounded-full"
           />
         </div>
         <div class="relative">
@@ -32,10 +36,10 @@ const props = defineProps<{
             </NuxtLink>
           </h3>
           <p
-            v-if="props.author?.description"
+            v-if="props.author?.subtitle"
             class="font-sans text-sm text-muted-400"
           >
-            {{ props.author?.description }}
+            {{ props.author?.subtitle }}
           </p>
         </div>
         <div class="sm:ml-auto">

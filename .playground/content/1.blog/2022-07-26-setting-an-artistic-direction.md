@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: 8 tips you need to know when setting up branding and art direction for a customer
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/wallace-knolder
 publishDate: 2022-07-26T00:00:00.000Z
 featured: false
 image: /img/posts/15.png
-cover: /img/posts/15.png
+cover:
+  src: /img/posts/15.png
 category: /categories/tutorials
 tags:
   - ui & ux

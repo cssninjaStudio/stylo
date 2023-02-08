@@ -21,9 +21,9 @@ definePageMeta({
         Tags act as a way to mark posts and classify them based on the kind of information they provide.
       </template>
       <template #links>
-        <TagLinks>
-          <TagLink to="/tags"><Icon name="lucide:arrow-left" /><span>Tags</span></TagLink>
-        </TagLinks>
+        <ButtonLinks>
+          <ButtonLink to="/tags"><Icon name="lucide:arrow-left" /><span>Tags</span></ButtonLink>
+        </ButtonLinks>
       </template>
     </Articles>
   </NuxtLayout>

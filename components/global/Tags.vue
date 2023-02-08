@@ -3,13 +3,9 @@ import type { BlogParsedContent } from '../../types'
 
 const props = withDefaults(
   defineProps<{
-    title?: string
-    subtitle?: string
     mode?: 'button' | 'card'
   }>(),
   {
-    title: undefined,
-    subtitle: undefined,
     mode: 'card',
   }
 )
@@ -28,7 +24,7 @@ const icons = [
 const { data: articles } = await useAsyncData(() =>
   queryContent<BlogParsedContent>()
     .only(['tags'])
-    .where({ layout: 'blog-post' })
+    .where({ layout: 'article' })
     .find()
 )
 const tags = computed(() => {
@@ -49,8 +45,7 @@ const tags = computed(() => {
   <AppSection class="bg-white dark:bg-muted-900 pb-0">
     <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
       <AppContainerHeader
-        :title="props.title"
-        :subtitle="props.subtitle"
+        v-if="'title' in $slots || 'subtitle' in $slots || 'links' in $slots"
         class="pt-20 mb-10"
       >
         <template #title>
@@ -63,20 +58,15 @@ const tags = computed(() => {
           <ContentSlot :use="$slots.links" unwrap="p" />
         </template>
       </AppContainerHeader>
-      <!-- Placeholder -->
-      <div v-if="tags?.length === 0">
-        <SectionPlaceholder
+
+      <div v-if="!tags?.length">
+        <AppSectionPlaceholder
           title="No tags to show"
           subtitle="We couldn't find any tags to show. Start by writing your first blog posts and tag them."
         >
-          <img
-            class="w-full max-w-md mx-auto mb-6"
-            src="/img/illustrations/placeholder/placeholder-5.svg"
-            alt="No tags to show"
-          />
-        </SectionPlaceholder>
+          <ImagePlaceholderTags class="w-full max-w-md mx-auto mb-6" />
+        </AppSectionPlaceholder>
       </div>
-      <!-- Tag list -->
       <template v-else>
         <div v-if="props.mode === 'button'" class="flex flex-wrap gap-3">
           <TagButtonLink

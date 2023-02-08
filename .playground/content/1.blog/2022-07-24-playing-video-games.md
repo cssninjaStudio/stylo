@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: Playing video games can drastically improve your mental health recovery
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/frieda-weinberg
 publishDate: 2022-07-24T00:00:00.000Z
 featured: false
 image: /img/posts/17.png
-cover: /img/posts/17.png
+cover:
+  src: /img/posts/17.png
 category: /categories/lifestyle
 tags:
   - lifestyle

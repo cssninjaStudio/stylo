@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: How ux transformed the face of the web from 2015 to 2022
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/clark-smith
 publishDate: 2023-01-10T00:00:00.000Z
 featured: false
 image: /img/posts/2.png
-cover: /img/posts/2.png
+cover:
+  src: /img/posts/2.png
 category: /categories/ux-design
 toc: true
 tags:

@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: A few things you should know about key account management
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/alan-mitchells
 publishDate: 2022-08-10T00:00:00.000Z
 featured: false
 image: /img/posts/8.png
-cover: /img/posts/8.png
+cover:
+  src: /img/posts/8.png
 category: /categories/coaching
 tags:
   - account

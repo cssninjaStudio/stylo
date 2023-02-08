@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: A deep dive in business analysis of the startup ecosystem
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/harold-miller
 publishDate: 2022-08-19T00:00:00.000Z
 featured: true
 image: /img/posts/12.png
-cover: /img/posts/12.png
+cover:
+  src: /img/posts/12.png
 category: /categories/business
 tags:
   - business

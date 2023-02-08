@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   extends: ['nuxt-seo-kit'],
   modules: [
     '@vueuse/nuxt',
-    '@nuxthq/studio',
+    // '@nuxthq/studio',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     'pinceau/nuxt',
@@ -27,6 +27,6 @@ export default defineNuxtConfig({
   pinceau: {
     configFileName: 'tokens.config',
     preflight: false,
-    studio: true,
+    // studio: true,
   },
 })

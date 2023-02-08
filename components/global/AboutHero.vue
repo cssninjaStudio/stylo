@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const props = defineProps<{
-  title?: string
-  subtitle?: string
   image?: string
 }>()
 </script>
@@ -17,20 +15,16 @@ const props = defineProps<{
             class="max-w-md ptablet:mx-auto text-center ltablet:text-left lg:text-left pt-10 ltablet:pt-0 lg:pt-0"
           >
             <h1
-              v-if="'title' in $slots || props.title"
+              v-if="'title' in $slots"
               class="font-sans text-4xl sm:text-5xl font-medium leading-tight text-muted-800 dark:text-white"
             >
-              <ContentSlot :use="$slots.title" unwrap="p">
-                {{ props.title }}
-              </ContentSlot>
+              <ContentSlot :use="$slots.title" unwrap="p" />
             </h1>
             <h3
-              v-if="'subtitle' in $slots || props.subtitle"
+              v-if="'subtitle' in $slots"
               class="py-2 font-sans font-medium uppercase text-base tracking-widest text-primary-500"
             >
-              <ContentSlot :use="$slots.subtitle" unwrap="p">
-                {{ props.subtitle }}
-              </ContentSlot>
+              <ContentSlot :use="$slots.subtitle" unwrap="p" />
             </h3>
             <p class="font-sans text-muted-500 dark:text-muted-400">
               <ContentSlot :use="$slots.default" unwrap="p" />

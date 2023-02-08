@@ -1,43 +1,56 @@
 <script setup lang="ts">
+import { hash } from 'ohash'
 import type { AuthorParsedContent } from '../../types'
 
 const props = withDefaults(
   defineProps<{
-    title?: string
-    subtitle?: string
     filters?: Record<string, any>
     sort?: Record<string, any>
     skip?: number
     limit?: number
+    mode?: 'grid' | 'card'
   }>(),
   {
-    title: undefined,
-    subtitle: undefined,
     skip: 0,
     limit: 30,
+    mode: 'card',
     filters: () => ({}),
     sort: () => ({ publishDate: -1 }),
   }
 )
 
-const { data: authors } = await useAsyncData(() =>
-  queryContent<AuthorParsedContent>()
-    .only(['_path', 'image', 'title', 'description'])
-    .where({ layout: 'blog-author', ...props.filters })
-    .sort(props.sort)
-    .limit(props.limit)
-    .skip(props.skip)
-    .find()
+const route = useRoute()
+const requestKey = computed(() =>
+  hash({ ...props, layout: 'author', path: route.path })
+)
+
+const { data: authors } = await useAsyncData(
+  requestKey.value,
+  () =>
+    queryContent<AuthorParsedContent>()
+      .only(['_path', 'avatar', 'title', 'subtitle'])
+      .where({ layout: 'author', ...props.filters })
+      .sort(props.sort)
+      .limit(props.limit)
+      .skip(props.skip)
+      .find(),
+  {
+    watch: [
+      () => props.filters,
+      () => props.sort,
+      () => props.skip,
+      () => props.limit,
+    ],
+  }
 )
 </script>
 
 <template>
-  <AppSection class="min-h-screen bg-muted-100 dark:bg-muted-900">
-    <AppContainer>
+  <AppSection class="bg-muted-100 dark:bg-muted-900 pb-0">
+    <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
       <AppContainerHeader
+        v-if="'title' in $slots || 'subtitle' in $slots || 'links' in $slots"
         class="pt-20 mb-10"
-        :title="props.title"
-        :subtitle="props.subtitle"
       >
         <template #title>
           <ContentSlot :use="$slots.title" unwrap="p" />
@@ -50,30 +63,36 @@ const { data: authors } = await useAsyncData(() =>
         </template>
       </AppContainerHeader>
 
-      <!-- Placeholder -->
-      <div v-if="authors?.length === 0">
-        <SectionPlaceholder
+      <div v-if="!authors?.length">
+        <AppSectionPlaceholder
           title="No authors found"
           subtitle="We couldn't find any authors to display. Use your Nuxt Studio account to add authors in your theme configuration."
         >
-          <img
-            class="w-full max-w-sm mx-auto mb-6"
-            src="/img/illustrations/placeholder/placeholder-3.svg"
-            alt="Add some categories"
+          <ImagePlaceholderAuthors class="w-full max-w-sm mx-auto mb-6" />
+        </AppSectionPlaceholder>
+      </div>
+      <template v-else>
+        <div
+          v-if="props.mode === 'card'"
+          class="mt-6 grid sm:grid-cols-2 ltablet:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AuthorCard
+            v-for="author in authors"
+            :key="author._path"
+            :author="author"
           />
-        </SectionPlaceholder>
-      </div>
-      <!-- Authors list -->
-      <div
-        v-else
-        class="mt-6 grid sm:grid-cols-2 ltablet:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <AuthorCard
-          v-for="author in authors"
-          :key="author._path"
-          :author="author"
-        />
-      </div>
+        </div>
+        <div
+          v-else
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8"
+        >
+          <AuthorGrid
+            v-for="author in authors"
+            :key="author._path"
+            :author="author"
+          />
+        </div>
+      </template>
     </AppContainer>
   </AppSection>
 </template>

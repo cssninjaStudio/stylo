@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: Setting a Nuxt based markdown content project using the latest Nuxt 3 release
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/clark-smith
 publishDate: 2022-07-16T00:00:00.000Z
 featured: true
 image: /img/posts/18.png
-cover: /img/posts/18.png
+cover:
+  src: /img/posts/18.png
 category: /categories/engineering
 tags:
   - development

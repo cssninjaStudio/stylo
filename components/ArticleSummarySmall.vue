@@ -7,36 +7,45 @@ const props = defineProps<{
 
 const { formatDate } = useDateFormatter()
 
-const image = computed(() => props.article.image || props.article.cover)
-
 const { data: author } = await useAsyncData(
   `author-meta-${props.article.author}`,
   () =>
     !props.article.author
       ? Promise.resolve(null)
       : queryContent<AuthorParsedContent>()
-          .only(['_path', 'image', 'title'])
-          .where({ layout: 'blog-author', _path: props.article.author })
-          .findOne()
+          .only(['_path', 'avatar', 'title', 'subtitle'])
+          .where({ layout: 'author', _path: props.article.author })
+          .findOne(),
+  {
+    watch: [() => props.article.author],
+  }
 )
 </script>
 
 <template>
-  <Card class="p-3 rounded-lg">
+  <AppCard class="p-3 rounded-lg">
     <div class="relative">
-      <NuxtLink :to="props.article._path" class="block">
+      <NuxtLink
+        v-if="props.article.cover"
+        :to="props.article._path"
+        class="block"
+      >
         <img
-          v-if="image"
-          :src="image"
-          alt=""
-          class="block lg:block rounded-md w-full h-64 md:h-40 object-cover"
+          :src="props.article.cover.src"
+          :alt="props.article.cover.alt"
+          class="block dark:hidden rounded-md w-full h-64 md:h-40 object-cover"
+        />
+        <img
+          :src="props.article.cover.srcDark || props.article.cover.src"
+          :alt="props.article.cover.alt"
+          class="hidden dark:block rounded-md w-full h-64 md:h-40 object-cover"
         />
       </NuxtLink>
       <div
         v-if="props.article.category"
         class="absolute top-4 right-4 scale-90 z-30"
       >
-        <ArticleCategoryBadge :path="props.article.category" />
+        <ArticleBadgeCategory :path="props.article.category" />
       </div>
     </div>
 
@@ -59,11 +68,18 @@ const { data: author } = await useAsyncData(
       <div>
         <span v-if="author" class="flex items-center mr-6">
           <img
-            v-if="author.image"
-            :src="author.image"
-            alt=""
-            class="h-8 w-8 rounded-full mr-2 object-cover"
+            v-if="author.avatar"
+            :src="author.avatar.src"
+            :alt="author.avatar.alt"
+            class="block dark:hidden h-8 w-8 rounded-full mr-2 object-cover"
           />
+          <img
+            v-if="author.avatar"
+            :src="author.avatar.srcDark || author.avatar.src"
+            :alt="author.avatar.alt"
+            class="hidden dark:block h-8 w-8 rounded-full mr-2 object-cover"
+          />
+
           <div>
             <h4 class="font-sans text-xs text-muted-800 dark:text-muted-100">
               <NuxtLink :to="author._path">
@@ -87,5 +103,5 @@ const { data: author } = await useAsyncData(
         </NuxtLink>
       </div>
     </div>
-  </Card>
+  </AppCard>
 </template>

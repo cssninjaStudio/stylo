@@ -1,22 +1,24 @@
-layout: blog-author
+layout: author
 title: Frieda Weinberg
-description: Health Coach
-image: /img/avatars/small/12.svg
-contact:
-  - name: Email
-    link: mailto:frieda@cssninja.io
+subtitle: Health Coach
 location: Berlin, DE
 company: Freelance
-bio: >
+description: >
   Meet Frieda Weinberg, a passionate health coach who is committed to helping her clients achieve optimal wellness. 
   After years of personal experimentation, she decided to turn her passion into a career.
+avatar:
+  src: /img/avatars/small/12.svg
+  alt: Frieda Weinberg Avatar
+contact:
+  - text: Email
+    href: mailto:frieda@cssninja.io
 social:
-  - name: LinkedIn
-    link: https://www.linkedin.com/company/cssninja/
+  - title: LinkedIn
+    href: https://www.linkedin.com/company/cssninja/
     icon: brandico:linkedin
-  - name: Facebook
-    link: https://www.facebook.com/cssninjaStudio
+  - title: Facebook
+    href: https://www.facebook.com/cssninjaStudio
     icon: brandico:facebook
-  - name: Twitter
-    link: https://twitter.com/cssninjaStudio
+  - title: Twitter
+    href: https://twitter.com/cssninjaStudio
     icon: brandico:twitter

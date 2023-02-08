@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: Exploring UX Patterns in Ecommerce websites and applications
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/maya-piretti
 publishDate: 2022-08-27T00:00:00.000Z
 featured: true
 image: /img/posts/6.png
-cover: /img/posts/6.png
+cover:
+  src: /img/posts/6.png
 category: /categories/ux-design
 tags:
   - ui & ux

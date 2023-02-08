@@ -1,12 +1,13 @@
 ---
-layout: blog-post
+layout: article
 title: 8 things that will help you increase your productivity
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/maya-piretti
 publishDate: 2022-08-28T00:00:00.000Z
 featured: false
 image: /img/posts/3.png
-cover: /img/posts/3.png
+cover:
+  src: /img/posts/3.png
 category: /categories/coaching
 tags:
   - productivity

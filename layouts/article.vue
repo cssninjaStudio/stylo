@@ -7,7 +7,6 @@ const {
   page,
   next,
   prev,
-  surround,
 }: {
   page?: Ref<BlogParsedContent>
   next?: Ref<ParsedContentMeta>
@@ -26,7 +25,7 @@ const {
 <template>
   <div v-if="page" class="relative">
     <ArticleHero :article="page" />
-    <AppSection class="relative bg-white dark:bg-muted-900">
+    <AppSection class="relative bg-white dark:bg-muted-900 min-h-[75vh]">
       <AppContainer>
         <div
           :class="
@@ -36,7 +35,8 @@ const {
           "
         >
           <div
-            class="w-full grow prose-img:rounded-xl prose prose-a:text-primary-500 dark:prose-a:text-primary-400 prose-purple xxl:prose-lg dark:prose-invert"
+            :class="page._empty ? 'mx-auto' : ''"
+            class="w-full grow prose-img:rounded-xl prose prose-muted prose-primary xxl:prose-lg dark:prose-invert"
           >
             <slot />
           </div>
@@ -45,7 +45,7 @@ const {
             v-if="page.toc"
             class="absolute top-12 left-4 sm:left-24 ltablet:relative ltablet:left-0 ltablet:top-0 ltablet:pl-12 ltablet:pt-12 ltablet:shrink-0 ltablet:w-72 lg:relative lg:left-0 lg:top-0 lg:pl-12 lg:pt-12 lg:shrink-0 lg:w-72 xxl:pl-24"
           >
-            <PageToc class="sticky top-36" />
+            <AppPageToc class="sticky top-36" />
           </div>
         </div>
 
@@ -61,7 +61,7 @@ const {
           <div class="pb-16 flex justify-between">
             <div class="w-1/3">
               <NuxtLink
-                v-if="next && next.layout === 'blog-post'"
+                v-if="next && next.layout === 'article'"
                 class="group font-sans text-sm no-underline"
                 :to="next._path"
               >
@@ -84,7 +84,7 @@ const {
 
             <div class="w-1/3">
               <NuxtLink
-                v-if="prev && prev.layout === 'blog-post'"
+                v-if="prev && prev.layout === 'article'"
                 class="group font-sans text-sm no-underline"
                 :to="prev._path"
               >

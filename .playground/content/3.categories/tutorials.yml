@@ -1,5 +1,6 @@
-layout: blog-category
+layout: category
 title: Tutorials
-image: /img/categories/1.png
+cover: 
+  src: /img/categories/1.png
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.
 featured: true

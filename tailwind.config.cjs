@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
@@ -21,6 +20,10 @@ module.exports = {
           raw: '(min-width: 768px) and (max-width: 1024px) and (orientation: landscape)',
         },
       },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Inter', 'sans-serif'],
+      },
       colors: {
         slate: {
           1000: '#0a101f',
@@ -42,36 +45,164 @@ module.exports = {
         warning: colors.amber,
         danger: colors.rose,
         muted: {
-          50: 'rgb(var(--folio-color-muted-50) / <alpha-value>)',
-          100: 'rgb(var(--folio-color-muted-100) / <alpha-value>)',
-          200: 'rgb(var(--folio-color-muted-200) / <alpha-value>)',
-          300: 'rgb(var(--folio-color-muted-300) / <alpha-value>)',
-          400: 'rgb(var(--folio-color-muted-400) / <alpha-value>)',
-          500: 'rgb(var(--folio-color-muted-500) / <alpha-value>)',
-          600: 'rgb(var(--folio-color-muted-600) / <alpha-value>)',
-          700: 'rgb(var(--folio-color-muted-700) / <alpha-value>)',
-          800: 'rgb(var(--folio-color-muted-800) / <alpha-value>)',
-          900: 'rgb(var(--folio-color-muted-900) / <alpha-value>)',
-          1000: 'rgb(var(--folio-color-muted-1000) / <alpha-value>)',
+          50: 'rgb(var(--color-muted-50) / <alpha-value>)',
+          100: 'rgb(var(--color-muted-100) / <alpha-value>)',
+          200: 'rgb(var(--color-muted-200) / <alpha-value>)',
+          300: 'rgb(var(--color-muted-300) / <alpha-value>)',
+          400: 'rgb(var(--color-muted-400) / <alpha-value>)',
+          500: 'rgb(var(--color-muted-500) / <alpha-value>)',
+          600: 'rgb(var(--color-muted-600) / <alpha-value>)',
+          700: 'rgb(var(--color-muted-700) / <alpha-value>)',
+          800: 'rgb(var(--color-muted-800) / <alpha-value>)',
+          900: 'rgb(var(--color-muted-900) / <alpha-value>)',
+          1000: 'rgb(var(--color-muted-1000) / <alpha-value>)',
         },
         primary: {
-          50: 'rgb(var(--folio-color-primary-50) / <alpha-value>)',
-          100: 'rgb(var(--folio-color-primary-100) / <alpha-value>)',
-          200: 'rgb(var(--folio-color-primary-200) / <alpha-value>)',
-          300: 'rgb(var(--folio-color-primary-300) / <alpha-value>)',
-          400: 'rgb(var(--folio-color-primary-400) / <alpha-value>)',
-          500: 'rgb(var(--folio-color-primary-500) / <alpha-value>)',
-          600: 'rgb(var(--folio-color-primary-600) / <alpha-value>)',
-          700: 'rgb(var(--folio-color-primary-700) / <alpha-value>)',
-          800: 'rgb(var(--folio-color-primary-800) / <alpha-value>)',
-          900: 'rgb(var(--folio-color-primary-900) / <alpha-value>)',
-          // 1000: 'rgb(var(--folio-color-muted-1000) / <alpha-value>)',
+          50: 'rgb(var(--color-primary-50) / <alpha-value>)',
+          100: 'rgb(var(--color-primary-100) / <alpha-value>)',
+          200: 'rgb(var(--color-primary-200) / <alpha-value>)',
+          300: 'rgb(var(--color-primary-300) / <alpha-value>)',
+          400: 'rgb(var(--color-primary-400) / <alpha-value>)',
+          500: 'rgb(var(--color-primary-500) / <alpha-value>)',
+          600: 'rgb(var(--color-primary-600) / <alpha-value>)',
+          700: 'rgb(var(--color-primary-700) / <alpha-value>)',
+          800: 'rgb(var(--color-primary-800) / <alpha-value>)',
+          900: 'rgb(var(--color-primary-900) / <alpha-value>)',
         },
       },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Inter', 'sans-serif'],
-      },
+      typography: ({ theme }) => ({
+        muted: {
+          css: {
+            '--tw-prose-body': theme('colors.muted[700]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-headings': theme('colors.muted[900]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-lead': theme('colors.muted[600]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-links': theme('colors.muted[900]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-bold': theme('colors.muted[900]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-counters': theme('colors.muted[500]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-bullets': theme('colors.muted[300]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-hr': theme('colors.muted[200]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-quotes': theme('colors.muted[900]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-quote-borders': theme('colors.muted[200]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-captions': theme('colors.muted[500]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-code': theme('colors.muted[900]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-pre-code': theme('colors.muted[200]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-pre-bg': theme('colors.muted[800]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-th-borders': theme('colors.muted[300]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-td-borders': theme('colors.muted[200]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-body': theme('colors.muted[300]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-headings': theme('colors.white'),
+            '--tw-prose-invert-lead': theme('colors.muted[400]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-links': theme('colors.white'),
+            '--tw-prose-invert-bold': theme('colors.white'),
+            '--tw-prose-invert-counters': theme('colors.muted[400]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-bullets': theme('colors.muted[600]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-hr': theme('colors.muted[700]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-quotes': theme('colors.muted[100]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-quote-borders': theme(
+              'colors.muted[700]'
+            ).replace('<alpha-value>', 100),
+            '--tw-prose-invert-captions': theme('colors.muted[400]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-code': theme('colors.white').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-pre-code': theme('colors.muted[300]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+            '--tw-prose-invert-th-borders': theme('colors.muted[600]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-td-borders': theme('colors.muted[700]').replace(
+              '<alpha-value>',
+              100
+            ),
+          },
+        },
+        primary: {
+          css: {
+            '--tw-prose-links': theme('colors.primary[600]').replace(
+              '<alpha-value>',
+              100
+            ),
+            '--tw-prose-invert-links': theme('colors.primary[500]').replace(
+              '<alpha-value>',
+              100
+            ),
+          },
+        },
+      }),
     },
   },
   plugins: [
@@ -101,23 +232,5 @@ module.exports = {
         },
       })
     }),
-    function ({ addBase, theme }) {
-      function extractColorVars(colorObj, colorGroup = '') {
-        return Object.keys(colorObj).reduce((vars, colorKey) => {
-          const value = colorObj[colorKey]
-
-          const newVars =
-            typeof value === 'string'
-              ? { [`--color${colorGroup}-${colorKey}`]: value }
-              : extractColorVars(value, `-${colorKey}`)
-
-          return { ...vars, ...newVars }
-        }, {})
-      }
-
-      addBase({
-        ':root': extractColorVars(theme('colors')),
-      })
-    },
   ],
 }

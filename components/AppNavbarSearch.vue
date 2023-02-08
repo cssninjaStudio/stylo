@@ -89,7 +89,7 @@ onKeyStroke('k', (event) => {
         v-if="isPanelOpen"
         href="#"
         role="button"
-        class="fixed inset-0 z-20 bg-gray-500/75"
+        class="fixed inset-0 z-20 bg-muted-500/75"
         @click.prevent="isPanelOpen = false"
         aria-label="Close panel"
       ></a>
@@ -106,7 +106,7 @@ onKeyStroke('k', (event) => {
       <FocusTrap
         v-if="isPanelOpen"
         v-model:active="isPanelOpen"
-        :initial-focus="() => ($refs.searchText as any)"
+        :initial-focus="() => ($refs.searchText as HTMLInputElement)"
       >
         <div class="fixed inset-y-0 right-0 flex z-30">
           <div class="relative w-screen max-w-md">

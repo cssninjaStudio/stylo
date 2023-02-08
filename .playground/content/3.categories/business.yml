@@ -1,4 +1,5 @@
-layout: blog-category
+layout: category
 title: Business
-image: /img/categories/5.png
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est.
+cover: 
+  src: /img/categories/5.png

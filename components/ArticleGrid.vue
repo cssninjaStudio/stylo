@@ -7,32 +7,39 @@ const props = defineProps<{
 
 const { formatDate } = useDateFormatter()
 
-const image = computed(() => props.article.image || props.article.cover)
-
 const { data: author } = await useAsyncData(
   `author-meta-${props.article.author}`,
   () =>
     !props.article.author
       ? Promise.resolve(null)
       : queryContent<AuthorParsedContent>()
-          .only(['_path', 'image', 'title'])
-          .where({ layout: 'blog-author', _path: props.article.author })
-          .findOne()
+          .only(['_path', 'avatar', 'title', 'subtitle'])
+          .where({ layout: 'author', _path: props.article.author })
+          .findOne(),
+  {
+    watch: [() => props.article.author],
+  }
 )
 </script>
 
 <template>
-  <Card class="p-3 rounded-xl">
+  <AppCard class="p-3 rounded-xl">
     <div class="relative rounded-lg overflow-hidden">
       <div class="relative">
         <img
-          v-if="image"
-          :src="image"
-          alt=""
-          class="block w-full h-[420px] object-cover rounded-lg"
+          v-if="props.article.cover"
+          :src="props.article.cover.src"
+          :alt="props.article.cover.alt"
+          class="block dark:hidden w-full h-[420px] object-cover rounded-lg"
+        />
+        <img
+          v-if="props.article.cover"
+          :src="props.article.cover.src"
+          :alt="props.article.cover.alt"
+          class="hidden dark:block w-full h-[420px] object-cover rounded-lg"
         />
         <div v-if="props.article.category" class="absolute top-4 right-4 z-30">
-          <ArticleCategoryBadge :path="props.article.category" />
+          <ArticleBadgeCategory :path="props.article.category" />
         </div>
       </div>
       <div
@@ -60,14 +67,19 @@ const { data: author } = await useAsyncData(
             <div>
               <span v-if="author" class="flex items-center gap-2">
                 <NuxtLink
+                  v-if="author.avatar"
                   :to="author._path"
                   class="h-8 w-8 flex items-center justify-center shrink-0 rounded-full bg-white dark:bg-muted-800"
                 >
                   <img
-                    v-if="author?.image"
-                    :src="author?.image"
-                    alt=""
-                    class="h-8 w-8 rounded-full object-cover scale-90"
+                    :src="author.avatar.src"
+                    :alt="author.avatar.alt"
+                    class="block dark:hidden h-8 w-8 rounded-full object-cover scale-90"
+                  />
+                  <img
+                    :src="author.avatar.srcDark || author.avatar.src"
+                    :alt="author.avatar.alt"
+                    class="hidden dark:block h-8 w-8 rounded-full object-cover scale-90"
                   />
                 </NuxtLink>
                 <div>
@@ -86,7 +98,7 @@ const { data: author } = await useAsyncData(
         </div>
       </div>
     </div>
-  </Card>
+  </AppCard>
 </template>
 
 <style scoped>

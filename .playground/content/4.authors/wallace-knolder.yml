@@ -1,23 +1,25 @@
-layout: blog-author
+layout: author
 title: Wallace Knolder
-featured: true
-description: Art Director
-image: /img/avatars/small/16.svg
-contact:
-  - name: Email
-    link: mailto:wallace@cssninja.io
+subtitle: Art Director
 location: Dublin, IR
 company: Freelance
-bio: >
+featured: true
+description: >
   Meet Wallace Knolder, a highly talented art director with a keen eye for detail. 
   Wallace began his career in the creative industry as a graphic designer, but quickly realized his true passion was in art direction.
+avatar:
+  src: /img/avatars/small/16.svg
+  alt: Wallace Knolder Avatar
+contact:
+  - text: Email
+    href: mailto:wallace@cssninja.io
 social:
-  - name: LinkedIn
-    link: https://www.linkedin.com/company/cssninja/
+  - title: LinkedIn
+    href: https://www.linkedin.com/company/cssninja/
     icon: brandico:linkedin
-  - name: Facebook
-    link: https://www.facebook.com/cssninjaStudio
+  - title: Facebook
+    href: https://www.facebook.com/cssninjaStudio
     icon: brandico:facebook
-  - name: Twitter
-    link: https://twitter.com/cssninjaStudio
+  - title: Twitter
+    href: https://twitter.com/cssninjaStudio
     icon: brandico:twitter

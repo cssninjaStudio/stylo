@@ -1,23 +1,25 @@
-layout: blog-author
+layout: author
 title: Alan Mitchells
 featured: true
-description: Account Manager
-image: /img/avatars/small/7.svg
-contact:
-  - name: Email
-    link: mailto:alan@cssninja.io
+subtitle: Account Manager
 location: Miami, FL
 company: Freelance
-bio: >
+description: >
   Alan Mitchells is a top 5% account manager with over 15 years of experience in sales and customer service. 
   He has a strong background in building and maintaining sustainable relationships with clients.
+avatar:
+  src: /img/avatars/small/7.svg
+  alt: Alan Mitchells Avatar
+contact:
+  - text: Email
+    href: mailto:alan@cssninja.io
 social:
-  - name: LinkedIn
-    link: https://www.linkedin.com/company/cssninja/
+  - title: LinkedIn
+    href: https://www.linkedin.com/company/cssninja/
     icon: brandico:linkedin
-  - name: Facebook
-    link: https://www.facebook.com/cssninjaStudio
+  - title: Facebook
+    href: https://www.facebook.com/cssninjaStudio
     icon: brandico:facebook
-  - name: Twitter
-    link: https://twitter.com/cssninjaStudio
+  - title: Twitter
+    href: https://twitter.com/cssninjaStudio
     icon: brandico:twitter

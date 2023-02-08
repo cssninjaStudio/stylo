@@ -19,8 +19,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: 'https://folio.cssninja.io/',
-      siteName: 'Folio',
+      siteUrl: 'https://stylo.cssninja.io/',
+      siteName: 'stylo',
       siteDescription: '',
       language: 'en-US',
       titleSeparator: '·',

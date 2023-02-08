@@ -4,13 +4,12 @@ import type { ReadTimeResults } from 'reading-time'
 export interface PageParsedContent extends ParsedContent {
   title?: string
   description?: string
-  image?: string
-  cover?: string
+  ogImage?: string
 
   publishDate?: string
   readingTime: ReadTimeResults
 
-  layout: 'blog-category' | 'blog-post' | 'blog-author' | 'empty' | 'default'
+  layout: 'category' | 'article' | 'author' | 'empty' | 'default'
 }
 
 export interface DefaultPageParsedContent extends ParsedContent {
@@ -21,7 +20,7 @@ export interface DefaultPageParsedContent extends ParsedContent {
 export interface CategoryParsedContent extends PageParsedContent {
   featured?: boolean
 
-  layout: 'blog-category'
+  layout: 'category'
 }
 
 export interface AuthorParsedContent extends PageParsedContent {
@@ -30,7 +29,7 @@ export interface AuthorParsedContent extends PageParsedContent {
   location?: string
   company?: string
 
-  layout: 'blog-author'
+  layout: 'author'
 }
 
 export interface BlogParsedContent extends PageParsedContent {
@@ -38,7 +37,12 @@ export interface BlogParsedContent extends PageParsedContent {
   author?: string
   category?: string
   tags?: string[]
+  cover?: {
+    src: string
+    srcDark?: string
+    alt?: string
+  }
 
   toc?: boolean
-  layout: 'blog-post'
+  layout: 'article'
 }

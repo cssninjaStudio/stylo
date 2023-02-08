@@ -7,17 +7,17 @@ const filters = computed(() => ({
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div>
     <Articles :filters="filters" :limit="15">
       <template #title>{{ page.title }}</template>
       <template #subtitle>{{ page.description }}</template>
       <template #links>
-        <TagLinks>
-          <TagLink to="/categories">
+        <ButtonLinks>
+          <ButtonLink to="/categories">
             <Icon name="lucide:arrow-left" />
             <span>Categories</span>
-          </TagLink>
-        </TagLinks>
+          </ButtonLink>
+        </ButtonLinks>
       </template>
     </Articles>
   </div>

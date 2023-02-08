@@ -17,7 +17,7 @@ const props = withDefaults(
   <AppSection :class="props.sectionClass">
     <AppContainer :class="props.containerClass">
       <div
-        class="prose prose-a:text-primary-500 dark:prose-a:text-primary-400 prose-slate dark:prose-invert prose-purple"
+        class="prose prose-muted dark:prose-invert prose-primary"
         :class="props.proseClass"
       >
         <slot />

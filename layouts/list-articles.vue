@@ -1,0 +1,30 @@
+<script setup lang="ts">
+const { page } = useContent()
+
+const filters = computed(() => ({
+  _file: { $contains: page.value?._path?.substring(1) },
+}))
+</script>
+
+<template>
+  <div>
+    <Articles :filters="filters" :limit="15">
+      <template #title>{{ page.title }}</template>
+      <template #subtitle>{{ page.description }}</template>
+      <template #links>
+        <ButtonLinks v-if="page.links?.length">
+          <ButtonLink
+            v-for="link in page.links"
+            :key="link.key"
+            :to="link.href"
+            :target="link.target"
+            :rel="link.rel"
+          >
+            <Icon v-if="link.icon" :name="link.icon" />
+            <span>{{ link.text }}</span>
+          </ButtonLink>
+        </ButtonLinks>
+      </template>
+    </Articles>
+  </div>
+</template>

@@ -1,5 +1,5 @@
 import type { MaybeComputedRef } from '@vueuse/core'
-import type { AuthorParsedContent } from '../types'
+import type { AuthorPage } from '../types'
 
 export function useAsyncAuthorMeta(path: MaybeComputedRef<string | undefined>) {
   const _path = computed(() => {
@@ -11,7 +11,7 @@ export function useAsyncAuthorMeta(path: MaybeComputedRef<string | undefined>) {
     () =>
       !_path.value
         ? Promise.resolve(null)
-        : queryContent<AuthorParsedContent>()
+        : queryContent<AuthorPage>()
             .only(['_path', 'avatar', 'title', 'subtitle'])
             .where({ layout: 'author', _path: _path.value })
             .findOne(),

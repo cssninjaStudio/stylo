@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import type { PageParsedContent, BlogParsedContent } from './types'
+import type { StyloBasePage, ArticlePage, AuthorPage } from './types'
 
-const { page }: { page: Ref<PageParsedContent | BlogParsedContent> } =
+const { page }: { page: Ref<StyloBasePage | ArticlePage | AuthorPage> } =
   useContent()
 if (page.value) {
   defineOgImageStatic({
     title: page.value.title,
     description: page.value.description,
-    cover: page.value.ogImage ?? page.value.cover,
+    cover: page.value.avatar ?? page.value.cover,
     author: page.value.author,
     publishDate: page.value.publishDate,
 

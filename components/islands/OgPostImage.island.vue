@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AuthorParsedContent } from '../../types'
+import type { AuthorPage } from '../../types'
 
 const props = defineProps<{
   title?: string
@@ -13,7 +13,7 @@ const props = defineProps<{
 const { data: author } = await useAsyncData(`author-meta-${props.author}`, () =>
   !props.author
     ? Promise.resolve(null)
-    : queryContent<AuthorParsedContent>()
+    : queryContent<AuthorPage>()
         .only(['_path', 'avatar', 'title', 'subtitle'])
         .where({ layout: 'author', _path: props.author })
         .findOne()

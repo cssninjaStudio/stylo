@@ -4,17 +4,14 @@ title: Personal Development and Confidence in Business Environments
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo nimium beatus est; Idemne, quod iucunde? Duo Reges constructio interrete. At iamdecimum annum in spelunca iacet.
 author: /authors/irina-kropova
 publishDate: 2022-08-28T00:00:00.000Z
-image: /img/posts/4.png
 cover:
   src: /img/posts/4.png
 category: /categories/coaching
 tags:
-  - personal
-  - development
-  - coaching
-  - business
-  - empathy
-  - collaboration
+  - /tags/personal
+  - /tags/business
+  - /tags/empathy
+  - /tags/collaboration
 ---  
 
 Personal development and confidence are essential for success in any business environment. Here are some tips for building personal development and confidence in the workplace.

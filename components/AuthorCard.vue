@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AuthorParsedContent } from '../types'
+import type { AuthorPage } from '../types'
 
 const props = defineProps<{
-  author: Partial<AuthorParsedContent>
+  author: Partial<AuthorPage>
 }>()
 </script>
 
@@ -18,11 +18,15 @@ const props = defineProps<{
           <img
             :src="props.author.avatar.src"
             :alt="props.author.avatar.alt"
+            :width="props.author.avatar.width"
+            :height="props.author.avatar.height"
             class="block dark:hidden w-full h-full object-center object-cover rounded-full"
           />
           <img
             :src="props.author.avatar.srcDark || props.author.avatar.src"
             :alt="props.author.avatar.alt"
+            :width="props.author.avatar.width"
+            :height="props.author.avatar.height"
             class="hidden dark:block w-full h-full object-center object-cover rounded-full"
           />
         </div>

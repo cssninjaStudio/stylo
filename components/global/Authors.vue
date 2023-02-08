@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { hash } from 'ohash'
-import type { AuthorParsedContent } from '../../types'
+import type { AuthorPage } from '../../types'
 
 const props = withDefaults(
   defineProps<{
@@ -27,7 +27,7 @@ const requestKey = computed(() =>
 const { data: authors } = await useAsyncData(
   requestKey.value,
   () =>
-    queryContent<AuthorParsedContent>()
+    queryContent<AuthorPage>()
       .only(['_path', 'avatar', 'title', 'subtitle'])
       .where({ layout: 'author', ...props.filters })
       .sort(props.sort)

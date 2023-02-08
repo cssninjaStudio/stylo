@@ -5,14 +5,13 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/clark-smith
 publishDate: 2022-08-09T00:00:00.000Z
 featured: false
-image: /img/posts/9.png
 cover:
   src: /img/posts/9.png
 category: /categories/engineering
 tags:
-  - development
-  - backend
-  - solution
+  - /tags/web-development
+  - /tags/backend
+  - /tags/saas-tools
 ---  
 Microservice architecture is a software design pattern in which a large, complex application is broken down into smaller, independent services that communicate with each other through APIs. This approach to software development has become increasingly popular in recent years, as it offers several advantages over traditional monolithic architecture. In this post, we'll take a closer look at microservice architecture and how it can be used to build scalable, resilient, and flexible applications.
 

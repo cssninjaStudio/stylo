@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { hash } from 'ohash'
-import type { CategoryParsedContent } from '../../types'
+import type { CategoryPage } from '../../types'
 
 const props = withDefaults(
   defineProps<{
@@ -25,7 +25,7 @@ const requestKey = computed(() =>
 const { data: categories } = await useAsyncData(
   requestKey.value,
   () =>
-    queryContent<CategoryParsedContent>()
+    queryContent<CategoryPage>()
       .only([
         '_path',
         'cover',

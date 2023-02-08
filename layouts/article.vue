@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import type { ParsedContentMeta } from '@nuxt/content/dist/runtime/types'
-import type { BlogParsedContent } from '../types'
+import type { ArticlePage } from '../types'
 
 const {
   page,
   next,
   prev,
 }: {
-  page?: Ref<BlogParsedContent>
+  page?: Ref<ArticlePage>
   next?: Ref<ParsedContentMeta>
   prev?: Ref<ParsedContentMeta>
 
@@ -52,6 +52,7 @@ const {
         <div class="max-w-2xl xxl:max-w-3xl mx-auto">
           <!-- Tags -->
           <div
+            v-if="page.tags?.length"
             class="py-10 mt-10 border-t border-muted-200 dark:border-muted-700/60"
           >
             <ArticleTags :tags="page.tags" />

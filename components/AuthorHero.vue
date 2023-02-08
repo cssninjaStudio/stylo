@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AuthorParsedContent } from '../types'
+import type { AuthorPage } from '../types'
 
 const props = defineProps<{
-  author: Partial<AuthorParsedContent>
+  author: Partial<AuthorPage>
 }>()
 </script>
 
@@ -15,6 +15,8 @@ const props = defineProps<{
             v-if="props.author.avatar"
             :src="props.author.avatar.src"
             :alt="props.author.avatar.alt"
+            :width="props.author.avatar.width"
+            :height="props.author.avatar.height"
             class="mb-4 h-28 w-28 mx-auto rounded-full object-center object-cover"
           />
           <div class="text-center max-w-md mx-auto mb-4">

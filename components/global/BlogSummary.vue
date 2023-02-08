@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../../types'
+import type { ArticlePage } from '../../types'
 
 const { data: articles } = await useAsyncData(() =>
-  queryContent<BlogParsedContent>()
+  queryContent<ArticlePage>()
     .only([
       '_path',
       'image',

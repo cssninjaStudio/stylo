@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AuthorParsedContent, BlogParsedContent } from '../types'
+import type { AuthorPage, ArticlePage } from '../types'
 
 const props = defineProps<{
-  article: Partial<BlogParsedContent>
+  article: Partial<ArticlePage>
 }>()
 
 const { formatDate } = useDateFormatter()
@@ -16,11 +16,15 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
       <img
         :src="props.article.cover.src"
         :alt="props.article.cover.alt"
+        :width="props.article.cover.width"
+        :height="props.article.cover.height"
         class="block dark:hidden w-full h-[420px] object-cover"
       />
       <img
         :src="props.article.cover.srcDark || props.article.cover.src"
         :alt="props.article.cover.alt"
+        :width="props.article.cover.width"
+        :height="props.article.cover.height"
         class="hidden dark:block w-full h-[420px] object-cover"
       />
     </div>
@@ -55,11 +59,15 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
               <img
                 :src="author.avatar.src"
                 :alt="author.avatar.alt"
+                :width="author.avatar.width"
+                :height="author.avatar.height"
                 class="block dark:hidden h-9 w-9 rounded-full object-cover scale-90"
               />
               <img
                 :src="author.avatar.srcDark || author.avatar.src"
                 :alt="author.avatar.alt"
+                :width="author.avatar.width"
+                :height="author.avatar.height"
                 class="hidden dark:block h-9 w-9 rounded-full object-cover scale-90"
               />
             </NuxtLink>

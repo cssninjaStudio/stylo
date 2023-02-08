@@ -5,18 +5,17 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/clark-smith
 publishDate: 2023-01-10T00:00:00.000Z
 featured: false
-image: /img/posts/2.png
 cover:
   src: /img/posts/2.png
 category: /categories/ux-design
 toc: true
 tags:
-  - ui & ux
-  - design
-  - web development
-  - interface
-  - interactions
-  - experience
+  - /tags/ui-and-ux
+  - /tags/design
+  - /tags/web-development
+  - /tags/interface
+  - /tags/interactions
+  - /tags/experience
 ---
 
 ## The state of ux in 2015

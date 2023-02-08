@@ -5,14 +5,13 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/alan-mitchells
 publishDate: 2022-08-15T00:00:00.000Z
 featured: false
-image: /img/posts/13.png
 cover:
   src: /img/posts/13.png
 category: /categories/tutorials
 tags:
-  - startups
-  - efficiency
-  - collaboration
+  - /tags/startup
+  - /tags/efficiency
+  - /tags/collaboration
 ---
 ## Introduction
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna in bibendum malesuada, risus purus venenatis urna, vel fringilla velit nibh id velit. Sed vel dictum velit. Nam sit amet suscipit risus. Praesent laoreet ligula id justo placerat, sit amet laoreet ligula tincidunt. Sed laoreet, magna a faucibus gravida, risus magna fringilla ligula, eget dictum augue odio eu metus.

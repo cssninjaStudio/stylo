@@ -5,16 +5,15 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/harold-miller
 publishDate: 2022-08-19T00:00:00.000Z
 featured: true
-image: /img/posts/12.png
 cover:
   src: /img/posts/12.png
 category: /categories/business
 tags:
-  - business
-  - analytics
-  - startup
-  - small business
-  - innovation
+  - /tags/business
+  - /tags/analytics
+  - /tags/startup
+  - /tags/small-business
+  - /tags/innovation
 ---  
 
 

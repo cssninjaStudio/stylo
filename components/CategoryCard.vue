@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { CategoryParsedContent } from '../types'
+import type { CategoryPage } from '../types'
 
 const props = defineProps<{
-  category: Partial<CategoryParsedContent>
+  category: Partial<CategoryPage>
 }>()
 </script>
 
@@ -12,11 +12,15 @@ const props = defineProps<{
       <img
         :src="props.category.cover.src"
         :alt="props.category.cover.alt"
+        :width="props.category.cover.width"
+        :height="props.category.cover.height"
         class="block dark:hidden w-full h-64 bg-muted-100 dark:bg-muted-700/20 rounded-lg overflow-hidden group-hover:opacity-75 object-center object-cover transition-opacity duration-300"
       />
       <img
         :src="props.category.cover.srcDark || props.category.cover.src"
         :alt="props.category.cover.alt"
+        :width="props.category.cover.width"
+        :height="props.category.cover.height"
         class="hidden dark:block w-full h-64 bg-muted-100 dark:bg-muted-700/20 rounded-lg overflow-hidden group-hover:opacity-75 object-center object-cover transition-opacity duration-300"
       />
     </div>

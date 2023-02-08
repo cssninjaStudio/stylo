@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { hash } from 'ohash'
-import type { BlogParsedContent } from '../../types'
+import type { ArticlePage } from '../../types'
 
 const props = withDefaults(
   defineProps<{
@@ -27,7 +27,7 @@ const requestKey = computed(() =>
 const { data: articles } = await useAsyncData(
   requestKey.value,
   () =>
-    queryContent<BlogParsedContent>()
+    queryContent<ArticlePage>()
       .only([
         '_path',
         'image',

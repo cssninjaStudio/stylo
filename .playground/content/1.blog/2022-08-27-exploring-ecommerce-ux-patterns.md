@@ -5,16 +5,15 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/maya-piretti
 publishDate: 2022-08-27T00:00:00.000Z
 featured: true
-image: /img/posts/6.png
 cover:
   src: /img/posts/6.png
 category: /categories/ux-design
 tags:
-  - ui & ux
-  - design
-  - ecommerce
-  - storefront
-  - experience
+  - /tags/ui-and-ux
+  - /tags/design
+  - /tags/ecommerce
+  - /tags/storefront
+  - /tags/experience
 ---
 
 User experience (UX) is a crucial aspect of ecommerce design. It can make or break a customer's decision to purchase from your website. In this post, we will explore some of the most popular UX patterns in ecommerce and how they can be used to improve the customer experience.

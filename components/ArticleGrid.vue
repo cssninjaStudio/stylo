@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AuthorParsedContent, BlogParsedContent } from '../types'
+import type { AuthorPage, ArticlePage } from '../types'
 
 const props = defineProps<{
-  article: Partial<BlogParsedContent>
+  article: Partial<ArticlePage>
 }>()
 
 const { formatDate } = useDateFormatter()
@@ -62,11 +62,15 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
                   <img
                     :src="author.avatar.src"
                     :alt="author.avatar.alt"
+                    :width="author.avatar.width"
+                    :height="author.avatar.height"
                     class="block dark:hidden h-8 w-8 rounded-full object-cover scale-90"
                   />
                   <img
                     :src="author.avatar.srcDark || author.avatar.src"
                     :alt="author.avatar.alt"
+                    :width="author.avatar.width"
+                    :height="author.avatar.height"
                     class="hidden dark:block h-8 w-8 rounded-full object-cover scale-90"
                   />
                 </NuxtLink>

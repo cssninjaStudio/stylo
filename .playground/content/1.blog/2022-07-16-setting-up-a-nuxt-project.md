@@ -5,13 +5,12 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/clark-smith
 publishDate: 2022-07-16T00:00:00.000Z
 featured: true
-image: /img/posts/18.png
 cover:
   src: /img/posts/18.png
 category: /categories/engineering
 tags:
-  - development
-  - saas
+  - /tags/web-development
+  - /tags/saas-tools
 ---
 
 ## Introduction

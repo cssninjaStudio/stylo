@@ -1,5 +1,5 @@
 import type { MaybeComputedRef } from '@vueuse/core'
-import type { CategoryParsedContent } from '../types'
+import type { CategoryPage } from '../types'
 
 export function useAsyncCategoryMeta(
   path: MaybeComputedRef<string | undefined>
@@ -13,7 +13,7 @@ export function useAsyncCategoryMeta(
     () =>
       !_path.value
         ? Promise.resolve(null)
-        : queryContent<CategoryParsedContent>()
+        : queryContent<CategoryPage>()
             .only(['_path', 'color', 'title'])
             .where({ layout: 'category', _path: _path.value })
             .findOne(),

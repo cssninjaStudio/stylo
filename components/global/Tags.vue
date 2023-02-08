@@ -1,44 +1,78 @@
 <script setup lang="ts">
-import type { BlogParsedContent } from '../../types'
+import { hash } from 'ohash'
+import type { TagPage } from '../../types'
 
 const props = withDefaults(
   defineProps<{
+    filters?: Record<string, any>
+    sort?: Record<string, any>
+    skip?: number
+    limit?: number
     mode?: 'button' | 'card'
   }>(),
   {
+    skip: 0,
+    limit: 30,
     mode: 'card',
+    filters: () => ({}),
+    sort: () => ({ short: 1 }),
   }
 )
 
-const icons = [
-  'ph:square-duotone',
-  'ph:diamond-duotone',
-  'ph:triangle-duotone',
-  'ph:circle-duotone',
-  'ph:rectangle-duotone',
-  'ph:octagon-duotone',
-  'ph:shield-duotone',
-  'ph:hexagon-duotone',
-]
+// const icons = [
+//   'ph:square-duotone',
+//   'ph:diamond-duotone',
+//   'ph:triangle-duotone',
+//   'ph:circle-duotone',
+//   'ph:rectangle-duotone',
+//   'ph:octagon-duotone',
+//   'ph:shield-duotone',
+//   'ph:hexagon-duotone',
+// ]
 
-const { data: articles } = await useAsyncData(() =>
-  queryContent<BlogParsedContent>()
-    .only(['tags'])
-    .where({ layout: 'article' })
-    .find()
+// const { data: articles } = await useAsyncData(() =>
+//   queryContent<ArticlePage>()
+//     .only(['tags'])
+//     .where({ layout: 'article' })
+//     .find()
+// )
+// const tags = computed(() => {
+//   const map = new Map<string, number>()
+
+//   for (const article of articles.value ?? []) {
+//     for (const tag of article.tags ?? []) {
+//       map.set(tag, (map.get(tag) ?? 0) + 1)
+//     }
+//   }
+//   return Array.from(map.entries())
+//     .map(([tag, count]) => ({ tag, count }))
+//     .sort((a, b) => b.count - a.count)
+// })
+
+const route = useRoute()
+const requestKey = computed(() =>
+  hash({ ...props, layout: 'category', path: route.path })
 )
-const tags = computed(() => {
-  const map = new Map<string, number>()
 
-  for (const article of articles.value ?? []) {
-    for (const tag of article.tags ?? []) {
-      map.set(tag, (map.get(tag) ?? 0) + 1)
-    }
+const { data: tags } = await useAsyncData(
+  requestKey.value,
+  () =>
+    queryContent<TagPage>()
+      .only(['_path', 'icon', 'short'])
+      .where({ layout: 'tag', ...props.filters })
+      .sort(props.sort)
+      .limit(props.limit)
+      .skip(props.skip)
+      .find(),
+  {
+    watch: [
+      () => props.filters,
+      () => props.sort,
+      () => props.skip,
+      () => props.limit,
+    ],
   }
-  return Array.from(map.entries())
-    .map(([tag, count]) => ({ tag, count }))
-    .sort((a, b) => b.count - a.count)
-})
+)
 </script>
 
 <template>
@@ -69,25 +103,13 @@ const tags = computed(() => {
       </div>
       <template v-else>
         <div v-if="props.mode === 'button'" class="flex flex-wrap gap-3">
-          <TagButtonLink
-            v-for="(tag, i) of tags"
-            :key="tag.tag"
-            :tag="tag.tag"
-            :count="tag.count"
-            :icon="icons[i % icons.length]"
-          />
+          <TagLinkButton v-for="tag in tags" :key="tag._path" :tag="tag" />
         </div>
         <div
           v-else
           class="grid sm:grid-cols-3 ltablet:grid-cols-4 lg:grid-cols-5 gap-4"
         >
-          <TagCardIconLink
-            v-for="(tag, i) of tags"
-            :key="tag.tag"
-            :tag="tag.tag"
-            :count="tag.count"
-            :icon="icons[i % icons.length]"
-          />
+          <TagLinkCard v-for="tag in tags" :key="tag._path" :tag="tag" />
         </div>
       </template>
     </AppContainer>

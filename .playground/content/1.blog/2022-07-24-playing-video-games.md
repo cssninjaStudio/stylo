@@ -5,14 +5,12 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/frieda-weinberg
 publishDate: 2022-07-24T00:00:00.000Z
 featured: false
-image: /img/posts/17.png
 cover:
   src: /img/posts/17.png
 category: /categories/lifestyle
 tags:
-  - lifestyle
-  - hobbies
-  - health
+  - /tags/personal
+  - /tags/hobbies
 ---
 ## Introduction
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna in bibendum malesuada, risus purus venenatis urna, vel fringilla velit nibh id velit. Sed vel dictum velit. Nam sit amet suscipit risus. Praesent laoreet ligula id justo placerat, sit amet laoreet ligula tincidunt. Sed laoreet, magna a faucibus gravida, risus magna fringilla ligula, eget dictum augue odio eu metus.

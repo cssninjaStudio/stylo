@@ -1,8 +1,10 @@
 
 <script setup lang="ts">
+import type { StyloPageLayout } from '../types'
+
 const { page, type, layout } = useContent()
 
-const snippetLayout = ref('default')
+const snippetLayout = ref<StyloPageLayout>('default')
 
 function wrap(key: string) {
   return `<span class="text-muted-300">${key}</span>`
@@ -61,11 +63,27 @@ const snippet = computed(() => {
         `    ${wrap('icon')}: brandico:twitter`,
         '---',
       ].join('\n')
+    case 'tag':
+      return [
+        '---',
+        `${wrap('layout')}: ${snippetLayout.value}`,
+        `${wrap('title')}: Tagged With 'My Tag'`,
+        `${wrap('short')}: '#my-tag'`,
+        `${wrap('icon')}: ph:square-duotone`,
+        `${wrap('description')}: >`,
+        '  Lorem ipsum dolor sit amet, ...',
+        `${wrap('links')}:`,
+        `  - ${wrap('text')}: Back to Tags`,
+        `    ${wrap('href')}: /tags`,
+        `    ${wrap('icon')}: lucide:arrow-left`,
+        '---',
+      ].join('\n')
     case 'list-articles':
       return [
         '---',
         `${wrap('layout')}: ${snippetLayout.value}`,
         `${wrap('title')}: My Blog`,
+        `${wrap('mode')}: card # or 'grid' / 'wide'`,
         `${wrap('description')}: >`,
         '  Lorem ipsum dolor sit amet, ...',
         `${wrap('links')}:`,
@@ -80,6 +98,7 @@ const snippet = computed(() => {
         '---',
         `${wrap('layout')}: ${snippetLayout.value}`,
         `${wrap('title')}: All Authors`,
+        `${wrap('mode')}: card # or 'grid'`,
         `${wrap('description')}: >`,
         '  Lorem ipsum dolor sit amet, ...',
         `${wrap('links')}:`,
@@ -92,6 +111,19 @@ const snippet = computed(() => {
         '---',
         `${wrap('layout')}: ${snippetLayout.value}`,
         `${wrap('title')}: All Categories`,
+        `${wrap('description')}: >`,
+        '  Lorem ipsum dolor sit amet, ...',
+        `${wrap('links')}:`,
+        `  - ${wrap('text')}: Back to Articles`,
+        `    ${wrap('href')}: /blog`,
+        '---',
+      ].join('\n')
+    case 'list-tags':
+      return [
+        '---',
+        `${wrap('layout')}: ${snippetLayout.value}`,
+        `${wrap('title')}: Articles by tags`,
+        `${wrap('mode')}: button # or 'card'`,
         `${wrap('description')}: >`,
         '  Lorem ipsum dolor sit amet, ...',
         `${wrap('links')}:`,
@@ -176,7 +208,7 @@ const snippetText = computed(() =>
                         <option value="article">article</option>
                         <option value="author">author</option>
                         <option value="category">category</option>
-                        <option disabled value="tag">tag</option>
+                        <option value="tag">tag</option>
                       </optgroup>
                       <optgroup
                         label="Listing"
@@ -185,7 +217,7 @@ const snippetText = computed(() =>
                         <option value="list-articles">list-articles</option>
                         <option value="list-authors">list-authors</option>
                         <option value="list-categories">list-categories</option>
-                        <option disabled value="list-tags">list-tags</option>
+                        <option value="list-tags">list-tags</option>
                       </optgroup>
                       <optgroup label="Custom" class="text-muted-200 font-sans">
                         <option disabled value="home">home</option>

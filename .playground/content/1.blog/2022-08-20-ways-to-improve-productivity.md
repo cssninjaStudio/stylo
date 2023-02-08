@@ -5,16 +5,15 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/maya-piretti
 publishDate: 2022-08-28T00:00:00.000Z
 featured: false
-image: /img/posts/3.png
 cover:
   src: /img/posts/3.png
 category: /categories/coaching
 tags:
-  - productivity
-  - collaboration
-  - saas tools
-  - efficiency
-  - business
+  - /tags/productivity
+  - /tags/collaboration
+  - /tags/saas-tools
+  - /tags/efficiency
+  - /tags/business
 ---
 
 Feeling overwhelmed and struggling to get things done? Here are some practical ways to improve productivity and increase your efficiency.

@@ -9,9 +9,6 @@ description: >
 avatar:
   src: /img/avatars/small/3.svg
   alt: Clark Smith Avatar
-contact:
-  - text: Email
-    href: mailto:clark@cssninja.io
 social:
   - title: LinkedIn
     href: https://www.linkedin.com/company/cssninja/

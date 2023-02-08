@@ -5,16 +5,15 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nemo ni
 author: /authors/alan-mitchells
 publishDate: 2022-08-10T00:00:00.000Z
 featured: false
-image: /img/posts/8.png
 cover:
   src: /img/posts/8.png
 category: /categories/coaching
 tags:
-  - account
-  - management
-  - business
-  - startup
-  - finance
+  - /tags/account
+  - /tags/management
+  - /tags/business
+  - /tags/startup
+  - /tags/finance
 ---
 
 Key account management (KAM) is a business strategy that involves identifying, managing, and developing long-term relationships with key customers. These customers are typically large, strategic accounts that generate significant revenue and are critical to the success of the business. In this post, we'll take a closer look at key account management and how it can be used to drive business growth.

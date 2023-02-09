@@ -8,7 +8,7 @@ const { page } = useContent()
 
 <template>
   <div>
-    <Tags :mode="page.mode">
+    <Tags :mode="page.mode" fullscreen muted>
       <template #title>{{ page.title }}</template>
       <template #subtitle>{{ page.description }}</template>
       <template #links>

@@ -42,19 +42,6 @@ const { data: navigation } = await useAsyncData('navigation', () =>
                 class="block h-6 w-6"
                 name="heroicons-outline:menu"
               />
-              <Icon
-                :class="{ block: isMobileOpen, hidden: !isMobileOpen }"
-                class="hidden h-6 w-6"
-                name="heroicons-outline:x"
-              />
-            </button>
-            <!-- Mobile search -->
-            <button
-              class="h-16 w-16 items-center justify-center text-muted-400"
-              :class="isSearchOpen ? 'hidden' : 'flex ptablet:flex sm:hidden'"
-              @click="isSearchOpen = true"
-            >
-              <Icon name="lucide:search" class="w-12 h-12" />
             </button>
           </div>
           <div
@@ -70,7 +57,7 @@ const { data: navigation } = await useAsyncData('navigation', () =>
             >
               <img
                 v-if="appConfig.stylo.header.logo.src"
-                class="block dark:hidden h-9 w-9 lg:h-10 sm:w-10"
+                class="block dark:hidden h-9 lg:h-10"
                 :src="appConfig.stylo.header.logo.src"
                 :alt="appConfig.stylo.header.logo.alt"
               />
@@ -79,14 +66,17 @@ const { data: navigation } = await useAsyncData('navigation', () =>
                   appConfig.stylo.header.logo.srcDark ||
                   appConfig.stylo.header.logo.src
                 "
-                class="hidden dark:block h-9 w-9 lg:h-10 sm:w-10"
+                class="hidden dark:block h-9 lg:h-10"
                 :src="
                   appConfig.stylo.header.logo.srcDark ||
                   appConfig.stylo.header.logo.src
                 "
                 :alt="appConfig.stylo.header.logo.alt"
               />
-              <div v-if="appConfig.stylo.header.displayTitle" class="text-lg">
+              <div
+                v-if="appConfig.stylo.header.displayTitle"
+                class="hidden sm:block font-sans text-lg"
+              >
                 {{ appConfig.stylo.title }}
               </div>
             </NuxtLink>

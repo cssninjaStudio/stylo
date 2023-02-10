@@ -8,6 +8,8 @@ const props = withDefaults(
     sort?: Record<string, any>
     skip?: number
     limit?: number
+    narrow?: boolean
+    muted?: boolean
   }>(),
   {
     skip: 0,
@@ -52,11 +54,19 @@ const { data: categories } = await useAsyncData(
 </script>
 
 <template>
-  <AppSection class="bg-white dark:bg-muted-1000 pb-0">
+  <AppSection
+    class="pb-0"
+    :class="
+      props.muted
+        ? 'bg-muted-100 dark:bg-muted-1000'
+        : 'bg-white dark:bg-muted-900'
+    "
+  >
     <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
       <AppContainerHeader
         v-if="'title' in $slots || 'subtitle' in $slots || 'links' in $slots"
-        class="pt-20 mb-10"
+        class="mb-10"
+        :class="props.narrow ? '' : 'pt-20'"
       >
         <template #title>
           <ContentSlot :use="$slots.title" unwrap="p" />

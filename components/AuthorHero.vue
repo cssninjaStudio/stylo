@@ -3,11 +3,20 @@ import type { AuthorPage } from '../types'
 
 const props = defineProps<{
   author: Partial<AuthorPage>
+  muted?: boolean
 }>()
 </script>
 
 <template>
-  <AppSection v-if="props.author" class="bg-white dark:bg-muted-1000">
+  <AppSection
+    v-if="props.author"
+    class=""
+    :class="
+      props.muted
+        ? 'bg-muted-100 dark:bg-muted-1000'
+        : 'bg-white dark:bg-muted-900'
+    "
+  >
     <AppContainer>
       <div class="max-w-xl mx-auto pt-10 mb-8">
         <div>

@@ -1,0 +1,11 @@
+layout: tag
+title: Tagged With 'Cheese'
+short: '#cheese'
+icon: ph:circles-three-duotone
+description: > 
+  You can find all the posts that are associated with the tag Cheese.
+  Tags act as a way to mark posts and classify them based on the kind of information they provide.
+links:
+  - text: Back to Tags
+    href: /tags
+    icon: lucide:arrow-left

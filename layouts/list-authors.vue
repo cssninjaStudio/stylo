@@ -8,7 +8,7 @@ const filters = computed(() => ({
 
 <template>
   <div>
-    <Authors :mode="page.mode" :filters="filters" :limit="15">
+    <Authors :mode="page.mode" :filters="filters" :limit="15" muted fullscreen>
       <template #title>{{ page.title }}</template>
       <template #subtitle>{{ page.description }}</template>
       <template #links>

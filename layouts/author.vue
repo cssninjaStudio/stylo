@@ -8,9 +8,9 @@ const filters = computed(() => ({
 
 <template>
   <div>
-    <AuthorHero :author="page" />
-    <Articles :filters="filters" :limit="15">
-      <template #title>Publication</template>
+    <AuthorHero :author="page" muted />
+    <Articles :filters="filters" :limit="15" narrow>
+      <template #title>Chef recipes</template>
       <template #subtitle>
         Here are all the posts written by {{ page.title }}. We hope that you'll
         find what you are looking for. If you like the content below, please

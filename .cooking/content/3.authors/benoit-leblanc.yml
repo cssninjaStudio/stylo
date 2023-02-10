@@ -1,0 +1,21 @@
+layout: author
+title: Benoit Leblanc
+subtitle: International chef
+location: Paris, FR
+company: L'Athénée
+description: >
+  Benoit Leblanc is a top 5% account manager with over 15 years of experience in sales and customer service. 
+  He has a strong background in building and maintaining sustainable relationships with clients.
+avatar:
+  src: /img/authors/cook-5.png
+  alt: Benoit Leblanc Avatar
+social:
+  - title: LinkedIn
+    href: https://www.linkedin.com/company/cssninja/
+    icon: brandico:linkedin
+  - title: Facebook
+    href: https://www.facebook.com/cssninjaStudio
+    icon: brandico:facebook
+  - title: Twitter
+    href: https://twitter.com/cssninjaStudio
+    icon: brandico:twitter

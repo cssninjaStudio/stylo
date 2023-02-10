@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
     "dev:starter": "nuxi prepare & nuxi dev .starter",
+    "dev:cooking": "nuxi prepare & nuxi dev .cooking",
     "build": "nuxi build .playground",
     "generate": "nuxi generate .playground",
     "preview": "nuxi preview .playground",

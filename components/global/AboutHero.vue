@@ -1,7 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{
-  image?: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    image?: string
+    imageSize?: 'sm' | 'md' | 'lg' | 'xl'
+  }>(),
+  {
+    image: undefined,
+    imageSize: 'md',
+  }
+)
 </script>
 
 <template>
@@ -39,6 +46,11 @@ const props = defineProps<{
               <img
                 :src="props.image"
                 class="relative z-10 max-w-[240px] sm:max-w-[290px] mx-auto"
+                :class="[
+                  props.imageSize === 'md' && 'max-w-[240px] sm:max-w-[290px]',
+                  props.imageSize === 'lg' && 'max-w-[240px] sm:max-w-[330px]',
+                  props.imageSize === 'xl' && 'max-w-[240px] sm:max-w-[380px]',
+                ]"
                 alt=""
               />
             </ContentSlot>

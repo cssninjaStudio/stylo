@@ -1,0 +1,282 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # JOB to detect changes in subfolders
+  changes:
+    name: Check for changes
+    runs-on: ubuntu-latest
+    # Set job outputs to values from filter step
+    outputs:
+      demo-blog: ${{ steps.filter.outputs.demo-blog }}
+      demo-cooking: ${{ steps.filter.outputs.demo-cooking }}
+      demo-starter: ${{ steps.filter.outputs.demo-starter }}
+      shared: ${{ steps.filter.outputs.shared }}
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        # Use context to get the branch where commits were pushed.
+        base: ${{ github.ref }}
+        filters: |
+          demo-blog:
+            - '.blog/**'
+            - '.github/env/demo-blog/**'
+          demo-cooking:
+            - '.cooking/**'
+            - '.github/env/demo-cooking/**'
+          demo-starter:
+            - '.starter/**'
+            - '.github/env/demo-starter/**'
+          shared:
+            - 'components/**'
+            - 'composables/**'
+            - 'layouts/**'
+            - 'server/**'
+            - 'styles/**'
+            - 'types/**'
+            - 'utils/**'
+            - '.npmrc'
+            - 'app.config.ts'
+            - 'app.vue'
+            - 'nuxt.config.ts'
+            - 'nuxt.schema.ts'
+            - 'package.json'
+            - 'pnpm-lock.yaml'
+            - 'tailwind.config.cjs'
+            - 'tokens.config.ts'
+            - 'tsconfig.json'
+            - '.github/env/shared/**'
+            - '.github/workflow/deploy.yml'
+
+  build-blog:
+    name: Build Stylô blog
+    needs: changes
+    if: ${{ needs.changes.outputs.shared == 'true' || needs.changes.outputs.demo-blog == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpm build 
+      - run: cp .github/env/shared/Dockerfile .blog/Dockerfile
+  
+      - name: Set up dockertags
+        run: |
+          echo "dockertags=digisquad/cssninja.stylo.demo-blog:latest" >> $GITHUB_ENV
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        timeout-minutes: 60
+        with:
+          push: true
+          context: .blog
+          tags: ${{ env.dockertags }}
+
+  deploy-blog:
+    name: Deploy Stylô blog
+    needs: build-blog
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: mkdir -p ${{ secrets.BLOG_HOST_DIRECTORY }}
+
+      - name: Publish
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: .github/env/demo-blog/docker-compose.yml
+          target: ${{ secrets.BLOG_HOST_DIRECTORY }}
+          strip_components: 3
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.BLOG_HOST_DIRECTORY }}
+            docker compose pull
+            docker compose up -d --force-recreate --remove-orphans
+
+  build-cooking:
+    name: Build Stylô cooking
+    needs: changes
+    if: ${{ needs.changes.outputs.shared == 'true' || needs.changes.outputs.demo-cooking == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpm build 
+      - run: cp .github/env/shared/Dockerfile .cooking/Dockerfile
+  
+      - name: Set up dockertags
+        run: |
+          echo "dockertags=digisquad/cssninja.stylo.demo-cooking:latest" >> $GITHUB_ENV
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        timeout-minutes: 60
+        with:
+          push: true
+          context: .cooking
+          tags: ${{ env.dockertags }}
+
+  deploy-cooking:
+    name: Deploy Stylô cooking
+    needs: build-cooking
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: mkdir -p ${{ secrets.COOKING_HOST_DIRECTORY }}
+
+      - name: Publish
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: .github/env/demo-cooking/docker-compose.yml
+          target: ${{ secrets.COOKING_HOST_DIRECTORY }}
+          strip_components: 3
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.COOKING_HOST_DIRECTORY }}
+            docker compose pull
+            docker compose up -d --force-recreate --remove-orphans
+
+  build-starter:
+    name: Build Stylô starter
+    needs: changes
+    if: ${{ needs.changes.outputs.shared == 'true' || needs.changes.outputs.demo-starter == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpm build 
+      - run: cp .github/env/shared/Dockerfile .starter/Dockerfile
+  
+      - name: Set up dockertags
+        run: |
+          echo "dockertags=digisquad/cssninja.stylo.demo-starter:latest" >> $GITHUB_ENV
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        timeout-minutes: 60
+        with:
+          push: true
+          context: .starter
+          tags: ${{ env.dockertags }}
+
+  deploy-starter:
+    name: Deploy Stylô starter
+    needs: build-starter
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: mkdir -p ${{ secrets.STARTER_HOST_DIRECTORY }}
+
+      - name: Publish
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: .github/env/demo-starter/docker-compose.yml
+          target: ${{ secrets.STARTER_HOST_DIRECTORY }}
+          strip_components: 3
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.STARTER_HOST_DIRECTORY }}
+            docker compose pull
+            docker compose up -d --force-recreate --remove-orphans
+
+

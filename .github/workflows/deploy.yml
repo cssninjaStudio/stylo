@@ -52,7 +52,7 @@ jobs:
             - 'tokens.config.ts'
             - 'tsconfig.json'
             - '.github/env/shared/**'
-            - '.github/workflow/deploy.yml'
+            - '.github/workflows/deploy.yml'
 
   build-blog:
     name: Build Stylô blog

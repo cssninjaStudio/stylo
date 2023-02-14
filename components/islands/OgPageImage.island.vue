@@ -15,7 +15,7 @@ const props = defineProps<{
   >
     <div class="h-2 bg-primary-500 flex absolute bottom-0 left-0 w-full"></div>
 
-    <img src="/favicon.svg" width="99" class="absolute bottom-10 right-10" />
+    <!-- <img src="/favicon.svg" width="99" class="absolute bottom-10 right-10" /> -->
     <div class="pb-10 justify-center items-center flex flex-col">
       <img v-if="cover" :src="cover" width="432" height="243" />
       <h1 class="truncate max-w-5xl mt-10">

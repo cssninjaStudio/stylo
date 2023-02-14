@@ -132,9 +132,22 @@ const { data: navigation } = await useAsyncData('navigation', () =>
               <NuxtLink to="/">
                 <div class="shrink-0 flex items-center">
                   <img
-                    class="block h-10 w-10"
-                    src="/img/logo/logo.svg"
-                    alt=""
+                    v-if="appConfig.stylo.header.logo.src"
+                    class="block dark:hidden h-10 w-10"
+                    :src="appConfig.stylo.header.logo.src"
+                    :alt="appConfig.stylo.header.logo.alt"
+                  />
+                  <img
+                    v-if="
+                      appConfig.stylo.header.logo.srcDark ||
+                      appConfig.stylo.header.logo.src
+                    "
+                    class="hidden dark:block h-10 w-10"
+                    :src="
+                      appConfig.stylo.header.logo.srcDark ||
+                      appConfig.stylo.header.logo.src
+                    "
+                    :alt="appConfig.stylo.header.logo.alt"
                   />
                 </div>
               </NuxtLink>

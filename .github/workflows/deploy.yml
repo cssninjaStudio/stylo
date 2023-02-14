@@ -64,6 +64,7 @@ jobs:
 
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - run: echo '{"extends":"./.blog/.nuxt/tsconfig.json"}' > tsconfig.json
       - run: pnpm build 
       - run: cp .github/env/shared/Dockerfile .blog/Dockerfile
   
@@ -139,6 +140,7 @@ jobs:
 
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - run: echo '{"extends":"./.cooking/.nuxt/tsconfig.json"}' > tsconfig.json
       - run: pnpm build:cooking
       - run: cp .github/env/shared/Dockerfile .cooking/Dockerfile
   
@@ -214,6 +216,7 @@ jobs:
 
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - run: echo '{"extends":"./.starter/.nuxt/tsconfig.json"}' > tsconfig.json
       - run: pnpm build:starter
       - run: cp .github/env/shared/Dockerfile .starter/Dockerfile
   

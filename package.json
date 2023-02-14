@@ -18,10 +18,10 @@
   },
   "dependencies": {
     "@nuxt/content": "^2.4.3",
-    "@nuxthq/studio": "^0.7.0",
+    "@nuxthq/studio": "^0.7.2",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@nuxtjs/tailwindcss": "^6.3.1",
+    "@nuxtjs/tailwindcss": "^6.4.0",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.3",
     "@tailwindcss/line-clamp": "0.4.2",
@@ -29,23 +29,23 @@
     "@vueuse/nuxt": "^9.12.0",
     "date-fns": "^2.29.3",
     "mdast-util-to-string": "^3.1.1",
-    "nuxt-icon": "^0.2.10",
-    "nuxt-seo-kit": "^1.2.2",
+    "nuxt-icon": "^0.2.11",
+    "nuxt-seo-kit": "^1.2.3",
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@types/chroma-js": "^2.1.4",
+    "@types/chroma-js": "^2.1.5",
     "chroma-js": "^2.4.2",
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier-vue": "^4.2.0",
     "eslint-plugin-tailwindcss": "^3.8.3",
     "eslint-plugin-vuejs-accessibility": "^2.1.0",
     "focus-trap": "^7.2.0",
     "focus-trap-vue": "^4.0.1",
-    "nuxt": "^3.1.2",
-    "pinceau": "^0.13.6",
-    "prettier": "^2.8.3",
+    "nuxt": "^3.2.0",
+    "pinceau": "^0.15.0",
+    "prettier": "^2.8.4",
     "typescript": "^4.9.5"
   }
 }

@@ -17,10 +17,13 @@
     "lint": "eslint --fix --ext .ts,.vue ."
   },
   "dependencies": {
+    "pinceau": "^0.15.0",
+    "chroma-js": "^2.4.2",
+    "focus-trap": "^7.2.0",
+    "focus-trap-vue": "^4.0.1",
     "@nuxt/content": "^2.4.3",
     "@nuxthq/studio": "^0.7.2",
     "@nuxtjs/color-mode": "^3.2.0",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/tailwindcss": "^6.4.0",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.3",
@@ -34,17 +37,14 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "nuxt": "^3.2.0",
     "@types/chroma-js": "^2.1.5",
-    "chroma-js": "^2.4.2",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier-vue": "^4.2.0",
     "eslint-plugin-tailwindcss": "^3.8.3",
     "eslint-plugin-vuejs-accessibility": "^2.1.0",
-    "focus-trap": "^7.2.0",
-    "focus-trap-vue": "^4.0.1",
-    "nuxt": "^3.2.0",
-    "pinceau": "^0.15.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5"
   }

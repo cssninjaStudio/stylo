@@ -58,15 +58,17 @@ const { data: articles } = await useAsyncData(
 </script>
 
 <template>
-  <AppSection
-    class="pb-0"
+  <div
+    class="app-section pb-0"
     :class="
       props.muted
         ? 'bg-muted-100 dark:bg-muted-1000'
         : 'bg-white dark:bg-muted-900'
     "
   >
-    <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
+    <div
+      class="app-container pb-20 border-b border-muted-200 dark:border-muted-800"
+    >
       <AppContainerHeader
         v-if="'title' in $slots || 'subtitle' in $slots || 'links' in $slots"
         class="mb-10"
@@ -123,6 +125,6 @@ const { data: articles } = await useAsyncData(
           />
         </div>
       </template>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

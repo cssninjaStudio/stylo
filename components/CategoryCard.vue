@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <AppCard class="p-3 rounded-xl">
+  <div class="app-card p-3 rounded-xl">
     <div v-if="props.category.cover" class="relative">
       <img
         :src="props.category.cover.src"
@@ -34,5 +34,5 @@ const props = defineProps<{
         {{ props.category.description }}
       </p>
     </div>
-  </AppCard>
+  </div>
 </template>

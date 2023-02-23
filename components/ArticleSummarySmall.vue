@@ -11,7 +11,7 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
 </script>
 
 <template>
-  <AppCard class="p-3 rounded-lg">
+  <div class="app-card p-3 rounded-lg">
     <div class="relative">
       <NuxtLink
         v-if="props.article.cover"
@@ -99,5 +99,5 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
         </NuxtLink>
       </div>
     </div>
-  </AppCard>
+  </div>
 </template>

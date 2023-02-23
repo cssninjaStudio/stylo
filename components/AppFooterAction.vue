@@ -3,8 +3,8 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-  <AppSection class="bg-white dark:bg-muted-1000">
-    <AppContainer>
+  <div class="app-section bg-white dark:bg-muted-1000">
+    <div class="app-container">
       <div class="relative">
         <div class="text-center mb-8">
           <h2
@@ -54,6 +54,6 @@ const appConfig = useAppConfig()
           </button>
         </form> -->
       </div>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

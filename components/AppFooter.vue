@@ -11,7 +11,7 @@ const year = new Date().getFullYear()
 
 <template>
   <footer class="py-8 bg-muted-100 dark:bg-muted-800">
-    <AppContainer>
+    <div class="app-container">
       <div
         class="w-full flex flex-col md:flex-row items-center justify-between gap-x-12 gap-y-4 px-4 lg:px-6"
       >
@@ -82,6 +82,6 @@ const year = new Date().getFullYear()
           </NuxtLink>
         </span>
       </div>
-    </AppContainer>
+    </div>
   </footer>
 </template>

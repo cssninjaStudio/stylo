@@ -11,7 +11,7 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
 </script>
 
 <template>
-  <AppCard class="p-3 rounded-xl">
+  <div class="app-card p-3 rounded-xl">
     <div class="relative rounded-lg overflow-hidden">
       <div class="relative">
         <img
@@ -90,7 +90,7 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
         </div>
       </div>
     </div>
-  </AppCard>
+  </div>
 </template>
 
 <style scoped>

@@ -157,7 +157,7 @@ const snippetText = computed(() =>
 
 <template>
   <div :class="layout === 'empty' ? 'w-full py-20 px-4 lg:px-6' : ''">
-    <AppContainer>
+    <div class="app-container">
       <div class="w-full h-full flex items-center justify-center pt-10 pb-32">
         <div class="relative w-full max-w-2xl mx-auto">
           <!--Error-->
@@ -233,6 +233,6 @@ const snippetText = computed(() =>
           </div>
         </div>
       </div>
-    </AppContainer>
+    </div>
   </div>
 </template>

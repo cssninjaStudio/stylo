@@ -8,16 +8,16 @@ const props = defineProps<{
 </script>
 
 <template>
-  <AppSection
+  <div
     v-if="props.author"
-    class=""
+    class="app-section"
     :class="
       props.muted
         ? 'bg-muted-100 dark:bg-muted-1000'
         : 'bg-white dark:bg-muted-900'
     "
   >
-    <AppContainer>
+    <div class="app-container">
       <div class="max-w-xl mx-auto pt-10 mb-8">
         <div>
           <img
@@ -70,6 +70,6 @@ const props = defineProps<{
           </div>
         </div>
       </div>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

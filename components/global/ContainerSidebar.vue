@@ -15,8 +15,8 @@ const props = withDefaults(
 </script>
 
 <template>
-  <AppSection :class="props.sectionClass">
-    <AppContainer :class="props.containerClass">
+  <div class="app-section" :class="props.sectionClass">
+    <div class="app-container" :class="props.containerClass">
       <div class="grid grid-cols-12 gap-y-20 gap-x-16">
         <!-- Main -->
         <div
@@ -36,6 +36,6 @@ const props = withDefaults(
           <ContentSlot :use="$slots.sidebar" unwrap="p" />
         </div>
       </div>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

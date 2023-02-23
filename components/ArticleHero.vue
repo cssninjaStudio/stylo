@@ -11,8 +11,8 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
 </script>
 
 <template>
-  <AppSection class="bg-muted-100 dark:bg-muted-1000 overflow-hidden">
-    <AppContainer>
+  <div class="app-section bg-muted-100 dark:bg-muted-1000 overflow-hidden">
+    <div class="app-container">
       <header class="grid grid-cols-12 md:gap-x-10 gap-y-10 pt-6 sm:pt-10">
         <!-- Cover image -->
         <div
@@ -94,6 +94,6 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
           </div>
         </div>
       </header>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

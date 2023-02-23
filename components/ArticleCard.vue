@@ -12,7 +12,7 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
 
 <template>
   <div class="relative">
-    <AppCard class="p-4 ltablet:p-5 md:p-5 lg:p-6 rounded-2xl">
+    <div class="app-card p-4 ltablet:p-5 md:p-5 lg:p-6 rounded-2xl">
       <div class="relative">
         <NuxtLink v-if="props.article.cover" :to="props.article._path">
           <img
@@ -95,6 +95,6 @@ const { data: author } = await useAsyncAuthorMeta(() => props.article.author)
           </NuxtLink>
         </div>
       </div>
-    </AppCard>
+    </div>
   </div>
 </template>

@@ -4,8 +4,8 @@ const { page } = useContent()
 
 
 <template>
-  <AppSection class="bg-white dark:bg-muted-900 min-h-screen">
-    <AppContainer>
+  <div class="app-section bg-white dark:bg-muted-900 min-h-screen">
+    <div class="app-container">
       <div
         :class="
           page?.toc
@@ -22,6 +22,6 @@ const { page } = useContent()
           <AppPageToc class="sticky top-32" />
         </div>
       </div>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

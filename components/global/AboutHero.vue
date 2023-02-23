@@ -12,8 +12,8 @@ const props = withDefaults(
 </script>
 
 <template>
-  <AppSection class="bg-muted-100 dark:bg-muted-1000 pb-0 overflow-hidden">
-    <AppContainer>
+  <div class="app-section bg-muted-100 dark:bg-muted-1000 pb-0 overflow-hidden">
+    <div class="app-container">
       <div
         class="flex flex-col ltablet:flex-row lg:flex-row ltablet:items-stretch lg:items-stretch"
       >
@@ -60,6 +60,6 @@ const props = withDefaults(
           </div>
         </div>
       </div>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

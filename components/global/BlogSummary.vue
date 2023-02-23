@@ -24,8 +24,10 @@ const recents = computed(() => articles.value?.slice(1))
 </script>
 
 <template>
-  <AppSection class="bg-white dark:bg-muted-1000 pb-0">
-    <AppContainer class="pb-20 border-b border-muted-200 dark:border-muted-800">
+  <div class="app-section bg-white dark:bg-muted-1000 pb-0">
+    <div
+      class="app-container pb-20 border-b border-muted-200 dark:border-muted-800"
+    >
       <div
         class="w-full p-0 ltablet:p-6 lg:p-10 rounded-3xl ltablet:bg-muted-100 ltablet:dark:bg-muted-700/10 lg:bg-muted-100 lg:dark:bg-muted-700/10"
       >
@@ -67,6 +69,6 @@ const recents = computed(() => articles.value?.slice(1))
           </div>
         </div>
       </div>
-    </AppContainer>
-  </AppSection>
+    </div>
+  </div>
 </template>

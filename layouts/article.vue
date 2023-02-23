@@ -25,8 +25,8 @@ const {
 <template>
   <div v-if="page" class="relative">
     <ArticleHero :article="page" />
-    <AppSection class="relative bg-white dark:bg-muted-900 min-h-[75vh]">
-      <AppContainer>
+    <div class="app-section relative bg-white dark:bg-muted-900 min-h-[75vh]">
+      <div class="app-container">
         <div
           :class="
             page.toc
@@ -107,7 +107,7 @@ const {
             </div>
           </div>
         </div>
-      </AppContainer>
-    </AppSection>
+      </div>
+    </div>
   </div>
 </template>

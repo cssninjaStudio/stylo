@@ -21,7 +21,7 @@ const { data: navigation } = await useAsyncData('navigation', () =>
     ]"
   >
     <div class="w-full px-4 lg:px-6">
-      <AppContainer>
+      <div class="app-container">
         <div
           class="relative flex items-center ltablet:justify-start justify-between h-16"
         >
@@ -107,7 +107,7 @@ const { data: navigation } = await useAsyncData('navigation', () =>
             <AppNavbarTheme />
           </div>
         </div>
-      </AppContainer>
+      </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->

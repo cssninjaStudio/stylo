@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <AppContainer>
+  <div class="app-container">
     <div class="w-full h-full flex items-center justify-center">
       <div class="relative w-full max-w-2xl mx-auto">
         <!--Error-->
@@ -49,5 +49,5 @@
         </div>
       </div>
     </div>
-  </AppContainer>
+  </div>
 </template>

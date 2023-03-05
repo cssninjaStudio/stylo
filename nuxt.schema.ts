@@ -1,12 +1,22 @@
 export default defineNuxtSchema({
   appConfig: {
     /**
-     * stylo theme configuration.
+     * Stylô theme configuration.
      *
-     * @studio-icon material-symbols:docs
+     * @studioIcon material-symbols:docs
      */
     stylo: {
+      /**
+       * Website title, used as header default title and meta title.
+       *
+       * @studioIcon material-symbols:title
+       */
       title: 'Stylô',
+      /**
+       * Header configuration.
+       *
+       * @studioIcon fluent:document-header-24-regular
+       */
       header: {
         displayTitle: true,
         logo: {

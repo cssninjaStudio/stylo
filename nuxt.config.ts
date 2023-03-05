@@ -6,10 +6,10 @@ export default defineNuxtConfig({
   extends: ['nuxt-seo-kit'],
   modules: [
     '@vueuse/nuxt',
+    'pinceau/nuxt',
     '@nuxthq/studio',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
-    'pinceau/nuxt',
     '@nuxtjs/color-mode',
     'nuxt-config-schema',
     'nuxt-icon',

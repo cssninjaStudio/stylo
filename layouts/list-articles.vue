@@ -4,10 +4,13 @@ const { page } = useContent()
 const filters = computed(() => ({
   _file: { $contains: page.value?._path?.substring(1) },
 }))
+
+const { data } = await useFetch('/api/localsearch')
 </script>
 
 <template>
   <div>
+    <pre>{{ { data } }}</pre>
     <Articles :mode="page.mode" :filters="filters" :limit="15">
       <template #title>{{ page.title }}</template>
       <template #subtitle>{{ page.description }}</template>

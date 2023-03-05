@@ -8,11 +8,13 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'pinceau/nuxt',
     '@nuxthq/studio',
+    // '@nuxt/devtools',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     'nuxt-config-schema',
     'nuxt-icon',
+    resolve('./modules/flexsearch'),
   ],
 
   css: [resolve('./styles/utilities.css'), resolve('./styles/main.css')],

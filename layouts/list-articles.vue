@@ -5,7 +5,7 @@ const filters = computed(() => ({
   _file: { $contains: page.value?._path?.substring(1) },
 }))
 
-const { data } = await useFetch('/api/localsearch')
+const { data } = await useFetch('/api/flexsearch')
 </script>
 
 <template>

@@ -24,11 +24,15 @@ export default defineNuxtConfig({
       siteDescription: '',
       language: 'en-US',
       titleSeparator: '·',
-      content: {
-        anchorLinks: {
-          depth: 6,
-        },
-      },
+      // content: {
+      //   // anchorLinks: {
+      //   //   depth: 6,
+      //   // },
+      // },
     },
   },
+
+  experimental: {
+    viewTransition: true,
+  }
 })

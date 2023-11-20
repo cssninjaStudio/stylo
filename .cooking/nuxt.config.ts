@@ -1,6 +1,9 @@
 export default defineNuxtConfig({
   extends: '../',
-  
+
+  experimental: {
+    viewTransition: true,
+  },
   // typescript: {
   //   shim: false,
   //   strict: true,

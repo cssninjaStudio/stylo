@@ -75,118 +75,118 @@ module.exports = {
           css: {
             '--tw-prose-body': theme('colors.muted[700]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-headings': theme('colors.muted[900]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-lead': theme('colors.muted[600]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-links': theme('colors.muted[900]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-bold': theme('colors.muted[900]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-counters': theme('colors.muted[500]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-bullets': theme('colors.muted[300]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-hr': theme('colors.muted[200]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-quotes': theme('colors.muted[900]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-quote-borders': theme('colors.muted[200]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-captions': theme('colors.muted[500]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-code': theme('colors.muted[900]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-pre-code': theme('colors.muted[200]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-pre-bg': theme('colors.muted[800]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-th-borders': theme('colors.muted[300]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-td-borders': theme('colors.muted[200]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-body': theme('colors.muted[300]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-headings': theme('colors.white'),
             '--tw-prose-invert-lead': theme('colors.muted[400]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-links': theme('colors.white'),
             '--tw-prose-invert-bold': theme('colors.white'),
             '--tw-prose-invert-counters': theme('colors.muted[400]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-bullets': theme('colors.muted[600]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-hr': theme('colors.muted[700]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-quotes': theme('colors.muted[100]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-quote-borders': theme(
-              'colors.muted[700]'
+              'colors.muted[700]',
             ).replace('<alpha-value>', 100),
             '--tw-prose-invert-captions': theme('colors.muted[400]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-code': theme('colors.white').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-pre-code': theme('colors.muted[300]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
             '--tw-prose-invert-th-borders': theme('colors.muted[600]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-td-borders': theme('colors.muted[700]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
           },
         },
@@ -194,11 +194,11 @@ module.exports = {
           css: {
             '--tw-prose-links': theme('colors.primary[600]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
             '--tw-prose-invert-links': theme('colors.primary[500]').replace(
               '<alpha-value>',
-              100
+              100,
             ),
           },
         },
@@ -208,7 +208,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/line-clamp'),
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.slimscroll::-webkit-scrollbar': {

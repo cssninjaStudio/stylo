@@ -1,4 +1,4 @@
-import { defineTheme, palette } from 'pinceau'
+import { defineTheme } from 'pinceau'
 import colors from 'tailwindcss/colors'
 import { tailwindToRgb } from '../utils/node/colors'
 

@@ -3,7 +3,7 @@ import { createResolver } from '@nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
-  extends: ['nuxt-seo-kit'],
+  // extends: ['nuxt-seo-kit'],
   modules: [
     '@vueuse/nuxt',
     'pinceau/nuxt',

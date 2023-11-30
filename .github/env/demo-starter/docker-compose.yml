@@ -12,7 +12,6 @@ services:
       - cssninja-services
     environment:
       - NUXT_PUBLIC_FRONTEND_URL=https://stylo-starter.${HOST:-127.0.0.1.nip.io}/
-      - NUXT_PUBLIC_STUDIO_TOKENS=${STUDIO_TOKENS}
     labels:
       traefik.enable: true
       traefik.docker.network: 'cssninja-services'

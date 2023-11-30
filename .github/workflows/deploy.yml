@@ -65,7 +65,7 @@ jobs:
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: echo '{"extends":"./.blog/.nuxt/tsconfig.json"}' > tsconfig.json
-      - run: pnpm build 
+      - run: NUXT_PUBLIC_STUDIO_TOKENS=${{ secrets.BLOG_STUDIO_TOKENS }} pnpm build 
       - run: cp .github/env/shared/Dockerfile .blog/Dockerfile
   
       - name: Set up dockertags

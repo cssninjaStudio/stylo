@@ -12,9 +12,6 @@ export default defineNuxtConfig({
       siteDescription: '',
       language: 'en-US',
       titleSeparator: '·',
-      studio: {
-        tokens: '',
-      },
     },
   },
 })

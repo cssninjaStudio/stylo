@@ -1,10 +1,7 @@
-import type { MaybeComputedRef } from '@vueuse/core'
 import type { AuthorPage } from '../types'
 
-export function useAsyncAuthorMeta(path: MaybeComputedRef<string | undefined>) {
-  const _path = computed(() => {
-    return typeof path === 'function' ? path() : isRef(path) ? path.value : path
-  })
+export function useAsyncAuthorMeta(path: MaybeRefOrGetter<string | undefined>) {
+  const _path = toRef(path)
 
   return useAsyncData(
     `author-meta-${_path.value}`,

@@ -1,16 +1,9 @@
-import type { MaybeComputedRef } from '@vueuse/core'
 import type { TagPage } from '../types'
 
 export function useAsyncTagsMeta(
-  paths: MaybeComputedRef<string[] | undefined>
+  paths: MaybeRefOrGetter<string[] | undefined>
 ) {
-  const _paths = computed(() => {
-    return typeof paths === 'function'
-      ? paths()
-      : isRef(paths)
-      ? paths.value
-      : paths
-  })
+  const _paths = toRef(paths)
 
   return useAsyncData(
     `tags-meta-${_paths.value?.join('-')}`,

@@ -5,6 +5,21 @@
   "license": "MIT",
   "main": "./nuxt.config.ts",
   "packageManager": "pnpm@8.5.1",
+  "files": [
+    "components",
+    "composables",
+    "layouts",
+    "server",
+    "styles",
+    "types",
+    "utils",
+    "app.vue",
+    "app.config.ts",
+    "nuxt.schema.ts",
+    "nuxt.config.ts",
+    "tailwind.config.cjs",
+    "tokens.config.ts"
+  ],
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .blog",
     "dev:starter": "nuxi prepare & nuxi dev .starter",

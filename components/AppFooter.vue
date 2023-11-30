@@ -17,7 +17,7 @@ const year = new Date().getFullYear()
       >
         <span class="flex-none flex flex-row items-center">
           <NuxtLink
-            v-if="appConfig.stylo.footer.logo.src"
+            v-if="appConfig.stylo?.footer?.logo?.src"
             class="flex title-font font-medium items-center lg:justify-start justify-center text-muted-800 dark:text-muted-100 mr-4 pr-4 border-r border-muted-300 dark:border-muted-600/60"
             to="/"
           >
@@ -36,7 +36,7 @@ const year = new Date().getFullYear()
             />
           </NuxtLink>
           <p
-            v-if="appConfig.stylo.footer.copyright.enabled"
+            v-if="appConfig.stylo.footer?.copyright?.enabled"
             class="font-sans text-sm text-muted-500 dark:text-muted-400"
           >
             © {{ year }}
@@ -52,7 +52,7 @@ const year = new Date().getFullYear()
         </span>
         <span class="flex items-center gap-x-6">
           <p
-            v-for="link in appConfig.stylo.footer.links"
+            v-for="link in appConfig.stylo?.footer?.links"
             :key="link.href"
             class="text-sm text-muted-600 dark:text-muted-300"
           >
@@ -70,7 +70,7 @@ const year = new Date().getFullYear()
           class="grow inline-flex gap-1 lg:ml-auto justify-center sm:justify-end mt-2 sm:mt-0"
         >
           <NuxtLink
-            v-for="social in appConfig.stylo.footer.social"
+            v-for="social in appConfig.stylo?.footer?.social"
             :key="social.href"
             :to="social.href"
             :title="social.title"

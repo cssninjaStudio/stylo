@@ -3,7 +3,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-  <div class="app-section bg-white dark:bg-muted-1000">
+  <div v-if="appConfig.stylo.footer?.action" class="app-section bg-white dark:bg-muted-1000">
     <div class="app-container">
       <div class="relative">
         <div class="text-center mb-8">

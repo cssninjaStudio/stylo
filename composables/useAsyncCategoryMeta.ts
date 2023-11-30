@@ -1,12 +1,9 @@
-import type { MaybeComputedRef } from '@vueuse/core'
 import type { CategoryPage } from '../types'
 
 export function useAsyncCategoryMeta(
-  path: MaybeComputedRef<string | undefined>
+  path: MaybeRefOrGetter<string | undefined>
 ) {
-  const _path = computed(() => {
-    return typeof path === 'function' ? path() : isRef(path) ? path.value : path
-  })
+  const _path = toRef(path)
 
   return useAsyncData(
     `category-meta-${_path.value}`,

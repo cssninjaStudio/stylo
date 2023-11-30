@@ -24,11 +24,9 @@ export default defineNuxtConfig({
       siteDescription: '',
       language: 'en-US',
       titleSeparator: '·',
-      // content: {
-      //   // anchorLinks: {
-      //   //   depth: 6,
-      //   // },
-      // },
+      studio: {
+        tokens: '',
+      },
     },
   },
 

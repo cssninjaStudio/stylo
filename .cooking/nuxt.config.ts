@@ -4,34 +4,17 @@ export default defineNuxtConfig({
   experimental: {
     viewTransition: true,
   },
-  // typescript: {
-  //   shim: false,
-  //   strict: true,
-  //   includeWorkspace: true
-  // },
 
-  // content: {
-  //   highlight: {
-  //     preload: ['vue', 'vue-html', 'typescript', 'bash', 'diff', 'scss'],
-  //     theme: {
-  //       default: 'one-dark-pro',
-  //       dark: 'one-dark-pro',
-  //     },
-  //   },
-  // },
-
-  // runtimeConfig: {
-  //   public: {
-  //     siteUrl: 'https://stylo.cssninja.io/',
-  //     siteName: 'stylo',
-  //     siteDescription: '',
-  //     language: 'en-US',
-  //     titleSeparator: '·',
-  //     content: {
-  //       anchorLinks: {
-  //         depth: 6,
-  //       },
-  //     },
-  //   },
-  // },
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://stylo-cooking.cssninja.io/',
+      siteName: 'Bakery',
+      siteDescription: '',
+      language: 'en-US',
+      titleSeparator: '·',
+      studio: {
+        tokens: '',
+      },
+    },
+  },
 })
